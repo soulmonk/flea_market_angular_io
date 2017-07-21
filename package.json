@@ -1,0 +1,15 @@
+{
+  "name": "ndfsm_js",
+  "version": "1.0.0",
+  "description": "NDFSM nodejs Angular2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koajs2",
+    "angular.io"
+  ],
+  "author": "fsoulmonk@gmail.com",
+  "license": "MIT"
+}
