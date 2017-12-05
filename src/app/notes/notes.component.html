@@ -1,3 +1,16 @@
-<p>
-  notes works!
-</p>
+
+<button mat-button (click)="edit($event, {})">Create</button>
+
+<mat-card *ngFor="let note of notes">
+  <mat-card-header>
+    <mat-card-title>{{note.title}}</mat-card-title>
+    <mat-card-subtitle>{{note.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <!--<img matCardImage src="Card wide image source">-->
+  <mat-card-content>
+    {{note.text}}
+  </mat-card-content>
+  <mat-card-actions align="start">
+    <button mat-button (click)="edit($event, note)">Edit</button>
+  </mat-card-actions>
+</mat-card>

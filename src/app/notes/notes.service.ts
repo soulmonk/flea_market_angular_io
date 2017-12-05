@@ -20,6 +20,34 @@ export class NotesService {
     );
   }
 
+  save(note) {
+    if (note._id) {
+      return this.update(note)
+    }
+    return this.create(note)
+  }
+
+  create(note) {
+    return this.http.post(this.baseUrl, note)
+    .pipe(
+      tap(notes => this.log(`created note`)),
+      map((res: any) => res.data),
+      catchError(this.handleError('create', []))
+    );
+  }
+
+
+  update(note) {
+    const id = note._id;
+    delete note._id;
+    return this.http.put(this.baseUrl + '/' + id, note)
+    .pipe(
+      tap(notes => this.log(`updated note`)),
+      map((res: any) => res.data),
+      catchError(this.handleError('update', []))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

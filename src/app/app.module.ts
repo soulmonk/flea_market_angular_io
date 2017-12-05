@@ -2,20 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NotesService } from './notes/notes.service';
-import { NotesComponent } from './notes/notes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
+import { appRoutes } from './app.routes';
+import { MatSnackBarModule, MatToolbarModule } from '@angular/material';
+import { SharedModule } from './shared/shared.module';
+import { NotesModule } from './notes/notes.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    RouterModule.forRoot(appRoutes),
+
+    MatToolbarModule,
+    MatSnackBarModule,
+    SharedModule,
+    NotesModule
   ],
   declarations: [
     AppComponent,
-    NotesComponent
   ],
-  providers: [NotesService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
