@@ -21,7 +21,7 @@ export class NotesComponent implements OnInit {
 
   edit(event, note: any = {}) {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '250px',
+      width: '500px',
       data: note
     });
 

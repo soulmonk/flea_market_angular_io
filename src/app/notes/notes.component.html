@@ -8,7 +8,7 @@
   </mat-card-header>
   <!--<img matCardImage src="Card wide image source">-->
   <mat-card-content>
-    {{note.text}}
+    <pre>{{note.text}}</pre>
   </mat-card-content>
   <mat-card-actions align="start">
     <button mat-button (click)="edit($event, note)">Edit</button>
