@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -6,14 +6,12 @@ import { MatSnackBar } from '@angular/material';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
 
   constructor(public snackBar: MatSnackBar) {}
 
-  ngOnInit() {
-    this.openSnackBar();
-  }
+  ngOnInit() {}
 
   openSnackBar() {
     this.snackBar.open('Cool action', 'action', {

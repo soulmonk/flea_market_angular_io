@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { appRoutes } from './app.routes';
-import { MatSnackBarModule, MatToolbarModule } from '@angular/material';
+import { MatMenuModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule } from '@angular/material';
 import { SharedModule } from './shared/shared.module';
 import { NotesModule } from './notes/notes.module';
 
@@ -18,6 +18,8 @@ import { NotesModule } from './notes/notes.module';
 
     MatToolbarModule,
     MatSnackBarModule,
+    MatMenuModule,
+    MatSidenavModule,
     SharedModule,
     NotesModule
   ],
