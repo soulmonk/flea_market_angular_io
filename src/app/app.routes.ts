@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { NotesComponent } from './notes/notes.component';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NotFoundComponent } from '@app/core';
+
 
 export const appRoutes: Routes = [
   {path: 'notes', component: NotesComponent},

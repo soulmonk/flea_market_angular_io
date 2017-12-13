@@ -1,0 +1,9 @@
+$ndfsm-light-primary: mat-palette($mat-grey, 200, 500, 300);
+$ndfsm-light-accent: mat-palette($mat-brown, 200);
+$ndfsm-light-warn: mat-palette($mat-deep-orange, 200);
+
+$ndfsm-light-theme: mat-light-theme(
+  $ndfsm-light-primary,
+  $ndfsm-light-accent,
+  $ndfsm-light-warn
+);

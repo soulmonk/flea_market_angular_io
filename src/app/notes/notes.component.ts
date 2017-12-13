@@ -26,6 +26,9 @@ export class NotesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      }
       this.notesService.save(note).subscribe(data => {
         if (note._id) {
           return;

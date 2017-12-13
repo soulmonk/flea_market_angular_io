@@ -1,0 +1,9 @@
+$ndfsm-black-primary: mat-palette($mat-grey, 900, 500, 900);
+$ndfsm-black-accent: mat-palette($mat-green, A200);
+$ndfsm-black-warn: mat-palette($mat-red, A200);
+
+$ndfsm-black-theme: mat-dark-theme(
+  $ndfsm-black-primary,
+  $ndfsm-black-accent,
+  $ndfsm-black-warn
+);

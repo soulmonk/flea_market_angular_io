@@ -1,9 +1,66 @@
-<mat-toolbar [color]="'primary'">
-  <h1>Welcome to {{title}}!!</h1>
-  <img width="30" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-<!--  <a [routerLink]="['/']">Go to home</a>
-  <a [routerLink]="['/auth']">Go to auth</a>
-  <a [routerLink]="['/auth/login']">Go to login</a>-->
-</mat-toolbar>
+<mat-sidenav-container>
 
-<router-outlet></router-outlet>
+  <mat-sidenav #sidenav mode="push">
+    <div class="branding"><img [src]="logo"/> <span>Angular Starter</span></div>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()"
+         [routerLink]="[item.link]" routerLinkActive="active">
+        {{item.label}}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="wrapper">
+
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="hidden-md-up" (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span routerLink="" class="branding spacer hidden-md-up text-center">Angular Starter</span>
+      <span routerLink="" class="branding spacer hidden-sm-down">Angular ngRx Material Starter</span>
+
+      <span class="hidden-sm-down">
+        <button mat-button class="nav-button" *ngFor="let item of navigation"
+                [routerLink]="[item.link]" routerLinkActive="active">
+          {{item.label}}
+        </button>
+      </span>
+
+      <button mat-button class="sign-in-button"
+              *ngIf="!isAuthenticated"
+              (click)="onLoginClick()">
+        Sign in
+      </button>
+
+      <button *ngIf="isAuthenticated"
+              mat-icon-button
+              [matMenuTriggerFor]="toolbarUserMenu">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #toolbarUserMenu="matMenu">
+        <button mat-menu-item (click)="onLogoutClick()">
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+
+      <button mat-icon-button routerLink="settings" class="hidden-sm-down">
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <a matTooltip="Project Github Repository"
+         matdTooltipPosition="before"
+         mat-icon-button class="link"
+         href="https://github.com/tomastrajan/angular-ngrx-material-starter"
+         target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </div>
+</mat-sidenav-container>

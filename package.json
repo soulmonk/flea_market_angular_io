@@ -7,6 +7,10 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
+    "build:split": "mkdir dist/templates && mkdir dist/assets && mv dist/index.html dist/templates && mv dist/*.* dist/assets",
+    "build:prod": "ng build --target production --build-optimizer --vendor-chunk",
+    "pack": "npm run build && npm run build:split",
+    "pack:prod": "npm run build:prod && npm run build:split",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -28,7 +32,12 @@
     "@angular/platform-browser": "^5.0.5",
     "@angular/platform-browser-dynamic": "^5.0.5",
     "@angular/router": "^5.0.5",
+    "@ngrx/effects": "^4.1.1",
+    "@ngrx/router-store": "^4.1.1",
+    "@ngrx/store": "^4.1.1",
+    "bootstrap": "^4.0.0-beta.2",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "rxjs": "^5.5.4",
     "zone.js": "^0.8.4"

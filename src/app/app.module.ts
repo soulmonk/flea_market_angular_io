@@ -6,9 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { appRoutes } from './app.routes';
-import { MatMenuModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule } from '@angular/material';
 import { SharedModule } from './shared/shared.module';
 import { NotesModule } from './notes/notes.module';
+import { CoreModule } from '@app/core';
 
 @NgModule({
   imports: [
@@ -16,10 +16,8 @@ import { NotesModule } from './notes/notes.module';
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
 
-    MatToolbarModule,
-    MatSnackBarModule,
-    MatMenuModule,
-    MatSidenavModule,
+    // core & shared
+    CoreModule,
     SharedModule,
     NotesModule
   ],
