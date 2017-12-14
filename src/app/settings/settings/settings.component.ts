@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators/takeUntil';
 import { selectorSettings, actionChangeTheme } from '../settings.reducer';
 
 @Component({
-  selector: 'anms-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
