@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { appRoutes } from './app.routes';
-import { SharedModule } from './shared/shared.module';
-import { NotesModule } from './notes/notes.module';
+import { SharedModule } from '@app/shared';
 import { CoreModule } from '@app/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SettingsModule } from '@app/settings';
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
@@ -19,7 +21,8 @@ import { CoreModule } from '@app/core';
     // core & shared
     CoreModule,
     SharedModule,
-    NotesModule
+
+    SettingsModule
   ],
   declarations: [
     AppComponent,

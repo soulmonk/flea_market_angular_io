@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule, MatFormFieldModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -35,7 +36,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatListModule,
     MatMenuModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   declarations: [],
   exports: [
@@ -56,6 +60,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatToolbarModule,
     MatIconModule,
     MatTooltipModule,
+    MatDialogModule,
+    MatFormFieldModule
   ]
 })
 export class SharedModule {}

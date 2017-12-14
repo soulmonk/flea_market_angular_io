@@ -1,11 +1,18 @@
 import { Routes } from '@angular/router';
-import { NotesComponent } from './notes/notes.component';
 import { NotFoundComponent } from '@app/core';
-
+import { SettingsComponent } from '@app/settings';
 
 export const appRoutes: Routes = [
-  {path: 'notes', component: NotesComponent},
+  {path: 'notes', loadChildren: './notes/notes.module#NotesModule'},
   {path: 'auth', loadChildren: './entrance/entrance.module#EntranceModule'},
+  {path: 'tools', loadChildren: './tools/tools.module#ToolsModule'},
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    data: {
+      title: 'Settings'
+    }
+  },
 
   {path: '', redirectTo: '/notes', pathMatch: 'full'},
 

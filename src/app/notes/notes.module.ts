@@ -1,25 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { NotesComponent } from './notes.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { NotesService } from './notes.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from '@app/shared';
+import { RouterModule } from '@angular/router';
+import { notesRoutes } from '@app/notes/notes.routes';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-
-    MatCardModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
+    RouterModule.forChild(notesRoutes)
   ],
   declarations: [
     NotesComponent,

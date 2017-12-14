@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>{{data._id ? 'Edit' : 'Create'}}</h1>
 <div mat-dialog-content>
-  <mat-form-field>
+  <mat-form-field class="full-width">
     <input matInput tabindex="1" [(ngModel)]="data.title">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="full-width">
     <textarea matInput tabindex="1" [(ngModel)]="data.text"></textarea>
   </mat-form-field>
 </div>

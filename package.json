@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
+    "serve": "ng serve --proxy-config proxy-local.conf.json",
     "build": "ng build",
     "build:split": "mkdir dist/templates && mkdir dist/assets && mv dist/index.html dist/templates && mv dist/*.* dist/assets",
     "build:prod": "ng build --target production --build-optimizer --vendor-chunk",
