@@ -3,8 +3,8 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators/tap';
 
-import { LocalStorageService } from '@app/core';
-import { Action } from '@app/core';
+import { LocalStorageService } from '../local-storage/local-storage.service';
+import { Action } from '../core.interfaces';
 
 import { AUTH_KEY, AUTH_LOGIN, AUTH_LOGOUT } from './auth.reducer';
 

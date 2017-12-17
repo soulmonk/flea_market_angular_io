@@ -36,3 +36,7 @@
   @include angular-material-theme($ndfsm-black-theme);
   @include custom-components-theme($ndfsm-black-theme);
 }
+
+.full-width {
+  width: 100%;
+}
