@@ -1,7 +1,7 @@
 const packageJson = require('../../package.json');
 
 export const environment = {
-  appName: 'Angular Ngrx Material Starter',
+  appName: 'NDFSM app',
   envName: 'PROD',
   production: true,
   versions: {

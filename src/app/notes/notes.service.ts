@@ -42,7 +42,8 @@ export class NotesService {
     delete note._id;
     return this.http.put(this.baseUrl + '/' + id, note)
     .pipe(
-      tap(notes => this.log(`updated note`)),
+
+
       map((res: any) => res.data),
       catchError(this.handleError('update', []))
     );
