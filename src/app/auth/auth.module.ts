@@ -11,12 +11,12 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthEffects } from './effects/auth.effects';
 import { reducers } from './reducers';
-import { MaterialModule } from '../material';
+import { SharedModule } from '../shared';
 
 export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, MaterialModule],
+  imports: [CommonModule, ReactiveFormsModule, SharedModule],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })

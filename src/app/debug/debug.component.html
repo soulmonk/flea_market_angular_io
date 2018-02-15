@@ -1,0 +1,13 @@
+<div *ngIf="isEnabled && open" class="debug">
+  <p>ComponentCount (ngOnInit)</p>
+  <ul>
+    <li *ngFor="let key of countOfComponentsKeys();">{{key}}:{{countOfComponentsValue(key)}}</li>
+  </ul>
+  <p>Component changed (ngOnChanges)</p>
+  <ul>
+    <li *ngFor="let key of countChangesKeys()">{{key}}:{{countChangesValue(key)}}</li>
+  </ul>
+
+  <button (click)="reset()">Reset</button>
+  <button (click)="close()">Close</button>
+</div>
