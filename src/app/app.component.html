@@ -17,8 +17,8 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span routerLink="" class="branding spacer hidden-md-up text-center">Angular Starter</span>
-      <span routerLink="" class="branding spacer hidden-sm-down">Angular ngRx Material Starter</span>
+      <span routerLink="" class="branding spacer hidden-md-up text-center">NDFSM</span>
+      <span routerLink="" class="branding spacer hidden-sm-down"></span>
 
       <span class="hidden-sm-down">
         <button mat-button class="nav-button" *ngFor="let item of navigation"
@@ -28,12 +28,12 @@
       </span>
 
       <button mat-button class="sign-in-button"
-              *ngIf="!isAuthenticated"
-              (click)="onLoginClick()">
+              *ngIf="!loggedIn$"
+              [routerLink]="['login']">
         Sign in
       </button>
 
-      <button *ngIf="isAuthenticated"
+      <button *ngIf="loggedIn$"
               mat-icon-button
               [matMenuTriggerFor]="toolbarUserMenu">
         <mat-icon>person</mat-icon>

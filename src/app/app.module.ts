@@ -10,6 +10,13 @@ import { SharedModule } from '@app/shared';
 import { CoreModule } from '@app/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SettingsModule } from '@app/settings';
+import { AuthModule } from '@app/auth/auth.module';
+import { metaReducers, reducers } from '@app/reducers';
+import { StoreModule } from '@ngrx/store';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { environment } from '@env/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { CustomRouterStateSerializer } from '@app/shared/utils';
 
 @NgModule({
   imports: [
@@ -17,15 +24,24 @@ import { SettingsModule } from '@app/settings';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    StoreModule.forRoot(reducers, { metaReducers }),
+
+    StoreRouterConnectingModule,
+
+    EffectsModule.forRoot([]),
 
     // core & shared
     CoreModule,
     SharedModule,
+    AuthModule.forRoot(),
 
     SettingsModule
   ],
   declarations: [
     AppComponent,
+  ],
+  providers: [
+    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
   ],
   bootstrap: [AppComponent]
 })

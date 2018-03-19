@@ -1,12 +1,12 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LocalStorageService } from '@app/core/local-storage/local-storage.service';
-import { AuthEffects } from '@app/core/auth/auth.effects';
+import { LocalStorageService } from './local-storage/local-storage.service';
 import { EffectsModule } from '@ngrx/effects';
-import { authReducer } from '@app/core/auth/auth.reducer';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
-import { NotFoundComponent } from '@app/core/not-found/not-found.component';
+import { NotFoundPageComponent } from './containers/not-found-page';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '@app/shared';
 
 export function getInitialState() {
   return LocalStorageService.loadInitialState();
@@ -16,18 +16,16 @@ export function getInitialState() {
   imports: [
     // angular
     CommonModule,
+    RouterModule,
     HttpClientModule,
+    SharedModule,
 
     // ngrx
     StoreModule.forRoot(
-      {
-        auth: authReducer
-      },
       {initialState: getInitialState}
     ),
-    EffectsModule.forRoot([AuthEffects])
   ],
-  declarations: [NotFoundComponent],
+  declarations: [NotFoundPageComponent],
   providers: [LocalStorageService]
 })
 

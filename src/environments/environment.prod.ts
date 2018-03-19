@@ -3,6 +3,7 @@ const packageJson = require('../../package.json');
 export const environment = {
   appName: 'NDFSM app',
   envName: 'PROD',
+  hmr: false,
   production: true,
   versions: {
     app: packageJson.version,

@@ -8,7 +8,7 @@ const packageJson = require('../../package.json');
 export const environment = {
   appName: 'NDFSM app',
   envName: 'DEV',
-  hmr: false,
+  hmr: true,
   production: false,
   versions: {
     app: packageJson.version,
