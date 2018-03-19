@@ -9,7 +9,7 @@
     "serve": "ng serve --proxy-config proxy-local.conf.json",
     "serve:hmr": "ng serve --proxy-config proxy-local.conf.json --hmr -e=hmr",
     "build": "ng build",
-    "build:split": "mkdir dist/templates && mkdir dist/assets && mv dist/index.html dist/templates && mv dist/*.* dist/assets",
+    "build:split": "mkdir dist/templates && mv dist/assets/index.html dist/templates",
     "build:prod": "ng build --target production --build-optimizer --vendor-chunk",
     "pack": "npm run build && npm run build:split",
     "pack:prod": "npm run build:prod && npm run build:split",
@@ -37,6 +37,7 @@
     "@ngrx/effects": "^5.2.0",
     "@ngrx/router-store": "^5.2.0",
     "@ngrx/store": "^5.2.0",
+    "@ngrx/store-devtools": "^5.2.0",
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.3",
     "font-awesome": "^4.7.0",
@@ -45,6 +46,7 @@
     "jquery": "^1.9.1",
     "ngrx-store-freeze": "^0.2.1",
     "rxjs": "^5.5.6",
+    "socket.io-client": "^2.0.4",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

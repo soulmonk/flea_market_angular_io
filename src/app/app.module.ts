@@ -17,6 +17,7 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
 import { environment } from '@env/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomRouterStateSerializer } from '@app/shared/utils';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   imports: [
@@ -24,11 +25,12 @@ import { CustomRouterStateSerializer } from '@app/shared/utils';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {metaReducers}),
 
     StoreRouterConnectingModule,
 
     EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     // core & shared
     CoreModule,
@@ -38,10 +40,10 @@ import { CustomRouterStateSerializer } from '@app/shared/utils';
     SettingsModule
   ],
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   providers: [
-    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}
   ],
   bootstrap: [AppComponent]
 })

@@ -6,9 +6,9 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "dist/assets",
       "assets": [
-        "assets",
+        { "glob": "**/*", "input": "./assets/", "output": "./" },
         "favicon.ico"
       ],
       "index": "index.html",
