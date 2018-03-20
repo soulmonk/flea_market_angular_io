@@ -23,7 +23,7 @@ export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
 export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RootAuthModule,
+      ngModule: RootAuthModule, // tslint:disable-line:no-use-before-declare
       providers: [AuthService, AuthGuard],
     };
   }

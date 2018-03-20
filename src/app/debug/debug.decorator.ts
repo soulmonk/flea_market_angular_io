@@ -19,7 +19,7 @@ export function DebugDecorator(/*options*/) {
     constructor.prototype['ngOnInit'] = function (...args) {
       DebugService.instance.incCountOfComponents(component);
       console.log(`%c ${component} - ngOnInit`, `color: #4CAF50; font-weight: bold`, ...args);
-      ngOnInitOriginal && ngOnInitOriginal.apply(this, args);
+      ngOnInitOriginal && ngOnInitOriginal.apply(this, args); // tslint:disable-line:no-unused-expression
     };
 
     const ngOnChangesOriginal = constructor.prototype['ngOnChanges'];
@@ -32,7 +32,7 @@ export function DebugDecorator(/*options*/) {
 
       DebugService.instance.incCountChanges(component);
       console.log(`%c ${component} - ngOnChanges`, `color: #4CAF50; font-weight: bold`, changes);
-      ngOnChangesOriginal && ngOnChangesOriginal.call(this, changes);
+      ngOnChangesOriginal && ngOnChangesOriginal.call(this, changes); // tslint:disable-line:no-unused-expression
     };
 
     /*

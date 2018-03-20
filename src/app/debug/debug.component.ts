@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnI
 import {DebugService} from './debug.service';
 
 @Component({
-  selector: 'app-debug',
+  selector: 'ndfsm-debug',
   templateUrl: './debug.component.html',
   styleUrls: ['./debug.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
