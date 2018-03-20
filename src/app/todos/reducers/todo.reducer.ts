@@ -1,17 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
 import { Action } from '@app/core';
+import { ITodo } from '../models/todo';
+
+import { TodoActionTypes } from '@app/todos/actions/todo';
 
 export const initialState = {
-  items: [
-    { id: uuid(), name: 'Open Todo list example', done: true },
-    { id: uuid(), name: 'Check the other examples', done: false },
-    {
-      id: uuid(),
-      name: 'Use Angular ngRx Material Starter in your project',
-      done: false
-    }
-  ],
+  items: [],
   filter: 'ALL'
 };
 
@@ -46,29 +41,31 @@ export const selectorTodos = state => state.todos;
 
 export function todosReducer(state = initialState, action: Action) {
   switch (action.type) {
-    case TODOS_ADD:
+    case TodoActionTypes.LoadSuccess:
       return Object.assign({}, state, {
-        items: state.items.concat({
-          id: uuid(),
-          name: action.payload,
-          done: false
-        })
+        items: action.payload.slice(0)
+      });
+
+    case TodoActionTypes.AddTodoSuccess:
+      return Object.assign({}, state, {
+        items: state.items.concat(action.payload)
       });
 
     case TODOS_TOGGLE:
-      state.items.some((item: Todo) => {
-        if (item.id === action.payload) {
-          item.done = !item.done;
-          return true;
+      const items = state.items.map((item: ITodo) => {
+        if (item._id === action.payload) {
+          return Object.assign({}, item, {done: !item.done});
         }
+        return item;
       });
+
       return Object.assign({}, state, {
-        items: [...state.items]
+        items
       });
 
     case TODOS_REMOVE_DONE:
       return Object.assign({}, state, {
-        items: state.items.filter((item: Todo) => !item.done)
+        items: state.items.filter((item: ITodo) => !item.done)
       });
 
     case TODOS_FILTER:
@@ -77,10 +74,4 @@ export function todosReducer(state = initialState, action: Action) {
     default:
       return state;
   }
-}
-
-export interface Todo {
-  id: string;
-  name: string;
-  done: boolean;
 }

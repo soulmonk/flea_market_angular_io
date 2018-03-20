@@ -5,7 +5,7 @@ import { SharedModule } from '@app/shared';
 
 import { ExamplesModule } from '../examples.module';
 
-import { TodosComponent } from './todos.component';
+import { TodosComponent } from './todo.component';
 
 describe('TodosComponent', () => {
   let component: TodosComponent;

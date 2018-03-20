@@ -2,23 +2,23 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@app/shared';
 import { RouterModule } from '@angular/router';
 import { todosRoutes } from './todos.routes';
-import { TodosComponent } from './todos.component';
-import { todosReducer } from './todos.reducer';
 import { StoreModule } from '@ngrx/store';
-import { TodosEffects } from './todos.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { todosReducer } from './reducers/todo.reducer';
+import { TodoEffects } from './effects/todo.effects';
+import { TodosComponent } from './components/todo.component';
+import { TodoService } from '@app/todos/services/todo.service';
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild(todosRoutes),
 
-    StoreModule.forRoot({
-      todos: todosReducer
-    }),
-    EffectsModule.forRoot([TodosEffects])
+    StoreModule.forFeature('todos', todosReducer),
+
+    EffectsModule.forFeature([TodoEffects])
   ],
   declarations: [TodosComponent],
-  providers: []
+  providers: [TodoService]
 })
 export class TodosModule {}

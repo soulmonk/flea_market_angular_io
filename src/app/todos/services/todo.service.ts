@@ -7,19 +7,17 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 
 @Injectable()
-export class TodosService {
+export class TodoService {
 
-
-  private baseUrl = 'api/todos';
+  private baseUrl = 'api/todo';
 
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get(this.baseUrl)
-      .pipe(
-        tap(next => this.log(`fetched todos`)),
-        map((res: any) => res.data),
-        catchError(this.handleError('list', []))
+    return this.httpClient.get(this.baseUrl).pipe(
+      tap(next => this.log(`fetched todos`)),
+      map((res: any) => res.data),
+      catchError(this.handleError('list', []))
     );
   }
 
@@ -27,11 +25,16 @@ export class TodosService {
 
   }
 
-  create(id, data) {
+  create(data) {
+    return this.httpClient.post(this.baseUrl, data).pipe(
+      tap(next => this.log(`add todo`)),
+      map((res: any) => res.data),
+      catchError(this.handleError('add', []))
+    );
 
   }
 
-  update(data) {
+  update(id, data) {
 
   }
 
@@ -39,8 +42,7 @@ export class TodosService {
 
   }
 
-
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -53,7 +55,6 @@ export class TodosService {
       return of(result as T);
     };
   }
-
 
   private log(message: string) {
     console.log('todos.service.ts::log >>>', message);

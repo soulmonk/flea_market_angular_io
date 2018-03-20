@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,6 +22,7 @@ import { MatDialogModule, MatFormFieldModule } from '@angular/material';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     MatButtonModule,
     MatToolbarModule,
@@ -45,6 +46,7 @@ import { MatDialogModule, MatFormFieldModule } from '@angular/material';
   exports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     MatButtonModule,
     MatMenuModule,

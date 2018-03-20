@@ -1,23 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 
+import * as todoActions from '../actions/todo';
+
 import {
   actionAddTodo,
-  actionPersistTodos,
-  actionToggleTodo,
-  actionRemoveDoneTodos,
   actionFilterTodos,
+  actionPersistTodos,
+  actionRemoveDoneTodos,
+  actionToggleTodo,
   selectorTodos,
-  Todo,
   TodoFilter
-} from './todos.reducer';
+} from '../reducers/todo.reducer';
+import { ITodo, Todo } from '@app/todos/models/todo';
 
 @Component({
   selector: 'ndfsm-todos',
-  templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.scss']
+  templateUrl: './todo.component.html',
+  styleUrls: ['./todo.component.scss']
 })
 export class TodosComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
@@ -28,13 +30,11 @@ export class TodosComponent implements OnInit, OnDestroy {
   constructor(public store: Store<any>) {}
 
   ngOnInit() {
-    this.store
-      .select(selectorTodos)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(todos => {
-        this.todos = todos;
-        this.store.dispatch(actionPersistTodos(todos));
-      });
+    this.store.dispatch(new todoActions.Load());
+
+    this.store.select(selectorTodos).pipe(takeUntil(this.unsubscribe$)).subscribe(todos => {
+      this.todos = todos;
+    });
   }
 
   ngOnDestroy(): void {
@@ -69,12 +69,12 @@ export class TodosComponent implements OnInit, OnDestroy {
   }
 
   onAddTodo() {
-    this.store.dispatch(actionAddTodo(this.newTodo));
+    this.store.dispatch(new todoActions.AddTodo(new Todo(this.newTodo)));
     this.newTodo = '';
   }
 
-  onToggleTodo(todo: Todo) {
-    this.store.dispatch(actionToggleTodo(todo.id));
+  onToggleTodo(todo: ITodo) {
+    this.store.dispatch(actionToggleTodo(todo._id));
   }
 
   onRemoveDoneTodos() {
