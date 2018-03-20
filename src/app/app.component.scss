@@ -23,6 +23,12 @@ mat-sidenav-container {
       flex: 1 1 auto;
     }
 
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      .hidden-sm-down {
+        display: none;
+      }
+
+    }
     @media (max-width: map-get($grid-breakpoints, lg)) {
       .nav-button {
         min-width: 0;

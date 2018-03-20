@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
     {link: 'settings', label: 'Settings'}
   ];
   loggedIn$: Observable<boolean>;
-  isAuthenticated;
+
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(
