@@ -6,7 +6,7 @@ import { INote } from './notes.entities';
 
 @Component({
   templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.css']
+  styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
 
