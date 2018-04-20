@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  mat-card {
+    width: 300px;
+    margin: 15px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+  }
+
+  @media only screen and (max-width: 768px) {
+    mat-card {
+      margin: 15px 0 !important;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {DebugService} from './debug.service';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'ndfsm-debug',
@@ -12,7 +13,7 @@ export class DebugComponent implements OnInit {
   // private _timeout: any;
   // private _openWord: string;
 
-  isEnabled = DebugService.isDebug() && process.env.ENV !== 'build:prod';
+  isEnabled = DebugService.isDebug() && !environment.production;
   open = false;
 
   constructor(private _debugService: DebugService, private _changeDetectorRef: ChangeDetectorRef) { }

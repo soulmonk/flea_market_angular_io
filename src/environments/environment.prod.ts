@@ -1,7 +1,8 @@
 const packageJson = require('../../package.json');
+const baseOptions = require('../../baseOptions.json');
 
 export const environment = {
-  appName: 'NDFSM app',
+  ...baseOptions,
   envName: 'PROD',
   hmr: false,
   production: true,

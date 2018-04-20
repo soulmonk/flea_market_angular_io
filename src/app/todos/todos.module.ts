@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { todosReducer } from './reducers/todo.reducer';
 import { TodoEffects } from './effects/todo.effects';
-import { TodosComponent } from './components/todo.component';
+import { TodosComponent } from './containers/todo.component';
 import { TodoService } from '@app/todos/services/todo.service';
 
 @NgModule({

@@ -1,6 +1,7 @@
 export interface INote {
+  id: string;
   title: string;
   description: string;
-  displayed?: boolean;
   text: string;
+  keywords: string[];
 }

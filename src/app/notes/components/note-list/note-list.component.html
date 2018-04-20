@@ -1,0 +1,14 @@
+<mat-card *ngFor="let note of notes; trackBy: trackByFn">
+  <mat-card-header>
+    <mat-card-title>{{note.title|slice:0:20}}</mat-card-title>
+    <mat-card-subtitle>{{note.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <!--<img matCardImage src="Card wide image source">-->
+  <mat-card-content>
+    <pre>{{note.keywords}}</pre>
+  </mat-card-content>
+  <mat-card-actions align="start">
+    <button  mat-raised-button color="primary" (click)="edit(note)">Edit</button>
+    <button  mat-raised-button color="primary" (click)="details(note)">Details</button>
+  </mat-card-actions>
+</mat-card>

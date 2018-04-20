@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12"><h1>Notes</h1></div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <button mat-raised-button color="primary" (click)="create()">Create</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 notes-list">
+      <ndfsm-note-list [notes]="notes$ | async"></ndfsm-note-list>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Details</h1>
+
+<div mat-dialog-content class="details-dialog">
+  <div class="row">
+    <div class="col-4">Title:</div>
+    <div class="col-8">{{note.title}}</div>
+  </div>
+  <div class="row">
+    <div class="col-4">Description:</div>
+    <div class="col-8">{{note.description}}</div>
+  </div>
+  <div class="row">
+    <div class="col-4">Text:</div>
+    <div class="col-8">{{note.text}}</div>
+  </div>
+  <div class="row">
+    <div class="col-4">Keywords:</div>
+    <div class="col-8">{{note.keywords.join(', ')}}</div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close tabindex="-1">Close</button>
+</div>
+

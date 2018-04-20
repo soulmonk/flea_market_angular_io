@@ -4,9 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 const packageJson = require('../../package.json');
+const baseOptions = require('../../baseOptions.json');
 
 export const environment = {
-  appName: 'NDFSM app',
+  ...baseOptions,
   envName: 'DEV',
   hmr: true,
   production: false,

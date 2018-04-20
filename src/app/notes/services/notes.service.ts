@@ -11,7 +11,7 @@ export class NotesService {
 
   constructor(private http: HttpClient) {}
 
-  getNotes() {
+  list() {
     return this.http.get(this.baseUrl)
     .pipe(
       tap(notes => this.log(`fetched notes`)),
@@ -21,7 +21,7 @@ export class NotesService {
   }
 
   save(note) {
-    if (note._id) {
+    if (note.id) {
       return this.update(note)
     }
     return this.create(note)
@@ -38,12 +38,10 @@ export class NotesService {
 
 
   update(note) {
-    const id = note._id;
-    delete note._id;
+    const id = note.id;
+    note = Object.assign({}, note, {id: undefined});
     return this.http.put(this.baseUrl + '/' + id, note)
     .pipe(
-
-
       map((res: any) => res.data),
       catchError(this.handleError('update', []))
     );

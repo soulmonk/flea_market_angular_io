@@ -14,7 +14,7 @@ import {
   selectorTodos,
   TodoFilter
 } from '../reducers/todo.reducer';
-import { ITodo, Todo } from '@app/todos/models/todo';
+import { ITodo, Todo } from 'app/todos/models/todo';
 
 @Component({
   selector: 'ndfsm-todos',
