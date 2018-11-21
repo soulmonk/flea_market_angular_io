@@ -8,6 +8,7 @@ export class ToolsComponent implements OnInit {
 
   tools = [
     { link: 'random-string', label: 'Random String' },
+    { link: 'links', label: 'Links' },
   ];
 
   constructor() { }

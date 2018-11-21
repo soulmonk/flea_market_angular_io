@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
 import { catchError, tap, map } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 
 @Injectable()
 export class NotesService {

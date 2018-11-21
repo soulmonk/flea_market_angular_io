@@ -7,6 +7,7 @@ const packageJson = require('../../package.json');
 const baseOptions = require('../../baseOptions.json');
 
 export const environment = {
+  appName: 'extended',
   ...baseOptions,
   envName: 'DEV',
   hmr: false,

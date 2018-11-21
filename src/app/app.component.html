@@ -25,6 +25,10 @@
                 [routerLink]="[item.link]" routerLinkActive="active">
           {{item.label}}
         </button>
+        <button mat-button class="nav-button" *ngFor="let item of navigationDev"
+                [routerLink]="[item.link]" routerLinkActive="active">
+          {{item.label}}
+        </button>
       </span>
 
       <button mat-button class="sign-in-button"

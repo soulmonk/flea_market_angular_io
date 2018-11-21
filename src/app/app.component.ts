@@ -2,16 +2,13 @@ import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivationEnd, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { Subject } from 'rxjs/Subject';
-import { takeUntil } from 'rxjs/operators/takeUntil';
-import { filter } from 'rxjs/operators/filter';
 import { environment as env } from '@env/environment';
-import { map } from 'rxjs/operators/map';
 import { selectorSettings } from '@app/settings';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Observable } from 'rxjs/Observable';
 import * as fromAuth from '@app/auth/reducers';
 import * as Auth from '@app/auth/actions/auth';
+import {Observable, Subject} from 'rxjs';
+import {filter, map, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'ndfsm-root',
@@ -24,7 +21,11 @@ export class AppComponent implements OnInit, OnDestroy {
   navigation = [
     {link: 'notes', label: 'Notes'},
     {link: 'tools', label: 'Tools'},
-    {link: 'todos', label: 'Todos'}
+    {link: 'todos', label: 'Todos'},
+  ];
+  navigationDev = [
+    {link: 'games', label: 'Notes'},
+    {link: 'scripts', label: 'Tools'},
   ];
   navigationSideMenu = [
     ...this.navigation,

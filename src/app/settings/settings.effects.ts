@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
-import { tap } from 'rxjs/operators/tap';
 
 import { LocalStorageService, Action } from '@app/core';
 
 import { SETTINGS_KEY, SETTINGS_CHANGE_THEME } from './settings.reducer';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class SettingsEffects {

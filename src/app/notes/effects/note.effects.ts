@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {NotesService} from '@app/notes/services/notes.service';
 import * as noteActions from '@app/notes/actions/note.actions';
@@ -15,10 +14,10 @@ import {
 } from '@app/notes/actions/note.actions';
 import {catchError, map, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {INote} from '@app/notes/models/note';
-import {of} from 'rxjs/observable/of';
 import {MatDialog} from '@angular/material';
 import {EditDialogComponent} from '@app/notes/components/edit-dialog/edit-dialog.component';
 import {DetailsDialogComponent} from '@app/notes/components/details-dialog/details-dialog.component';
+import {Observable, of} from 'rxjs';
 
 @Injectable()
 export class NoteEffects {

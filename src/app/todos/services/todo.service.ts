@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators/tap';
-import { catchError } from 'rxjs/operators/catchError';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
+import {catchError, map, tap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 
 @Injectable()
 export class TodoService {

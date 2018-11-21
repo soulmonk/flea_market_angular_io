@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
-import { tap } from 'rxjs/operators/tap';
 
 import { Action, LocalStorageService } from '@app/core';
 
 import { TODOS_KEY, TODOS_PERSIST } from '../reducers/todo.reducer';
 import { AddTodo, AddTodoFail, AddTodoSuccess, LoadFail, LoadSuccess, TodoActionTypes } from '@app/todos/actions/todo';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import {catchError, map, mergeMap, switchMap, tap} from 'rxjs/operators';
 import { TodoService } from '@app/todos/services/todo.service';
 import { ITodo } from '@app/todos/models/todo';
-import { of } from 'rxjs/observable/of';
+import {Observable, of} from 'rxjs';
 
 @Injectable()
 export class TodoEffects {

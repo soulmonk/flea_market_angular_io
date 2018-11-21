@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs/Subject';
-import { takeUntil } from 'rxjs/operators/takeUntil';
 
 import * as todoActions from '../actions/todo';
 
@@ -15,6 +13,8 @@ import {
   TodoFilter
 } from '../reducers/todo.reducer';
 import { ITodo, Todo } from 'app/todos/models/todo';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'ndfsm-todos',
