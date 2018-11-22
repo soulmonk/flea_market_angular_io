@@ -7,6 +7,14 @@
          [routerLink]="[item.link]" routerLinkActive="active">
         {{item.label}}
       </a>
+      <mat-divider></mat-divider>
+
+      <h3 matSubheader>Development</h3>
+      <a mat-list-item *ngFor="let item of navigationDev" (click)="sidenav.close()"
+        [routerLink]="[item.link]" routerLinkActive="active">
+        {{item.label}}
+      </a>
+      
     </mat-nav-list>
   </mat-sidenav>
 
@@ -22,10 +30,6 @@
 
       <span class="hidden-sm-down">
         <button mat-button class="nav-button" *ngFor="let item of navigation"
-                [routerLink]="[item.link]" routerLinkActive="active">
-          {{item.label}}
-        </button>
-        <button mat-button class="nav-button" *ngFor="let item of navigationDev"
                 [routerLink]="[item.link]" routerLinkActive="active">
           {{item.label}}
         </button>
