@@ -12,7 +12,7 @@
     "build": "ng build",
     "build:split": "rm -rf dist/templates && mkdir dist/templates && mv dist/assets/index.html dist/templates",
     "copy-to-server": "rm -rf ../ndfsm_server/dist/* && cp -r ./dist/* ../ndfsm_server/dist",
-    "build:prod": "ng build --target production --build-optimizer --vendor-chunk",
+    "build:prod": "ng build --prod --build-optimizer --vendor-chunk",
     "pack": "npm run build && npm run build:split",
     "pack:prod": "npm run build:prod && npm run build:split",
     "update": "npm i && npm run pack:prod && npm run copy-to-server",
