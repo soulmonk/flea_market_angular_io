@@ -6,7 +6,7 @@
   <div class="row">
       <mat-form-field class="col-md-6">
         <mat-select placeholder="Select theme" name="theme"
-                    [ngModel]="theme" (change)="onThemeSelect($event)">
+                    [ngModel]="theme" (selectionChange)="onThemeSelect($event)">
           <mat-option *ngFor="let t of themes" [value]="t.value">
             {{t.label}}
           </mat-option>
