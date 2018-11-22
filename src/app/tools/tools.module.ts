@@ -5,6 +5,7 @@ import { RandomStringComponent } from './random-string/random-string.component';
 import { ToolsComponent } from './tools/tools.component';
 import { SharedModule } from '@app/shared';
 import { SpellingComponent } from './spelling/spelling.component';
+import {LinksComponent} from '@app/tools/links/links.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,11 @@ import { SpellingComponent } from './spelling/spelling.component';
 
     RouterModule.forChild(toolsRoutes)
   ],
-  declarations: [RandomStringComponent, ToolsComponent, SpellingComponent]
+  declarations: [
+    RandomStringComponent,
+    ToolsComponent,
+    SpellingComponent,
+    LinksComponent
+  ]
 })
 export class ToolsModule { }
