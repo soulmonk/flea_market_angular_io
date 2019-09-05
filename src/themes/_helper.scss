@@ -1,0 +1,11 @@
+@mixin setComponent($placeholder) {
+  // Do stuff
+  %#{$placeholder} {
+    @content;
+  }
+}
+
+@mixin getComponent($placeholder) {
+  // Do stuff
+  @extend %#{$placeholder};
+}
