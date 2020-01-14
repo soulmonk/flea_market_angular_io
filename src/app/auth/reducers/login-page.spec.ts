@@ -52,7 +52,7 @@ describe('LoginPageReducer', () => {
       const createAction = new LoginFailure(error);
 
       const expectedResult = {
-        error: error,
+        '{error}': error,
         pending: false,
       };
 

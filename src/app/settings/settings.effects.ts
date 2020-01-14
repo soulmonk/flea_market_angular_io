@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 
 import { LocalStorageService, Action } from '@app/core';
 
@@ -16,7 +16,8 @@ export class SettingsEffects {
 
   @Effect({ dispatch: false })
   persistThemeSettings(): Observable<Action> {
-    return this.actions$.ofType(SETTINGS_CHANGE_THEME).pipe(
+    return this.actions$.pipe(
+      ofType(SETTINGS_CHANGE_THEME),
       tap(action =>
         this.localStorageService.setItem(SETTINGS_KEY, {
           theme: action.payload

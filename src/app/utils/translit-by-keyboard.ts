@@ -13,7 +13,7 @@ export function autoKeyboardLang(str) {
 
   for (let i = 0; i < r.length; i++) {
     const reg = new RegExp(r[i], 'mig');
-    str = str.replace(reg, function(a) {
+    str = str.replace(reg, (a) => {
       return a === a.toLowerCase() ? s[i] : s[i].toUpperCase();
     });
   }

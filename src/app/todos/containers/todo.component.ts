@@ -12,7 +12,7 @@ import {
   selectorTodos,
   TodoFilter
 } from '../reducers/todo.reducer';
-import { ITodo, Todo } from 'app/todos/models/todo';
+import { ITodo, Todo } from '@app/todos/models/todo';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 

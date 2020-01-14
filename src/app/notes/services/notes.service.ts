@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError, tap, map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {catchError, map, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 
 @Injectable()
@@ -11,42 +11,38 @@ export class NotesService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get(this.baseUrl)
-    .pipe(
+    return this.http.get(this.baseUrl).pipe(
       tap(notes => this.log(`fetched notes`)),
       map((notes: any) => notes.data),
-      catchError(this.handleError('getNotes', []))
+      catchError(this.handleError('getNotes', [])),
     );
   }
 
   save(note) {
     if (note.id) {
-      return this.update(note)
+      return this.update(note);
     }
-    return this.create(note)
+    return this.create(note);
   }
 
   create(note) {
-    return this.http.post(this.baseUrl, note)
-    .pipe(
+    return this.http.post(this.baseUrl, note).pipe(
       tap(notes => this.log(`created note`)),
       map((res: any) => res.data),
-      catchError(this.handleError('create', []))
+      catchError(this.handleError('create', [])),
     );
   }
-
 
   update(note) {
     const id = note.id;
     note = Object.assign({}, note, {id: undefined});
-    return this.http.put(this.baseUrl + '/' + id, note)
-    .pipe(
+    return this.http.put(this.baseUrl + '/' + id, note).pipe(
       map((res: any) => res.data),
-      catchError(this.handleError('update', []))
+      catchError(this.handleError('update', [])),
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

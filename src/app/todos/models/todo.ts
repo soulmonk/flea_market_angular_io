@@ -5,6 +5,8 @@ export interface ITodo {
 }
 
 export class Todo implements ITodo {
+  // TODO update response from server
+  // tslint:disable-next-line:variable-name
   _id;
   public done = false;
 

@@ -52,4 +52,4 @@ export type TodoActions =
   | AddTodo
   | Load
   | LoadSuccess
-  | LoadFail
+  | LoadFail;

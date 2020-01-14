@@ -10,12 +10,7 @@
     "serve:hmr:prod": "ng serve --proxy-config proxy.conf.json --hmr -e=hmr",
     "serve:hmr": "ng serve --proxy-config proxy-local.conf.json --hmr -e=hmr",
     "build": "ng build",
-    "build:split": "rm -rf dist/templates && mkdir dist/templates && mv dist/assets/index.html dist/templates",
-    "copy-to-server": "rm -rf ../ndfsm_server/dist/* && cp -r ./dist/* ../ndfsm_server/dist",
     "build:prod": "ng build --prod --build-optimizer --vendor-chunk",
-    "pack": "npm run build && npm run build:split",
-    "pack:prod": "npm run build:prod && npm run build:split",
-    "update": "npm i && npm run pack:prod && npm run copy-to-server",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -48,7 +43,6 @@
     "hammerjs": "^2.0.8",
     "jasmine": "^3.5.0",
     "jquery": "^3.4.1",
-    "node-sass": "^4.13.0",
     "popper.js": "^1.16.0",
     "rxjs": "^6.5.4",
     "socket.io-client": "^2.3.0",
@@ -76,7 +70,7 @@
     "protractor": "^5.4.2",
     "ts-node": "~8.6.2",
     "tslint": "~5.20.1",
-    "typescript": "^3.7.4"
+    "typescript": ">=3.4 <3.6"
   },
   "pre-commit": [
     "lint"

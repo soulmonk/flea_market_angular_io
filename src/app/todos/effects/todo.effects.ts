@@ -41,7 +41,8 @@ export class TodoEffects {
 
   @Effect({dispatch: false})
   persistTodos(): Observable<Action> {
-    return this.actions$.ofType(TODOS_PERSIST).pipe(
+    return this.actions$.pipe(
+      ofType(TODOS_PERSIST),
       tap(action =>
         this.localStorageService.setItem(TODOS_KEY, action.payload)
       )

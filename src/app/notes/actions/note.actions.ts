@@ -121,4 +121,4 @@ export type NoteActions =
   | RemoveFail
   | OpenEditDialog
   | DismissEditDialog
-  | DetailsDialog
+  | DetailsDialog;
