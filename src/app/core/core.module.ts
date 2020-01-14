@@ -22,7 +22,7 @@ export function getInitialState() {
 
     // ngrx
     StoreModule.forRoot(
-      {initialState: getInitialState}
+      {initialState: getInitialState}, { runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true }}
     ),
   ],
   declarations: [NotFoundPageComponent],

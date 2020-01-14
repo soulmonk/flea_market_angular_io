@@ -1,4 +1,4 @@
-export function funyCatch() {
+export function funnyCatch() {
   try {
 
   } catch (err) {
