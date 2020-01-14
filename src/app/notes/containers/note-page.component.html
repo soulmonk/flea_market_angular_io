@@ -6,13 +6,13 @@
 
   <div class="row">
     <div class="col-md-12 col-sm-12">
-      <button mat-raised-button color="primary" (click)="create()">Create</button>
+      <button mat-raised-button color="primary" *ngIf="loggedIn$ | async" (click)="create()">Create</button>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12 col-sm-12 notes-list">
-      <ndfsm-note-list [notes]="notes$ | async"></ndfsm-note-list>
+      <ndfsm-note-list [notes]="notes$ | async" [canEdit]="loggedIn$ | async"></ndfsm-note-list>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { User, Authenticate } from '../models/user';
+import {User, Authenticate, UserAuthResponse} from '../models/user';
 
 export enum AuthActionTypes {
   Login = '[Auth] Login',
@@ -7,6 +7,9 @@ export enum AuthActionTypes {
   LoginSuccess = '[Auth] Login Success',
   LoginFailure = '[Auth] Login Failure',
   LoginRedirect = '[Auth] Login Redirect',
+  LoginGetStatus = '[Auth] Login Get Status',
+  LoginGetStatusSuccess = '[Auth] Login Get Status Success',
+  LoginGetStatusFailure = '[Auth] Login Get Status Failure',
 }
 
 export class Login implements Action {
@@ -18,12 +21,26 @@ export class Login implements Action {
 export class LoginSuccess implements Action {
   readonly type = AuthActionTypes.LoginSuccess;
 
-  constructor(public payload: { user: User }) {}
+  constructor(public payload: UserAuthResponse ) {}
 }
 
 export class LoginFailure implements Action {
   readonly type = AuthActionTypes.LoginFailure;
 
+  constructor(public payload: any) {}
+}
+
+export class LoginGetStatus implements Action {
+  readonly type = AuthActionTypes.LoginGetStatus;
+}
+
+export class LoginGetStatusSuccess implements Action {
+  readonly type = AuthActionTypes.LoginGetStatusSuccess;
+  constructor(public payload: User) {}
+}
+
+export class LoginGetStatusFailure implements Action {
+  readonly type = AuthActionTypes.LoginGetStatusFailure;
   constructor(public payload: any) {}
 }
 
@@ -40,4 +57,7 @@ export type AuthActions =
   | LoginSuccess
   | LoginFailure
   | LoginRedirect
-  | Logout;
+  | Logout
+  | LoginGetStatus
+  | LoginGetStatusSuccess
+  | LoginGetStatusFailure;

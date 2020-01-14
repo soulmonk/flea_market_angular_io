@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LocalStorageService } from './local-storage/local-storage.service';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { HttpClientModule } from '@angular/common/http';
 import { NotFoundPageComponent } from './containers/not-found-page';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@app/shared';
@@ -17,7 +16,6 @@ export function getInitialState() {
     // angular
     CommonModule,
     RouterModule,
-    HttpClientModule,
     SharedModule,
 
     // ngrx

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {DebugService} from './debug.service';
-import { environment } from '@env/environment';
+import { environment } from '@env';
 
 @Component({
   selector: 'ndfsm-debug',

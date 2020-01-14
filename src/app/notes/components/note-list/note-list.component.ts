@@ -2,7 +2,9 @@ import {Component, Input} from '@angular/core';
 import {INote} from '@app/notes/models/note';
 import {trackByFn} from '@app/utils';
 import * as noteActions from '@app/notes/actions/note.actions';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
+import * as fromAuth from '@app/auth/reducers';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'ndfsm-note-list',
@@ -13,6 +15,8 @@ export class NoteListComponent {
   trackByFn = trackByFn;
 
   @Input() notes: INote[];
+
+  @Input() canEdit = false;
 
   constructor(public store: Store<any>) {}
 

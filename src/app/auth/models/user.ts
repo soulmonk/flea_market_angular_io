@@ -4,5 +4,11 @@ export interface Authenticate {
 }
 
 export interface User {
-  name: string;
+  id: string;
+  username: string;
+}
+
+export interface UserAuthResponse {
+  user: User;
+  token: string;
 }

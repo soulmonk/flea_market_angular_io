@@ -8,7 +8,7 @@
     <pre>{{note.keywords}}</pre>
   </mat-card-content>
   <mat-card-actions align="start">
-    <button  mat-raised-button color="primary" (click)="edit(note)">Edit</button>
+    <button  mat-raised-button color="primary" *ngIf="canEdit" (click)="edit(note)">Edit</button>
     <button  mat-raised-button color="primary" (click)="details(note)">Details</button>
   </mat-card-actions>
 </mat-card>

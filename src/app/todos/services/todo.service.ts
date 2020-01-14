@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
+import {environment} from '@env';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TodoService {
 
-  private baseUrl = 'api/todo';
+  private baseUrl = environment.apiServer + 'api/todo';
 
   constructor(private httpClient: HttpClient) { }
 

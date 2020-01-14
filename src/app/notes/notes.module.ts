@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {EditDialogComponent} from './components/edit-dialog/edit-dialog.component';
 import {NotesService} from './services/notes.service';
-import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from '@app/shared';
 import {RouterModule} from '@angular/router';
 import {notesRoutes} from '@app/notes/notes.routes';
@@ -16,7 +15,6 @@ import { DetailsDialogComponent } from './components/details-dialog/details-dial
 @NgModule({
   imports: [
     SharedModule,
-    HttpClientModule,
     RouterModule.forChild(notesRoutes),
 
     StoreModule.forFeature('notes', reducers),

@@ -36,17 +36,19 @@
       </span>
 
       <button mat-button class="sign-in-button"
-              *ngIf="!loggedIn$"
+              *ngIf="(loggedIn$ | async) === false"
               [routerLink]="['login']">
         Sign in
       </button>
 
-      <button *ngIf="loggedIn$"
+      <button *ngIf="loggedIn$ | async"
               mat-icon-button
               [matMenuTriggerFor]="toolbarUserMenu">
         <mat-icon>person</mat-icon>
       </button>
+
       <mat-menu #toolbarUserMenu="matMenu">
+        <span mat-menu-item>Hello {{(userName$ | async)?.username}}</span>
         <button mat-menu-item (click)="onLogoutClick()">
           <mat-icon>power_settings_new</mat-icon>
           <span>Logout</span>

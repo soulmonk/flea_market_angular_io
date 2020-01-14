@@ -21,6 +21,7 @@ export function reducer(state = initialState, action: AuthActions): State {
       };
     }
 
+    case AuthActionTypes.LoginGetStatusFailure:
     case AuthActionTypes.Logout: {
       return initialState;
     }

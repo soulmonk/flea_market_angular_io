@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="offset-md-2 col-md-8 entry">
+  <div class="entry"></div>
+  <div class="row" *ngIf="loggedIn$ | async">
+    <div class="offset-md-2 col-md-8">
       <div class="row">
         <mat-form-field class="col-md-10">
           <input matInput placeholder="I am going to do..."

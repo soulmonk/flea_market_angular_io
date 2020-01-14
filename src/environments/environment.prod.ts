@@ -6,6 +6,7 @@ export const environment = {
   envName: 'PROD',
   hmr: false,
   production: true,
+  apiServer: 'http://localhost:3000/',
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],

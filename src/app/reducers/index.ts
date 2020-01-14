@@ -5,7 +5,7 @@ import {
   ActionReducer,
   MetaReducer,
 } from '@ngrx/store';
-import { environment } from '@env/environment';
+import { environment } from '@env';
 import { RouterStateUrl } from '../shared/utils';
 import * as fromRouter from '@ngrx/router-store';
 

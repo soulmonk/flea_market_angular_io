@@ -2,13 +2,15 @@ import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivationEnd, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { environment as env } from '@env/environment';
+import { environment as env } from '@env';
 import { selectorSettings } from '@app/settings';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import * as fromAuth from '@app/auth/reducers';
 import * as Auth from '@app/auth/actions/auth';
 import {Observable, Subject} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
+import {User} from '@app/auth/models/user';
+import {LoginGetStatus} from '@app/auth/actions/auth';
 
 @Component({
   selector: 'ndfsm-root',
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     {link: 'settings', label: 'Settings'}
   ];
   loggedIn$: Observable<boolean>;
+  userName$: Observable<User>;
 
   private unsubscribe$: Subject<void> = new Subject<void>();
 
@@ -40,7 +43,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private store: Store<any>,
     private router: Router,
     private titleService: Title) {
+
+    this.store.dispatch(new LoginGetStatus());
+
     this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
+    this.userName$ = this.store.pipe(select(fromAuth.getUser));
   }
 
   ngOnInit() {
