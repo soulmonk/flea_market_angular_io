@@ -14,7 +14,7 @@ import {
 } from '@app/notes/actions/note.actions';
 import {catchError, map, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {INote} from '@app/notes/models/note';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {EditDialogComponent} from '@app/notes/components/edit-dialog/edit-dialog.component';
 import {DetailsDialogComponent} from '@app/notes/components/details-dialog/details-dialog.component';
 import {Observable, of} from 'rxjs';

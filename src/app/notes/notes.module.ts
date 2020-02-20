@@ -26,7 +26,6 @@ import { DetailsDialogComponent } from './components/details-dialog/details-dial
     NoteListComponent,
     DetailsDialogComponent,
   ],
-  entryComponents: [EditDialogComponent, DetailsDialogComponent],
   providers: [NotesService],
 })
 export class NotesModule {

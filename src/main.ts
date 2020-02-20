@@ -1,9 +1,9 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {enableProdMode} from '@angular/core';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-import { AppModule } from '@app/app.module';
-import { environment } from '@env';
-import { hmrBootstrap } from './hmr';
+import {AppModule} from '@app/app.module';
+import {environment} from '@env';
+import {hmrBootstrap} from './hmr';
 
 if (environment.production) {
   enableProdMode();
@@ -20,5 +20,5 @@ if (environment.hmr) {
     console.log('Are you using the --hmr flag for ng serve?');
   }
 } else {
-  bootstrap();
+  bootstrap().catch(err => console.error(err));
 }

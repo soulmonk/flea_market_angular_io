@@ -13,14 +13,12 @@ import {SettingsModule} from '@app/settings';
 import {AuthModule} from '@app/auth/auth.module';
 import {metaReducers, reducers} from '@app/reducers';
 import {StoreModule} from '@ngrx/store';
-import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {RouterStateSerializer, StoreRouterConnectingModule, DefaultRouterStateSerializer} from '@ngrx/router-store';
 import {environment} from '@env';
 import {EffectsModule} from '@ngrx/effects';
 import {CustomRouterStateSerializer} from '@app/shared/utils';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {TokenInterceptor} from '@app/auth/services/token.interceptor';
-import {ErrorInterceptor} from '@app/auth/services/error.interceptor';
 
 @NgModule({
   imports: [
@@ -30,10 +28,10 @@ import {ErrorInterceptor} from '@app/auth/services/error.interceptor';
     RouterModule.forRoot(appRoutes),
     StoreModule.forRoot(reducers, {metaReducers, runtimeChecks: {strictStateImmutability: true, strictActionImmutability: true}}),
 
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({ serializer: DefaultRouterStateSerializer }),
 
     EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    // !environment.production ? StoreDevtoolsModule.instrument() : {},
 
     // core & shared
     CoreModule,
@@ -45,7 +43,7 @@ import {ErrorInterceptor} from '@app/auth/services/error.interceptor';
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   providers: [
     {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
