@@ -1,11 +1,16 @@
 import { Action } from '@app/core';
 
-export const initialState = {
+export interface State {
+  theme: string
+}
+
+export const initialState: State = {
   theme: 'DEFAULT-THEME'
 };
 
 export const SETTINGS_KEY = 'SETTINGS';
 export const SETTINGS_CHANGE_THEME = 'SETTINGS_CHANGE_THEME';
+export const SETTINGS_LOAD_THEME = 'SETTINGS_LOAD_THEME';
 
 export const actionChangeTheme = (theme: string) => ({
   type: SETTINGS_CHANGE_THEME,

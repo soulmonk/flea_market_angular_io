@@ -34,11 +34,11 @@ import {ServiceWorkerModule} from '@angular/service-worker';
     // !environment.production ? StoreDevtoolsModule.instrument() : {},
 
     // core & shared
-    CoreModule,
+    CoreModule.forRoot(),
     SharedModule,
     AuthModule.forRoot(),
 
-    SettingsModule,
+    SettingsModule.forRoot(),
 
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 const APP_PREFIX = 'NDFSM-';
 
-@Injectable()
+@Injectable({ providedIn: 'root'})
 export class LocalStorageService {
 
   static loadInitialState() {
