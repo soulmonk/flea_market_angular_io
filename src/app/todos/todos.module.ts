@@ -8,6 +8,8 @@ import { todosReducer } from './reducers/todo.reducer';
 import { TodoEffects } from './effects/todo.effects';
 import { TodosComponent } from './containers/todo.component';
 import { TodoService } from '@app/todos/services/todo.service';
+import { StoreRouterConnectingModule } from '@ngrx/router-store'
+import { routerStateConfig } from '@app/app.module'
 
 @NgModule({
   imports: [
@@ -15,8 +17,7 @@ import { TodoService } from '@app/todos/services/todo.service';
     RouterModule.forChild(todosRoutes),
 
     StoreModule.forFeature('todos', todosReducer),
-
-    EffectsModule.forFeature([TodoEffects])
+    EffectsModule.forFeature([TodoEffects]),
   ],
   declarations: [TodosComponent],
   providers: [TodoService]

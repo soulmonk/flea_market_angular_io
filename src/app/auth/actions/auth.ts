@@ -46,6 +46,7 @@ export class LoginGetStatusFailure implements Action {
 
 export class LoginRedirect implements Action {
   readonly type = AuthActionTypes.LoginRedirect;
+  constructor(public payload: any) {}
 }
 
 export class Logout implements Action {

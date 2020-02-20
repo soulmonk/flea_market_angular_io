@@ -45,7 +45,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.LoginGetStatus),
     exhaustMap(() =>
       this.authService.me().pipe(
-        map((response) => new LoginSuccess(response)),
+        map((response) => new LoginGetStatusSuccess(response)),
         catchError(error => of(new LoginGetStatusFailure(error))),
       ),
     ),

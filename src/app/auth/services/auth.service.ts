@@ -24,9 +24,9 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  me(): Observable<UserAuthResponse> {
+  me(): Observable<User> {
     return this.httpClient.get(this.baseUrl + '/validate', {}).pipe(
-      tap(next => this.log(`me...`)),
+      tap(next => this.log(`me...`,)),
       map((res: any) => res.data),
     );
   }

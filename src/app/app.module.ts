@@ -1,24 +1,36 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
+import { AppComponent } from './app.component'
+import { HttpClientModule } from '@angular/common/http'
+import { RouterModule } from '@angular/router'
 
-import {appRoutes} from './app.routes';
-import {SharedModule} from '@app/shared';
-import {CoreModule} from '@app/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SettingsModule} from '@app/settings';
-import {AuthModule} from '@app/auth/auth.module';
-import {metaReducers, reducers} from '@app/reducers';
-import {StoreModule} from '@ngrx/store';
-import {RouterStateSerializer, StoreRouterConnectingModule, DefaultRouterStateSerializer} from '@ngrx/router-store';
-import {environment} from '@env';
-import {EffectsModule} from '@ngrx/effects';
-import {CustomRouterStateSerializer} from '@app/shared/utils';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {ServiceWorkerModule} from '@angular/service-worker';
+import { appRoutes } from './app.routes'
+import { SharedModule } from '@app/shared'
+import { CoreModule } from '@app/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { SettingsModule } from '@app/settings'
+import { AuthModule } from '@app/auth/auth.module'
+import { metaReducers, reducers } from '@app/reducers'
+import { StoreModule } from '@ngrx/store'
+import {
+  DefaultRouterStateSerializer,
+  NavigationActionTiming,
+  RouterStateSerializer,
+  StoreRouterConfig,
+  StoreRouterConnectingModule,
+} from '@ngrx/router-store'
+import { environment } from '@env'
+import { EffectsModule } from '@ngrx/effects'
+import { CustomRouterStateSerializer } from '@app/shared/utils'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { ServiceWorkerModule } from '@angular/service-worker'
+
+export const routerStateConfig: StoreRouterConfig = {
+  stateKey: 'router', // state-slice name for routing state
+  serializer: DefaultRouterStateSerializer,
+  navigationActionTiming: NavigationActionTiming.PostActivation
+};
 
 @NgModule({
   imports: [
@@ -28,10 +40,14 @@ import {ServiceWorkerModule} from '@angular/service-worker';
     RouterModule.forRoot(appRoutes),
     StoreModule.forRoot(reducers, {metaReducers, runtimeChecks: {strictStateImmutability: true, strictActionImmutability: true}}),
 
-    StoreRouterConnectingModule.forRoot({ serializer: DefaultRouterStateSerializer }),
+    StoreRouterConnectingModule.forRoot(routerStateConfig),
 
     EffectsModule.forRoot([]),
     // !environment.production ? StoreDevtoolsModule.instrument() : {},
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
 
     // core & shared
     CoreModule.forRoot(),

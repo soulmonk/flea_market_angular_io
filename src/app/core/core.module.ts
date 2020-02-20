@@ -7,14 +7,12 @@ import {
 import { CommonModule } from '@angular/common'
 import { LocalStorageService } from './local-storage/local-storage.service'
 import { NotFoundPageComponent } from './containers/not-found-page'
-import { RouterModule } from '@angular/router'
 import { SharedModule } from '@app/shared'
 
 @NgModule({
   imports: [
     // angular
     CommonModule,
-    RouterModule,
     SharedModule,
   ],
   declarations: [NotFoundPageComponent],
