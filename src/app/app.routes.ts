@@ -8,6 +8,7 @@ export const appRoutes: Routes = [
   {path: 'todos', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule)},
   {path: 'games', loadChildren: () => import('./games/games.module').then(m => m.GamesModule)},
   {path: 'scripts', loadChildren: () => import('./scripts/scripts.module').then(m => m.ScriptsModule)},
+  {path: 'finance', loadChildren: () => import('./finance-stats/finance-stats.module').then(m => m.FinanceStatsModule)},
   {
     path: 'settings',
     component: SettingsComponent,
