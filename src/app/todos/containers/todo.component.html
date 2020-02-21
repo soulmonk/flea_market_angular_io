@@ -27,15 +27,15 @@
           <mat-icon>filter_list</mat-icon>
         </button>
         <mat-menu class="todos-filter-menu" #todosFilter="matMenu" xPosition="before">
-          <button mat-menu-item (click)="onFilterTodos('ALL')" [ngClass]="{ active: todos.filter === 'ALL' }">
+          <button mat-menu-item (click)="onFilterTodos('ALL')">
             <mat-icon>assignment</mat-icon>
             <span>All</span>
           </button>
-          <button mat-menu-item (click)="onFilterTodos('DONE')" [ngClass]="{ active: todos.filter === 'DONE' }">
+          <button mat-menu-item (click)="onFilterTodos('DONE')">
             <mat-icon>done</mat-icon>
             <span>Done</span>
           </button>
-          <button mat-menu-item (click)="onFilterTodos('ACTIVE')" [ngClass]="{ active: todos.filter === 'ACTIVE' }">
+          <button mat-menu-item (click)="onFilterTodos('ACTIVE')">
             <mat-icon>check_box_outline_blank</mat-icon>
             <span>Active</span>
           </button>

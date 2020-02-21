@@ -90,6 +90,9 @@ export class TodosComponent implements OnInit, OnDestroy {
   }
 
   onFilterTodos (filter: TodoFilter) {
+    if (filter === this.todos.filter) {
+      return;
+    }
     this.store.dispatch(new Filter(filter))
   }
 }
