@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common'
 import { LocalStorageService } from './local-storage/local-storage.service'
 import { NotFoundPageComponent } from './containers/not-found-page'
 import { SharedModule } from '@app/shared'
+import { LoggerService } from '@app/core/logger.service'
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ export class CoreModule {
   static forRoot (): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
-      providers: [LocalStorageService],
+      providers: [LocalStorageService, LoggerService],
     }
   }
 }

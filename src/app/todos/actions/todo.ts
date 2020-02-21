@@ -1,32 +1,76 @@
 import { Action } from '@ngrx/store';
-import { ITodo } from '../models/todo';
+import { ITodo, IUpdateTodo } from '../models/todo'
 
 export enum TodoActionTypes {
-  AddTodo = '[TODO] Add',
-  AddTodoSuccess = '[TODO] Add Sucess',
-  AddTodoFail = '[TODO] Add Fail',
+  Add = '[TODO] Add',
+  AddSuccess = '[TODO] Add Success',
+  AddFail = '[TODO] Add Fail',
+  Update = '[TODO] Update',
+  UpdateSuccess = '[TODO] Update Success',
+  UpdateFail = '[TODO] Update Fail',
+  Remove = '[TODO] Remove',
+  RemoveSuccess = '[TODO] Remove Success',
+  RemoveFail = '[TODO] Remove Fail',
   Load = '[TODO] Load',
   LoadSuccess = '[TODO] Load Success',
   LoadFail = '[TODO] Load Fail',
+
+  Filter = '[TODO] Filter',
 }
 
-export class AddTodo implements Action {
-  readonly type = TodoActionTypes.AddTodo;
+export type TodoFilter = 'ALL' | 'DONE' | 'ACTIVE';
+
+export class Add implements Action {
+  readonly type = TodoActionTypes.Add;
 
   constructor(public payload: ITodo) {}
 }
 
-
-export class AddTodoSuccess implements Action {
-  readonly type = TodoActionTypes.AddTodoSuccess;
+export class AddSuccess implements Action {
+  readonly type = TodoActionTypes.AddSuccess;
 
   constructor(public payload: ITodo) {}
 }
 
-export class AddTodoFail implements Action {
-  readonly type = TodoActionTypes.AddTodoFail;
+export class AddFail implements Action {
+  readonly type = TodoActionTypes.AddFail;
+
+  constructor(public payload: any) {}
+}
+
+export class Update implements Action {
+  readonly type = TodoActionTypes.Update;
+
+  constructor(public payload: IUpdateTodo) {}
+}
+
+export class UpdateSuccess implements Action {
+  readonly type = TodoActionTypes.UpdateSuccess;
 
   constructor(public payload: ITodo) {}
+}
+
+export class UpdateFail implements Action {
+  readonly type = TodoActionTypes.UpdateFail;
+
+  constructor(public payload: any) {}
+}
+
+export class Remove implements Action {
+  readonly type = TodoActionTypes.Remove;
+
+  constructor(public id: string) {}
+}
+
+export class RemoveSuccess implements Action {
+  readonly type = TodoActionTypes.RemoveSuccess;
+  constructor(public id: string) {}
+}
+
+export class RemoveFail implements Action {
+  readonly type = TodoActionTypes.RemoveFail;
+
+  constructor(public payload: any) {}
 }
 
 /**
@@ -48,8 +92,23 @@ export class LoadFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class Filter implements Action {
+  readonly type = TodoActionTypes.Filter
+
+  constructor (public filter: TodoFilter) {}
+}
+
 export type TodoActions =
-  | AddTodo
+  | Add
+  | AddSuccess
+  | AddFail
+  | Remove
+  | RemoveSuccess
+  | RemoveFail
+  | Update
+  | UpdateSuccess
+  | UpdateFail
   | Load
   | LoadSuccess
-  | LoadFail;
+  | LoadFail
+  | Filter;

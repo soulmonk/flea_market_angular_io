@@ -1,3 +1,4 @@
 {
-  "appName": "NDFSM app"
+  "appName": "NDFSM app",
+  "log": true
 }

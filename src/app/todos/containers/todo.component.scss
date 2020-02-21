@@ -23,14 +23,21 @@
 .todo {
   display: flex;
   margin-bottom: 10px;
+  flex-flow: row;
+  justify-content: space-between;
+
+  & > * {
+    align-self: center;
+  }
 
   .todo-done {
-    margin: 0 20px 0 0;
+    margin-right: 10px;
   }
 
   .todo-label {
     position: relative;
     top: 2px;
     cursor: pointer;
+    flex: 1
   }
 }

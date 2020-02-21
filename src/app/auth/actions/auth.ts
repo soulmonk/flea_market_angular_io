@@ -36,7 +36,7 @@ export class LoginGetStatus implements Action {
 
 export class LoginGetStatusSuccess implements Action {
   readonly type = AuthActionTypes.LoginGetStatusSuccess;
-  constructor(public payload: User) {}
+  constructor(public payload: UserAuthResponse) {}
 }
 
 export class LoginGetStatusFailure implements Action {

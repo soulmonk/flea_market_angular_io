@@ -42,16 +42,18 @@
         </mat-menu>
         <mat-chip-list class="todos-filter-info">
           <mat-chip>
-            Displaying {{todos.filter !== 'ALL' ? filteredTodos.length : ''}}
-            {{todos.filter.toLowerCase()}}
-            {{todos.filter === 'ALL' ? filteredTodos.length : ''}}
-            todo{{filteredTodos.length > 1 ? 's' : ''}}
+            Displaying {{todos.filter.toLowerCase()}}
+            ({{items.length}})
+            todo{{items.length > 1 ? 's' : ''}}
           </mat-chip>
         </mat-chip-list>
       </h2>
-      <mat-card *ngFor="let todo of filteredTodos" class="todo">
+      <mat-card *ngFor="let todo of items" class="todo">
         <mat-checkbox class="todo-done" [checked]="todo.done" (change)="onToggleTodo(todo)"></mat-checkbox>
-        <span class="todo-label" (click)="onToggleTodo(todo)">{{todo.name}}</span>
+        <span class="todo-label">{{todo.name}}</span>
+        <button mat-icon-button (click)="onRemoveTodos(todo)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-card>
       <br>
       <br>

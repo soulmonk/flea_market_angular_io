@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {environment} from '@env';
+import { LoggerService } from '@app/core/logger.service'
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class TodoService {
 
   private baseUrl = environment.apiServer + 'api/todo';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private logger: LoggerService) { }
 
   list() {
     return this.httpClient.get(this.baseUrl).pipe(
@@ -31,15 +32,22 @@ export class TodoService {
       map((res: any) => res.data),
       catchError(this.handleError('add', []))
     );
-
   }
 
   update(id, data) {
-
+    return this.httpClient.put(`${this.baseUrl}/${id}`, data).pipe(
+      tap(next => this.log(`update todo`)),
+      map((res: any) => res.data),
+      catchError(this.handleError('update', []))
+    );
   }
 
-  remove() {
-
+  remove(id) {
+    return this.httpClient.delete(`${this.baseUrl}/${id}`).pipe(
+      tap(next => this.log(`remove todo`)),
+      map((res: any) => res.data),
+      catchError(this.handleError('remove', []))
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -56,7 +64,7 @@ export class TodoService {
     };
   }
 
-  private log(message: string) {
-    console.log('todos.service.ts::log >>>', message);
+  private log(...args) {
+    this.logger.log('[TODO-SERVICE]', ...args)
   }
 }
