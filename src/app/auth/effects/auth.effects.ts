@@ -4,7 +4,15 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {catchError, exhaustMap, map, tap} from 'rxjs/operators';
 
 import {AuthService} from '../services/auth.service';
-import {AuthActionTypes, Login, LoginFailure, LoginGetStatusFailure, LoginGetStatusSuccess, LoginSuccess} from '../actions/auth';
+import {
+  AuthActionTypes,
+  Login,
+  LoginFailure,
+  GetUserInfoFailure,
+  GetUserInfoSuccess,
+  LoginSuccess,
+  GetUserInfo,
+} from '../actions/auth'
 import {Authenticate} from '../models/user';
 import {of} from 'rxjs';
 
@@ -22,19 +30,22 @@ export class AuthEffects {
     ),
   );
 
-  @Effect({dispatch: false})
+  @Effect()
   loginSuccess$ = this.actions$.pipe(
     ofType(AuthActionTypes.LoginSuccess),
     tap((login: LoginSuccess) => {
+      // TODO REMOVE [FIND_ME]
       localStorage.setItem('token', login.payload.token);
       this.router.navigate(['/']);
     }),
+    map(() => new GetUserInfo())
   );
 
   @Effect({dispatch: false})
   loginRedirect$ = this.actions$.pipe(
     ofType(AuthActionTypes.LoginRedirect, AuthActionTypes.Logout),
     tap(authed => {
+      // TODO REMOVE [FIND_ME]
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
     }),
@@ -42,11 +53,11 @@ export class AuthEffects {
 
   @Effect()
   loginGetStatus$ = this.actions$.pipe(
-    ofType(AuthActionTypes.LoginGetStatus),
+    ofType(AuthActionTypes.GetUserInfo),
     exhaustMap(() =>
       this.authService.me().pipe(
-        map((response) => new LoginGetStatusSuccess(response)),
-        catchError(error => of(new LoginGetStatusFailure(error))),
+        map((response) => new GetUserInfoSuccess(response)),
+        catchError(error => of(new GetUserInfoFailure(error))),
       ),
     ),
   );

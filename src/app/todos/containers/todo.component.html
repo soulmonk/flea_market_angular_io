@@ -49,9 +49,9 @@
         </mat-chip-list>
       </h2>
       <mat-card *ngFor="let todo of items" class="todo">
-        <mat-checkbox class="todo-done" [checked]="todo.done" (change)="onToggleTodo(todo)"></mat-checkbox>
+        <mat-checkbox class="todo-done" [checked]="todo.done" (change)="onToggleTodo(todo)" [disabled]="(loggedIn$ | async) === false"></mat-checkbox>
         <span class="todo-label">{{todo.name}}</span>
-        <button mat-icon-button (click)="onRemoveTodos(todo)">
+        <button mat-icon-button (click)="onRemoveTodos(todo)" *ngIf="loggedIn$ | async">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card>

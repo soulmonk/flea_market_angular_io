@@ -1,4 +1,9 @@
 {
   "appName": "NDFSM app",
-  "log": true
+  "log": true,
+  "apiServers": {
+    "auth": "http://localhost:3000/auth",
+    "ndfsmFleaMarket": "http://localhost:3000/ndfsm-flea-market",
+    "financeStats": "http://localhost:3000/finance-stats"
+  }
 }

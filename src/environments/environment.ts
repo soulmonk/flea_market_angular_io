@@ -10,7 +10,6 @@ export const environment = {
   appName: 'extended',
   ...baseOptions,
   envName: 'DEV',
-  apiServer: 'http://localhost:3000/',
   hmr: false,
   production: false,
   versions: {

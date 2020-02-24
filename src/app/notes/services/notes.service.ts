@@ -9,7 +9,7 @@ import {environment} from '@env';
 })
 export class NotesService {
 
-  private baseUrl = environment.apiServer + 'api/notes';  // URL to web api
+  private baseUrl = environment.apiServers.ndfsmFleaMarket + '/api/notes';  // URL to web api
 
   constructor(private http: HttpClient) {}
 

@@ -10,7 +10,7 @@ import { LoggerService } from '@app/core/logger.service'
 })
 export class TodoService {
 
-  private baseUrl = environment.apiServer + 'api/todo';
+  private baseUrl = environment.apiServers.ndfsmFleaMarket + '/api/todo';
 
   constructor(private httpClient: HttpClient, private logger: LoggerService) { }
 
@@ -20,10 +20,6 @@ export class TodoService {
       map((res: any) => res.data),
       catchError(this.handleError('list', []))
     );
-  }
-
-  save() {
-
   }
 
   create(data) {

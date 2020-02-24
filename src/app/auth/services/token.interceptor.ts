@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
     request = request.clone({
       setHeaders: {
-        'x-access-token': token,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     });

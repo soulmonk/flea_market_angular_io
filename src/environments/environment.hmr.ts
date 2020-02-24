@@ -11,7 +11,6 @@ export const environment = {
   envName: 'DEV',
   hmr: true,
   production: false,
-  apiServer: 'http://localhost:3000/',
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],

@@ -7,7 +7,7 @@
     "ng": "ng",
     "serve:prod_proxy": "ng serve --proxy-config proxy.conf.json",
     "serve:prod": "ng serve --proxy-config proxy-local.conf.json --prod",
-    "serve": "ng serve --proxy-config proxy-local.conf.json",
+    "serve": "ng serve",
     "serve:hmr:prod": "ng serve --proxy-config proxy.conf.json --hmr -e=hmr",
     "serve:hmr": "ng serve --proxy-config proxy-local.conf.json --hmr -e=hmr",
     "build": "ng build",
