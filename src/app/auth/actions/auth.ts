@@ -3,10 +3,14 @@ import {User, Authenticate, UserTokenResponse} from '../models/user';
 
 export enum AuthActionTypes {
   Login = '[Auth] Login',
-  Logout = '[Auth] Logout',
   LoginSuccess = '[Auth] Login Success',
   LoginFailure = '[Auth] Login Failure',
+  Logout = '[Auth] Logout',
+  LogoutSuccess = '[Auth] Logout Success',
+  LogoutFailure = '[Auth] Logout Failure',
   LoginRedirect = '[Auth] Login Redirect',
+  RefreshToken = '[Auth] Refresh Token',
+  RefreshTokenFailure = '[Auth] Refresh Token Failure',
   GetUserInfo = '[Auth] Get User Info',
   GetUserInfoSuccess = '[Auth] Get User Info Success',
   GetUserInfoFailure = '[Auth] Get User Info Failure',
@@ -32,6 +36,7 @@ export class LoginFailure implements Action {
 
 export class GetUserInfo implements Action {
   readonly type = AuthActionTypes.GetUserInfo;
+  constructor (public sync: boolean = false) {}
 }
 
 export class GetUserInfoSuccess implements Action {
@@ -51,6 +56,30 @@ export class LoginRedirect implements Action {
 
 export class Logout implements Action {
   readonly type = AuthActionTypes.Logout;
+
+  constructor (public sync: boolean = false) {}
+}
+
+export class LogoutSuccess implements Action {
+  readonly type = AuthActionTypes.LogoutSuccess;
+
+  constructor (public sync: boolean = false) {}
+}
+
+export class LogoutFailure implements Action {
+  readonly type = AuthActionTypes.LogoutFailure;
+
+  constructor (public sync: boolean = false, public error: any) {}
+}
+
+export class RefreshToken implements Action {
+  readonly type = AuthActionTypes.RefreshToken;
+}
+
+export class RefreshTokenFailure implements Action {
+  readonly type = AuthActionTypes.RefreshTokenFailure;
+
+  constructor (public payload: any) {}
 }
 
 export type AuthActions =
@@ -59,6 +88,10 @@ export type AuthActions =
   | LoginFailure
   | LoginRedirect
   | Logout
+  | LogoutSuccess
+  | LogoutFailure
+  | RefreshToken
+  | RefreshTokenFailure
   | GetUserInfo
   | GetUserInfoSuccess
   | GetUserInfoFailure;

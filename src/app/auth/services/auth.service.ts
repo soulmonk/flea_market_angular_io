@@ -1,55 +1,57 @@
-import {Injectable} from '@angular/core';
-import {Authenticate, User, UserTokenResponse} from '../models/user';
-import {Observable, of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '@env';
-import {map, tap} from 'rxjs/operators';
+import { Injectable } from '@angular/core'
+import { Authenticate, User, UserTokenResponse } from '../models/user'
+import { Observable } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
+import { environment } from '@env'
+import { tap } from 'rxjs/operators'
 import { LoggerService } from '@app/core/logger.service'
 
 @Injectable()
 export class AuthService {
 
-  private baseUrl = environment.apiServers.auth;
+  private baseUrl = environment.apiServers.auth
 
-  constructor(private httpClient: HttpClient, private logger: LoggerService) {}
+  private token: string = null
 
-  login({username, password}: Authenticate): Observable<UserTokenResponse> {
-    return this.httpClient.post(this.baseUrl + '/token', {username, password}).pipe(
-      tap((next: UserTokenResponse) => this.log(`login...`))
-      /*map((res: any) => res)*/, /*
-      catchError(this.handleError('login', {success: false}))*/
-    );
+  constructor (private httpClient: HttpClient, private logger: LoggerService) {}
+
+  login ({ username, password }: Authenticate): Observable<UserTokenResponse> {
+    return this.httpClient.post(this.baseUrl + '/token',
+      { username, password },
+      { withCredentials: true }).pipe(
+      tap((next: UserTokenResponse) => this.log(`login...`)),
+    )
   }
 
-  getToken(): string {
-    return localStorage.getItem('token');
+  refreshToken () {
+    return this.httpClient.post(this.baseUrl + '/refresh-token', {},
+      { withCredentials: true }).pipe(
+      tap((next: UserTokenResponse) => this.log(`refreshToken...`))
+    )
   }
 
-  me(): Observable<User> {
+  logout () {
+    return this.httpClient.post(this.baseUrl + '/logout', {},
+      { withCredentials: true }).pipe(
+      tap(() => this.log(`logout...`))
+    )
+  }
+
+  setToken (token) {
+    this.token = token
+  }
+
+  getToken (): string {
+    return this.token
+  }
+
+  me (): Observable<User> {
     return this.httpClient.get(this.baseUrl + '/info', {}).pipe(
-      tap((next: User) => this.log(`me...`,)),
-    );
+      tap((next: User) => this.log(`me...`)),
+    )
   }
 
-  logout() {
-    return of(true);
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  private log(...args) {
-    this.logger.log('[AUTH SERVICE]', ...args);
+  private log (...args) {
+    this.logger.log('[AUTH SERVICE]', ...args)
   }
 }

@@ -9,5 +9,6 @@ export interface User {
 
 export interface UserTokenResponse {
   token: string;
+  expiresIn: number;
 }
 

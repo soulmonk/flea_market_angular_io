@@ -1,2 +1,5 @@
 - do not allow the login page if the user is authorized
 - on UpdateFail -> revert changes
+
+- redirect to the page where the login was required
+- manifest for PWA, exclude api servers

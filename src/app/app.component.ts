@@ -7,7 +7,7 @@ import { selectorSettings } from '@app/settings'
 import { OverlayContainer } from '@angular/cdk/overlay'
 import * as fromAuth from '@app/auth/reducers'
 import * as Auth from '@app/auth/actions/auth'
-import { GetUserInfo } from '@app/auth/actions/auth'
+import { RefreshToken } from '@app/auth/actions/auth'
 import { Observable, Subject } from 'rxjs'
 import { filter, map, takeUntil } from 'rxjs/operators'
 import { User } from '@app/auth/models/user'
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private titleService: Title) {
 
-    this.store.dispatch(new GetUserInfo())
+    this.store.dispatch(new RefreshToken())
 
     this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn))
     this.userName$ = this.store.pipe(select(fromAuth.getUser))
