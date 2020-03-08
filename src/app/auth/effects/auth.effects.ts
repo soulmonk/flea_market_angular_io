@@ -49,7 +49,8 @@ export class AuthEffects {
     tap((login: LoginSuccess) => {
       this.authService.setToken(login.payload.token)
       localStorage.setItem('login', Date.now().toString())
-      this.router.navigate(['/'])
+      // TODO redirect only from login page
+      // this.router.navigate(['/'])
     }),
     map(() => new GetUserInfo()),
   )

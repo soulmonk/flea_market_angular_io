@@ -47,7 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private titleService: Title) {
 
-    this.store.dispatch(new RefreshToken())
+    this.store.dispatch(new RefreshToken(true))
 
     this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn))
     this.userName$ = this.store.pipe(select(fromAuth.getUser))

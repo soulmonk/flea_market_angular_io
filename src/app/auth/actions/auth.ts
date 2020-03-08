@@ -74,6 +74,8 @@ export class LogoutFailure implements Action {
 
 export class RefreshToken implements Action {
   readonly type = AuthActionTypes.RefreshToken;
+
+  constructor (public silent: boolean = false) {}
 }
 
 export class RefreshTokenFailure implements Action {
