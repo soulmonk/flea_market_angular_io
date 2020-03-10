@@ -5,19 +5,14 @@
 <div *ngIf="!transactions || transactions.length === 0">EMPTY</div>
 
 <mat-card *ngFor="let transaction of transactions; trackBy: trackByFn">
-  <mat-card-header>
-    <mat-card-title>{{transaction.description|slice:0:20}}</mat-card-title>
-  </mat-card-header>
   <!--<img matCardImage src="Card wide image source">-->
   <mat-card-content>
+    <div>Date: {{transaction.date | date}}</div>
+    <div>Description: {{transaction.description}}</div>
     <div>Amount: {{transaction.amount}} {{transaction.currencyCode}}</div>
     <div>Category: {{transaction.type.name}}</div>
-    <div>Date: {{transaction.date | date}}</div>
     <div>Note: {{transaction.note }}</div>
     <div>Card: <span *ngIf="!transaction.card">cash</span><span *ngIf="transaction.card">{{transaction.card.name}}</span></div>
+    <div>Info: <span *ngIf="!transaction.info">none</span><span *ngIf="transaction.info">Blocked: {{transaction.info.blockedAmount}}, Fixed: {{transaction.info.fixedAmount}}</span></div>
   </mat-card-content>
-  <mat-card-actions align="start">
-    <button mat-raised-button color="primary" *ngIf="canEdit">Edit</button>
-    <button mat-raised-button color="primary">Details</button>
-  </mat-card-actions>
 </mat-card>

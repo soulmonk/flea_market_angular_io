@@ -16,6 +16,7 @@ import { TransactionTypeEffects } from './effects/transaction-type.effects'
 import { CardEffects } from './effects/card.effects'
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component'
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component'
+import { TransactionFilterComponent } from './components/transaction-filter/transaction-filter.component'
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     TransactionListComponent,
     DashboardComponent,
     EditDialogComponent,
+    TransactionFilterComponent
   ],
   imports: [
     SharedModule,
