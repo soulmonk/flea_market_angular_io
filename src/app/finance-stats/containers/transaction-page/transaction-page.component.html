@@ -1,1 +1,17 @@
-<p>hello from list component</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12"><h1>Transactions</h1></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <button mat-raised-button color="primary" *ngIf="loggedIn$ | async" (click)="create()">Create</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 notes-list">
+      <ndfsm-transaction-list [transactions]="transactions$ | async" [canEdit]="loggedIn$ | async"></ndfsm-transaction-list>
+    </div>
+  </div>
+</div>

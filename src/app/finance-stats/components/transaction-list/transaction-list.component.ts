@@ -10,7 +10,7 @@ import { trackByFn } from '@app/utils'
 export class TransactionListComponent {
   trackByFn = trackByFn
 
-  @Input() transactions: ITransaction[]
+  @Input() transactions: ITransaction[] = []
 
   @Input() canEdit = false
 

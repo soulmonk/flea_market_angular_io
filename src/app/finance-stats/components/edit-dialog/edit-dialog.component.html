@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{isNew ? 'Create' : 'Edit'}}</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div mat-dialog-content>
+    <mat-form-field class="full-width">
+      <input type="text" matInput tabindex="1" placeholder="Description" formControlName="description">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="number" matInput tabindex="1" placeholder="Amount" formControlName="amount">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="number" matInput tabindex="1" placeholder="Type" formControlName="type">
+      <span>should be select</span>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <textarea matInput tabindex="1" placeholder="Note" formControlName="note"></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width">
+      <input type="number" matInput tabindex="1" placeholder="Card" formControlName="card">
+      <span>should be select</span>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="number" matInput tabindex="1" placeholder="Date" formControlName="date">
+      <span>should be datepicker</span>
+    </mat-form-field>
+    
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button type="submit" tabindex="10">{{isNew ? 'Save' : 'Update'}}</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</form>

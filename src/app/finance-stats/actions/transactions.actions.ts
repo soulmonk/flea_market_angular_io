@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store'
-import { ITransaction } from '@app/finance-stats/models/transaction'
-import { INote } from '@app/notes/models/note'
+import { ITransaction } from '../models/transaction'
 import { Update } from '@ngrx/entity'
 
 export enum TransactionActionsType {
@@ -17,6 +16,9 @@ export enum TransactionActionsType {
   RemoveSuccess = '[FINANCE STATS - TRANSACTION] Remove Success',
   RemoveFail = '[FINANCE STATS - TRANSACTION] Remove Fail',
 
+  OpenEditDialog = '[FINANCE STATS - TRANSACTION] Open Edit Dialog',
+  DismissEditDialog = '[FINANCE STATS - TRANSACTION] Dismiss Edit Dialog',
+  DetailsDialog = '[FINANCE STATS - TRANSACTION] Details Dialog',
 }
 
 export class Load implements Action {
@@ -78,6 +80,22 @@ export class RemoveFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class OpenEditDialog implements Action {
+  readonly type = TransactionActionsType.OpenEditDialog;
+
+  constructor(public payload: ITransaction) {}
+}
+
+export class DismissEditDialog implements Action {
+  readonly type = TransactionActionsType.DismissEditDialog;
+}
+
+export class DetailsDialog implements Action {
+  readonly type = TransactionActionsType.DetailsDialog;
+
+  constructor(public payload: ITransaction) {}
+}
+
 export type TransactionActions =
   | Load
   | LoadSuccess
@@ -89,3 +107,6 @@ export type TransactionActions =
   | Remove
   | RemoveSuccess
   | RemoveFail
+  | OpenEditDialog
+  | DismissEditDialog
+  | DetailsDialog

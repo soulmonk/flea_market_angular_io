@@ -10,17 +10,20 @@
 
       <div *ngIf="loggedIn$ | async">
         <mat-divider></mat-divider> 
-        <h3 matSubheader>Development</h3>
-        <a mat-list-item *ngFor="let item of navigationDev" (click)="sidenav.close()"
-          [routerLink]="[item.link]" routerLinkActive="active">
-          {{item.label}}
-        </a>
-        <mat-divider></mat-divider> 
         <h3 matSubheader>User</h3>
-        <a mat-list-item *ngFor="let item of navigationUser" (click)="sidenav.close()"
-          [routerLink]="[item.link]" routerLinkActive="active">
+        <span *ngFor="let item of navigationUser">
+        <a mat-list-item *ngIf="item.children === undefined || item.children.length === 0" (click)="sidenav.close()"
+           [routerLink]="[item.link]" routerLinkActive="active">
           {{item.label}}
         </a>
+          <mat-nav-list *ngIf="item.children !== undefined && item.children.length > 0">
+            <h3 matSubheader>{{item.label}}</h3>
+            <a mat-list-item *ngFor="let subitem of item.children" (click)="sidenav.close()"
+               [routerLink]="[subitem.link]" routerLinkActive="active">
+              {{subitem.label}}
+            </a>
+          </mat-nav-list>
+        </span>
       </div>
       
     </mat-nav-list>

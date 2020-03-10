@@ -5,30 +5,36 @@ import { SharedModule } from '@app/shared'
 import { GraphQLModule } from './graphql.module'
 import { DashboardComponent } from './containers/dashboard/dashboard.component'
 import { TransactionService } from './services/transaction.service'
+import { TransactionTypeService } from './services/transaction-type.service'
+import { CardService } from './services/card.service'
 import { TransactionPageComponent } from './containers/transaction-page/transaction-page.component'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { reducers } from './reducers'
 import { TransactionEffects } from './effects/transaction.effects'
+import { TransactionTypeEffects } from './effects/transaction-type.effects'
+import { CardEffects } from './effects/card.effects'
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component'
-import { FinanceStatsComponent } from '@app/finance-stats/containers/finance-stats/finance-stats.component'
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component'
 
 @NgModule({
   declarations: [
     TransactionPageComponent,
     TransactionListComponent,
     DashboardComponent,
-    FinanceStatsComponent
+    EditDialogComponent,
   ],
   imports: [
     SharedModule,
     FinanceStatsRoutingModule,
     GraphQLModule,
     StoreModule.forFeature('finance-stats', reducers),
-    EffectsModule.forFeature([TransactionEffects])
+    EffectsModule.forFeature([TransactionEffects, CardEffects, TransactionTypeEffects])
   ],
   providers: [
     TransactionService,
+    TransactionTypeService,
+    CardService,
   ],
 })
 export class FinanceStatsModule {}

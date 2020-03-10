@@ -1,22 +1,24 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Action} from '@ngrx/store';
-import {NotesService} from '@app/notes/services/notes.service';
-import * as noteActions from '@app/notes/actions/note.actions';
+import {NotesService} from '../services/notes.service';
 import {
   CreateSuccess,
+  Edit,
   EditFail,
   LoadFail,
   LoadSuccess,
   NoteActionsType,
   OpenEditDialog,
   UpdateSuccess,
-} from '@app/notes/actions/note.actions';
+  DismissEditDialog,
+  DetailsDialog,
+} from '../actions/note.actions';
 import {catchError, map, mergeMap, switchMap, tap} from 'rxjs/operators';
-import {INote} from '@app/notes/models/note';
+import {INote} from '../models/note';
 import {MatDialog} from '@angular/material/dialog';
-import {EditDialogComponent} from '@app/notes/components/edit-dialog/edit-dialog.component';
-import {DetailsDialogComponent} from '@app/notes/components/details-dialog/details-dialog.component';
+import {EditDialogComponent} from '../components/edit-dialog/edit-dialog.component';
+import {DetailsDialogComponent} from '../components/details-dialog/details-dialog.component';
 import {Observable, of} from 'rxjs';
 
 @Injectable()
@@ -44,9 +46,9 @@ export class NoteEffects {
       return dialogRef.afterClosed().pipe(
         map(result => {
           if (!result) {
-            return new noteActions.DismissEditDialog();
+            return new DismissEditDialog();
           }
-          return new noteActions.Edit(result as INote);
+          return new Edit(result as INote);
         }),
       );
     }),
@@ -55,7 +57,7 @@ export class NoteEffects {
   @Effect()
   editNote$: Observable<Action> = this.actions$.pipe(
     ofType(NoteActionsType.Edit),
-    map((action: noteActions.Edit) => action.payload),
+    map((action: Edit) => action.payload),
     switchMap((note: INote) => {
       const isNew = !note.id;
       return this.notesService.save(note).pipe(
@@ -68,7 +70,7 @@ export class NoteEffects {
   @Effect({dispatch: false})
   detailsDialog$: Observable<Action> = this.actions$.pipe(
     ofType(NoteActionsType.DetailsDialog),
-    tap((action: noteActions.DetailsDialog) => {
+    tap((action: DetailsDialog) => {
       this.dialog.open(DetailsDialogComponent, {
         data: action.payload,
       });

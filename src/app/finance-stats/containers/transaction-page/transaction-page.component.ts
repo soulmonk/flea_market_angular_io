@@ -1,21 +1,33 @@
-import { Component, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { select, Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { ITransaction } from '../../models/transaction'
-import * as fromFinanceStats from '../../reducers'
-import * as transactionActions from '../../actions/transactions.actions'
+import { getAllTransaction } from '../../reducers/transaction.reducer'
+import { Load, OpenEditDialog } from '../../actions/transactions.actions'
+import { getLoggedIn } from '@app/auth/reducers'
+import { Load as LoadTransactionType } from '../../actions/transaction-type.actions'
+import { Load as LoadCard } from '../../actions/card.actions'
 
 @Component({
   templateUrl: './transaction-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionPageComponent implements OnInit {
-  transaction$: Observable<ITransaction[]>
+  transactions$: Observable<ITransaction[]>
+  loggedIn$: Observable<boolean>
 
   constructor (public store: Store<any>) {
-    this.transaction$ = this.store.pipe(select(fromFinanceStats.getAllTransaction))
+    this.transactions$ = this.store.pipe(select(getAllTransaction))
+    this.loggedIn$ = this.store.pipe(select(getLoggedIn))
   }
 
   ngOnInit (): void {
-    this.store.dispatch(new transactionActions.Load())
+    this.store.dispatch(new Load())
+    this.store.dispatch(new LoadTransactionType())
+    this.store.dispatch(new LoadCard())
+  }
+
+  create () {
+    this.store.dispatch(new OpenEditDialog({} as ITransaction))
   }
 }

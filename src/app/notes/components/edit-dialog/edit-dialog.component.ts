@@ -4,7 +4,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   templateUrl: './edit-dialog.component.html',
-  styleUrls: ['./edit-dialog.component.scss'],
 })
 export class EditDialogComponent {
 

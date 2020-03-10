@@ -25,12 +25,18 @@ export class AppComponent implements OnInit, OnDestroy {
     { link: 'tools', label: 'Tools' },
     { link: 'todos', label: 'Todos' },
   ]
-  navigationDev = [
-    { link: 'games', label: 'Games' },
-    { link: 'scripts', label: 'Scripts' },
-  ]
+  // navigationDev = [
+  //   { link: 'games', label: 'Games' },
+  //   { link: 'scripts', label: 'Scripts' },
+  // ]
+
+  // todo move to module
   navigationUser = [
-    { link: 'finance', label: 'Finance'},
+    { link: 'finance', label: 'Finance',
+      children: [
+        { link: 'finance/dashboard', label: 'Dashboard'},
+        { link: 'finance/transaction', label: 'Transactions'},
+      ]},
   ]
   navigationSideMenu = [
     ...this.navigation,

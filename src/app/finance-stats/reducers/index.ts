@@ -1,22 +1,9 @@
-import * as fromTransaction from './transaction.reducer'
-import { createFeatureSelector, createSelector } from '@ngrx/store'
-
-export interface FinanceStatsState {
-  transactions: fromTransaction.State;
-}
-
-export const getTransactionState = createFeatureSelector<FinanceStatsState>(
-  'transactions')
-
-export const getTransactionEntitiesState = createSelector(getTransactionState,
-  state => state.transactions)
-
-export const {
-  selectIds: getTransactionIds,
-  selectEntities: getTransactionEntities,
-  selectAll: getAllTransaction,
-} = fromTransaction.adapter.getSelectors(getTransactionEntitiesState)
+import { reducer as transactionReducer } from './transaction.reducer'
+import { reducer as cardReducer } from './card.reducer'
+import { reducer as transactionTypeReducer } from './transaction-type.reducer'
 
 export const reducers = {
-  transactions: fromTransaction.reducer,
+  transactions: transactionReducer,
+  cards: cardReducer,
+  transactionTypes: transactionTypeReducer,
 }
