@@ -5,15 +5,7 @@ import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs'
 import { ITransaction } from '../models/transaction'
 
-@Injectable()
-export class TransactionService {
-
-  constructor (private apollo: Apollo) {}
-
-  listFull (): Observable<ITransaction[]> {
-    return this.apollo.query({
-      query: gql`query listTransactions {
-        transactions {
+const FULL_RESPONSE = `{
           id
           date
           description
@@ -45,24 +37,38 @@ export class TransactionService {
             currencyExchange
           }
         }
+`
+
+@Injectable()
+export class TransactionService {
+
+  constructor (private apollo: Apollo) {}
+
+  listFull (): Observable<ITransaction[]> {
+    return this.apollo.query({
+      query: gql`query listTransactions {
+        transactions ${FULL_RESPONSE}
       }`,
     }).pipe(map(({ data }) =>
       (data as any).transactions as ITransaction[],
     ))
   }
 
-  stats(): Observable<ITransaction> {
+  stats (): Observable<ITransaction> {
     return this.apollo.query({
-      query: gql``
+      query: gql``,
     }).
-      pipe(map(({data}) => (data as any).stats as ITransaction))
+    pipe(map(({ data }) => (data as any).stats as ITransaction))
   }
 
   create (record: ITransaction): Observable<ITransaction> {
     return this.apollo.mutate({
-      mutation: gql`{
-
+      mutation: gql`mutation createTransaction($transaction: TransactionCreate){
+        addTransaction(transaction: $transaction) ${FULL_RESPONSE}
       }`,
+      variables: {
+        transaction: record,
+      }
     }).pipe(map(({ data }) =>
       (data as any).addTransaction as ITransaction,
     ))

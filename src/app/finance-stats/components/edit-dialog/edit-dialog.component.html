@@ -10,6 +10,7 @@
     <mat-form-field class="full-width">
       <input type="number" matInput tabindex="1" placeholder="Type" formControlName="type">
       <span>should be select</span>
+      <span *ngFor="let item of transactionTypes$ | async">{{item.id}}: {{item.name}}&nbsp;</span>
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -20,6 +21,7 @@
     <mat-form-field class="full-width">
       <input type="number" matInput tabindex="1" placeholder="Card" formControlName="card">
       <span>should be select</span>
+      <span *ngFor="let item of cards$ | async">{{item.id}}: {{item.name}}</span>
     </mat-form-field>
 
     <mat-form-field class="full-width">

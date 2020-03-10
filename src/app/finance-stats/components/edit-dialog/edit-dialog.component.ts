@@ -43,8 +43,6 @@ export class EditDialogComponent {
     private store: Store) {
     this.isNew = !data.id
 
-    this.form.patchValue(
-      { ...data, keywords: data.keywords ? data.keywords.join(',') : '' })
     this.transactionTypes$ = this.store.pipe(select(getAllTransactionType))
     this.cards$ = this.store.pipe(select(getAllCard))
   }
@@ -56,7 +54,7 @@ export class EditDialogComponent {
   submit () {
     if (this.form.valid) {
       const formValues = this.form.value
-      formValues.keywords = formValues.keywords.split(',').map(v => v.trim())
+      // todo close after success
       this.dialogRef.close({ ...this.data, ...formValues })
     }
   }
