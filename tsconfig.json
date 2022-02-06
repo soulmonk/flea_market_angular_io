@@ -4,8 +4,8 @@
     "outDir": "./dist/out-tsc",
     "baseUrl": "./",
     "paths": {
-      "@app/*": ["src/app/*"],
       "@env": ["src/environments/environment.ts"]
+      "@app/*": ["src/app/*"],
     },
     "sourceMap": true,
     "declaration": false,
@@ -14,7 +14,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "types": [
       "node"
     ],
@@ -23,7 +23,7 @@
       "@types"
     ],
     "lib": [
-      "es2018",
+      "es2020",
       "dom",
       "esnext.asynciterable"
     ]

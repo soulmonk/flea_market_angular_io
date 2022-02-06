@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Apollo } from 'apollo-angular'
-import gql from 'graphql-tag'
+import { Apollo, gql } from 'apollo-angular'
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs'
 import { ITransaction } from '../models/transaction'

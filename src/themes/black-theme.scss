@@ -1,9 +1,13 @@
-$ndfsm-black-primary: mat-palette($mat-grey, 900, 500, 900);
-$ndfsm-black-accent: mat-palette($mat-green, A200);
-$ndfsm-black-warn: mat-palette($mat-red, A200);
+@use "@angular/material" as mat;
 
-$ndfsm-black-theme: mat-dark-theme(
-  $ndfsm-black-primary,
-  $ndfsm-black-accent,
-  $ndfsm-black-warn
-);
+$ndfsm-black-primary: mat.define-palette(mat.$grey-palette, 900, 500, 900);
+$ndfsm-black-accent: mat.define-palette(mat.$green-palette, A200);
+$ndfsm-black-warn: mat.define-palette(mat.$red-palette, A200);
+
+$ndfsm-black-theme: mat.define-light-theme((
+  color: (
+    primary: $ndfsm-black-primary,
+    accent: $ndfsm-black-accent,
+    warn: $ndfsm-black-warn,
+  )
+));

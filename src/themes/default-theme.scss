@@ -1,5 +1,14 @@
-$ndfsm-primary: mat-palette($mat-indigo, 800, 300, 900);
-$ndfsm-accent: mat-palette($mat-light-blue);
-$ndfsm-warn: mat-palette($mat-deep-orange, A200);
+@use "@angular/material" as mat;
 
-$ndfsm-theme: mat-light-theme($ndfsm-primary, $ndfsm-accent, $ndfsm-warn);
+$ndfsm-primary: mat.define-palette(mat.$indigo-palette, 800, 300, 900);
+$ndfsm-accent: mat.define-palette(mat.$light-blue-palette);
+$ndfsm-warn: mat.define-palette(mat.$deep-orange-palette, A200);
+
+$ndfsm-theme: mat.define-light-theme((
+  color: (
+    primary: $ndfsm-primary,
+    accent: $ndfsm-accent,
+    warn: $ndfsm-warn,
+  )
+));
+
