@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from '@app/core';
@@ -11,7 +11,7 @@ describe('SettingsComponent', () => {
   let fixture: ComponentFixture<SettingsComponent>;
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [NoopAnimationsModule, CoreModule, SharedModule],
         declarations: [SettingsComponent]

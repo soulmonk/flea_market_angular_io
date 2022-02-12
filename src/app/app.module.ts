@@ -37,7 +37,7 @@ export const routerStateConfig: StoreRouterConfig = {
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     StoreModule.forRoot(reducers, {metaReducers, runtimeChecks: {strictStateImmutability: true, strictActionImmutability: true}}),
 
     StoreRouterConnectingModule.forRoot(routerStateConfig),
