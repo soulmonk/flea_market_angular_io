@@ -4,8 +4,8 @@
     "outDir": "./dist/out-tsc",
     "baseUrl": "./",
     "paths": {
-      "@env": ["src/environments/environment.ts"]
-      "@app/*": ["src/app/*"],
+      "@env": ["src/environments/environment.ts"],
+      "@app/*": ["src/app/*"]
     },
     "sourceMap": true,
     "declaration": false,

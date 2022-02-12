@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
-import { Actions, Effect, ofType } from '@ngrx/effects'
+import {Injectable} from '@angular/core'
+import {Router} from '@angular/router'
+import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {
   catchError,
   exhaustMap,
@@ -11,7 +11,7 @@ import {
   tap,
 } from 'rxjs/operators'
 
-import { AuthService } from '../services/auth.service'
+import {AuthService} from '../services/auth.service'
 import {
   AuthActionTypes,
   GetUserInfo,
@@ -26,13 +26,12 @@ import {
   RefreshToken,
   RefreshTokenFailure,
 } from '../actions/auth'
-import { Authenticate } from '../models/user'
-import { fromEvent, of, timer } from 'rxjs'
+import {Authenticate} from '../models/user'
+import {fromEvent, of, timer} from 'rxjs'
 
 @Injectable()
 export class AuthEffects {
-  @Effect()
-  login$ = this.actions$.pipe(
+  login$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.Login),
     map((action: Login) => action.payload),
     exhaustMap((auth: Authenticate) =>
@@ -41,10 +40,9 @@ export class AuthEffects {
         catchError(error => of(new LoginFailure(error))),
       ),
     ),
-  )
+  ));
 
-  @Effect()
-  loginSuccess$ = this.actions$.pipe(
+  loginSuccess$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.LoginSuccess),
     tap((login: LoginSuccess) => {
       this.authService.setToken(login.payload.token)
@@ -53,32 +51,28 @@ export class AuthEffects {
       // this.router.navigate(['/'])
     }),
     map(() => new GetUserInfo()),
-  )
+  ));
 
-  @Effect()
-  autoRefreshToken$ = this.actions$.pipe(
+  autoRefreshToken$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.LoginSuccess),
     switchMap((login: LoginSuccess) => {
       // TODO vs parse token
       // JSON.parse(atob(decodeURIComponent(login.payload.token.split('.')[1])))
-      return timer(login.payload.expiresIn * 1000).
-        pipe(
-          takeUntil(this.actions$.pipe(ofType(AuthActionTypes.Logout))),
-          map(() => new RefreshToken()),
-        )
+      return timer(login.payload.expiresIn * 1000).pipe(
+        takeUntil(this.actions$.pipe(ofType(AuthActionTypes.Logout))),
+        map(() => new RefreshToken()),
+      )
     }),
-  )
+  ));
 
-  @Effect({ dispatch: false })
-  loginRedirect$ = this.actions$.pipe(
+  loginRedirect$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.LoginRedirect),
     tap(() => {
       this.router.navigate(['/login'])
     }),
-  )
+  ), {dispatch: false});
 
-  @Effect()
-  logout$ = this.actions$.pipe(
+  logout$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.Logout),
     exhaustMap((sync) =>
       this.authService.logout().pipe(
@@ -86,10 +80,8 @@ export class AuthEffects {
         catchError(error => of(new LogoutFailure(sync, error))),
       ),
     ),
-  )
-
-  @Effect({ dispatch: false })
-  logoutDone$ = this.actions$.pipe(
+  ));
+  logoutDone$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.LogoutSuccess, AuthActionTypes.LogoutFailure),
     tap(sync => {
       this.authService.setToken(null)
@@ -98,10 +90,9 @@ export class AuthEffects {
       }
       localStorage.setItem('logout', Date.now().toString())
     }),
-  )
+  ), {dispatch: false});
 
-  @Effect()
-  loginGetStatus$ = this.actions$.pipe(
+  loginGetStatus$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.GetUserInfo),
     exhaustMap(() =>
       this.authService.me().pipe(
@@ -109,9 +100,8 @@ export class AuthEffects {
         catchError(error => of(new GetUserInfoFailure(error))),
       ),
     ),
-  )
-  @Effect()
-  refreshToken$ = this.actions$.pipe(
+  ));
+  refreshToken$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActionTypes.RefreshToken),
     exhaustMap(() =>
       this.authService.refreshToken().pipe(
@@ -119,25 +109,24 @@ export class AuthEffects {
         catchError(error => of(new RefreshTokenFailure(error))),
       ),
     ),
-  )
+  ));
 
   // Todo tbd
-  @Effect()
-  logoutSync$ = fromEvent<StorageEvent>(window, 'storage').pipe(
+  logoutSync$ = createEffect(() => fromEvent<StorageEvent>(window, 'storage').pipe(
     filter((event: StorageEvent) => event.key === 'logout'),
     map(() => new Logout(true)),
-  )
+  ));
 
   // Todo tbd
-  @Effect()
-  loginSync$ = fromEvent<StorageEvent>(window, 'storage').pipe(
+  loginSync$ = createEffect(() => fromEvent<StorageEvent>(window, 'storage').pipe(
     filter((event: StorageEvent) => event.key === 'login'),
     map(() => new GetUserInfo(true)),
-  )
+  ));
 
-  constructor (
+  constructor(
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,
-  ) {}
+  ) {
+  }
 }

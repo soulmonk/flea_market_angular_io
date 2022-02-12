@@ -1,5 +1,6 @@
 @use "@angular/material" as mat;
 
+@import "styles-reset";
 @include mat.core();
 
 @import 'themes/default-theme.scss';
