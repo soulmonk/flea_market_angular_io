@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Actions, Effect, ofType } from '@ngrx/effects'
+import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { Action } from '@ngrx/store'
 import { TransactionService } from '../services/transaction.service'
 import {
@@ -23,8 +23,8 @@ import { EditDialogComponent } from '../components/edit-dialog/edit-dialog.compo
 @Injectable()
 export class TransactionEffects {
 
-  @Effect()
-  load$: Observable<Action> = this.actions$.pipe(
+  
+  load$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TransactionActionsType.Load),
     switchMap(() =>
       this.transactionService.listFull().pipe(
@@ -32,10 +32,10 @@ export class TransactionEffects {
         catchError(err => of(new LoadFail(err))),
       ),
     ),
-  )
+  ))
 
-  @Effect()
-  openEditDialog$: Observable<Action> = this.actions$.pipe(
+  
+  openEditDialog$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TransactionActionsType.OpenEditDialog),
     mergeMap((action: OpenEditDialog) => {
       const dialogRef = this.dialog.open(EditDialogComponent, {
@@ -51,10 +51,10 @@ export class TransactionEffects {
         }),
       )
     }),
-  )
+  ))
 
-  @Effect()
-  edit$: Observable<Action> = this.actions$.pipe(
+  
+  edit$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TransactionActionsType.Edit),
     map((action: Edit) => action.payload),
     switchMap((record: ITransaction) => {
@@ -66,7 +66,7 @@ export class TransactionEffects {
         catchError(err => of(new EditFail(err))),
       )
     }),
-  )
+  ))
 
   constructor (
     private actions$: Actions,

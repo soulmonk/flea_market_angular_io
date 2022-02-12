@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Actions, Effect, ofType} from '@ngrx/effects';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Action} from '@ngrx/store';
 import {NotesService} from '../services/notes.service';
 import {
@@ -24,8 +24,8 @@ import {Observable, of} from 'rxjs';
 @Injectable()
 export class NoteEffects {
 
-  @Effect()
-  loadNotes$: Observable<Action> = this.actions$.pipe(
+  
+  loadNotes$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.Load),
     switchMap(() =>
       this.notesService.list().pipe(
@@ -33,10 +33,10 @@ export class NoteEffects {
         catchError(err => of(new LoadFail(err))),
       ),
     ),
-  );
+  ));
 
-  @Effect()
-  openEditDialog$: Observable<Action> = this.actions$.pipe(
+  
+  openEditDialog$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.OpenEditDialog),
     mergeMap((action: OpenEditDialog) => {
       const dialogRef = this.dialog.open(EditDialogComponent, {
@@ -52,10 +52,10 @@ export class NoteEffects {
         }),
       );
     }),
-  );
+  ));
 
-  @Effect()
-  editNote$: Observable<Action> = this.actions$.pipe(
+  
+  editNote$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.Edit),
     map((action: Edit) => action.payload),
     switchMap((note: INote) => {
@@ -65,17 +65,17 @@ export class NoteEffects {
         catchError(err => of(new EditFail(err))),
       );
     }),
-  );
+  ));
 
-  @Effect({dispatch: false})
-  detailsDialog$: Observable<Action> = this.actions$.pipe(
+  
+  detailsDialog$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.DetailsDialog),
     tap((action: DetailsDialog) => {
       this.dialog.open(DetailsDialogComponent, {
         data: action.payload,
       });
     })
-  );
+  ), {dispatch: false});
 
   constructor(
     private actions$: Actions<Action>,
