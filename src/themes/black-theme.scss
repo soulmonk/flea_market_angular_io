@@ -1,4 +1,4 @@
-@use '~@angular/material' as mat;
+@use '@angular/material' as mat;
 $ndfsm-black-primary: mat.define-palette(mat.$grey-palette, 900, 500, 900);
 $ndfsm-black-accent: mat.define-palette(mat.$green-palette, A200);
 $ndfsm-black-warn: mat.define-palette(mat.$red-palette, A200);
