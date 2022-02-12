@@ -16,7 +16,7 @@ export function DebugDecorator(/*options*/) {
 
     const ngOnInitOriginal = constructor.prototype['ngOnInit'];
     // noinspection TsLint
-    constructor.prototype['ngOnInit'] = function (...args) {
+    constructor.prototype['ngOnInit'] = function(...args) {
       DebugService.instance.incCountOfComponents(component);
       console.log(`%c ${component} - ngOnInit`, `color: #4CAF50; font-weight: bold`, ...args);
       ngOnInitOriginal && ngOnInitOriginal.apply(this, args); // tslint:disable-line:no-unused-expression
@@ -24,7 +24,7 @@ export function DebugDecorator(/*options*/) {
 
     const ngOnChangesOriginal = constructor.prototype['ngOnChanges'];
     // noinspection TsLint
-    constructor.prototype['ngOnChanges'] = function (changes) {
+    constructor.prototype['ngOnChanges'] = function(changes) {
       // if (this.__prevChanges !== JSON.stringify(changes)) {
       //   console.log(component, 'prev >>>', this.__prevChanges, 'new >>>', JSON.stringify(changes));
       //   this.__prevChanges = JSON.stringify(changes);

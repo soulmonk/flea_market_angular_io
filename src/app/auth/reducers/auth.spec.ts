@@ -1,7 +1,7 @@
-import { reducer } from './auth';
+import {reducer} from './auth';
 import * as fromAuth from './auth';
-import { Login, LoginSuccess, Logout } from '../actions/auth';
-import { Authenticate, User } from '../models/user';
+import {Login, LoginSuccess, Logout} from '../actions/auth';
+import {Authenticate, User} from '../models/user';
 
 describe('AuthReducer', () => {
   describe('undefined action', () => {
@@ -23,7 +23,7 @@ describe('AuthReducer', () => {
 
   describe('wrong login payload', () => {
     it('should NOT authenticate a user', () => {
-      const user = { username: 'someUserName' } as Authenticate;
+      const user = {username: 'someUserName'} as Authenticate;
       const createAction = new Login(user);
 
       const expectedResult = fromAuth.initialState;
@@ -36,12 +36,12 @@ describe('AuthReducer', () => {
 
   describe('LOGIN_SUCCESS', () => {
     it('should add a user set loggedIn to true in auth state', () => {
-      const user = { name: 'test' } as User;
-      const createAction = new LoginSuccess({ user });
+      const user = {name: 'test'} as User;
+      const createAction = new LoginSuccess({user});
 
       const expectedResult = {
         loggedIn: true,
-        user: { name: 'test' },
+        user: {name: 'test'},
       };
 
       const result = reducer(fromAuth.initialState, createAction);
@@ -54,7 +54,7 @@ describe('AuthReducer', () => {
     it('should logout a user', () => {
       const initialState = {
         loggedIn: true,
-        user: { name: 'test' },
+        user: {name: 'test'},
       } as fromAuth.State;
       const createAction = new Logout();
 

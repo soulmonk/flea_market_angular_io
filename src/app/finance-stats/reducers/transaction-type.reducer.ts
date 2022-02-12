@@ -1,10 +1,10 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import { ITransactionType } from '../models/transaction-type'
+import {ITransactionType} from '../models/transaction-type';
 import {
   TransactionTypeActions,
   TransactionTypeActionsType,
-} from '../actions/transaction-type.actions'
-import { createFeatureSelector, createSelector } from '@ngrx/store'
+} from '../actions/transaction-type.actions';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface State extends EntityState<ITransactionType> {
 
@@ -45,14 +45,14 @@ export interface TransactionTypeState {
 }
 
 export const getTransactionTypeState = createFeatureSelector<TransactionTypeState>(
-  'finance-stats')
+  'finance-stats');
 
 export const getTransactionTypeEntitiesState = createSelector(getTransactionTypeState,
-  state => state.transactionTypes)
+  state => state.transactionTypes);
 
 export const {
   selectIds: getTransactionTypeIds,
   selectEntities: getTransactionTypeEntities,
   selectAll: getAllTransactionType,
-} = adapter.getSelectors(getTransactionTypeEntitiesState)
+} = adapter.getSelectors(getTransactionTypeEntitiesState);
 

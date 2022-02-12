@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
   selector: 'ndfsm-not-found-page',
@@ -22,4 +22,5 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `,
   ],
 })
-export class NotFoundPageComponent {}
+export class NotFoundPageComponent {
+}

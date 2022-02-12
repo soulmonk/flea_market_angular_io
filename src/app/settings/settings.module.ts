@@ -1,25 +1,25 @@
-import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core'
-import { StoreConfig, StoreModule } from '@ngrx/store'
-import { EffectsModule } from '@ngrx/effects'
+import {InjectionToken, ModuleWithProviders, NgModule} from '@angular/core';
+import {StoreConfig, StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
-import { SharedModule } from '../shared'
+import {SharedModule} from '../shared';
 
-import * as fromReducer from './settings.reducer'
-import { SETTINGS_KEY } from './settings.reducer'
-import { SettingsEffects } from './settings.effects'
-import { SettingsComponent } from './settings/settings.component'
-import { LocalStorageService } from '@app/core'
+import * as fromReducer from './settings.reducer';
+import {SETTINGS_KEY} from './settings.reducer';
+import {SettingsEffects} from './settings.effects';
+import {SettingsComponent} from './settings/settings.component';
+import {LocalStorageService} from '@app/core';
 
 // Setting configuration
 export const SETTINGS_CONFIG_TOKEN = new InjectionToken<StoreConfig<fromReducer.State>>(
-  'Settings Config')
+  'Settings Config');
 
-export function getConfig (localStorageService: LocalStorageService): StoreConfig<fromReducer.State> {
+export function getConfig(localStorageService: LocalStorageService): StoreConfig<fromReducer.State> {
   // return the config synchronously.
   return {
     initialState: localStorageService.getItem(SETTINGS_KEY) ||
       fromReducer.initialState,
-  }
+  };
 }
 
 @NgModule({
@@ -32,7 +32,7 @@ export function getConfig (localStorageService: LocalStorageService): StoreConfi
   declarations: [SettingsComponent],
 })
 export class SettingsModule {
-  static forRoot (): ModuleWithProviders<SettingsModule> {
+  static forRoot(): ModuleWithProviders<SettingsModule> {
     return {
       ngModule: SettingsModule,
       providers: [
@@ -42,6 +42,6 @@ export class SettingsModule {
           useFactory: getConfig,
         },
       ],
-    }
+    };
   }
 }

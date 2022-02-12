@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
-import { CoreModule } from '@app/core';
-import { SharedModule } from '@app/shared';
+import {CoreModule} from '@app/core';
+import {SharedModule} from '@app/shared';
 
-import { SettingsComponent } from './settings.component';
+import {SettingsComponent} from './settings.component';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;

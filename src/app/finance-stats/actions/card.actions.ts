@@ -1,6 +1,6 @@
-import { Action } from '@ngrx/store'
-import { ICard } from '../models/card'
-import { Update } from '@ngrx/entity'
+import {Action} from '@ngrx/store';
+import {ICard} from '../models/card';
+import {Update} from '@ngrx/entity';
 
 export enum CardActionsType {
   Load = '[FINANCE STATS - CARD] Load',
@@ -22,68 +22,78 @@ export enum CardActionsType {
 }
 
 export class Load implements Action {
-  readonly type = CardActionsType.Load
+  readonly type = CardActionsType.Load;
 }
 
 export class LoadSuccess implements Action {
-  readonly type = CardActionsType.LoadSuccess
+  readonly type = CardActionsType.LoadSuccess;
 
-  constructor (public payload: ICard[]) {}
+  constructor(public payload: ICard[]) {
+  }
 }
 
 export class LoadFail implements Action {
-  readonly type = CardActionsType.LoadFail
+  readonly type = CardActionsType.LoadFail;
 
-  constructor (public error: string) {}
+  constructor(public error: string) {
+  }
 }
 
 export class Edit implements Action {
-  readonly type = CardActionsType.Edit
+  readonly type = CardActionsType.Edit;
 
-  constructor (public payload: ICard) {}
+  constructor(public payload: ICard) {
+  }
 }
 
 export class EditFail implements Action {
-  readonly type = CardActionsType.EditFail
+  readonly type = CardActionsType.EditFail;
 
   // todo error interface
-  constructor (public payload: any) {}
+  constructor(public payload: any) {
+  }
 }
 
 export class CreateSuccess implements Action {
   readonly type = CardActionsType.CreateSuccess;
 
-  constructor(public payload: ICard) {}
+  constructor(public payload: ICard) {
+  }
 }
 
 export class UpdateSuccess implements Action {
   readonly type = CardActionsType.UpdateSuccess;
 
-  constructor(public payload: Update<ICard>) {}
+  constructor(public payload: Update<ICard>) {
+  }
 }
 
 export class Remove implements Action {
   readonly type = CardActionsType.Remove;
 
-  constructor(public payload: number) {}
+  constructor(public payload: number) {
+  }
 }
 
 export class RemoveSuccess implements Action {
   readonly type = CardActionsType.RemoveSuccess;
 
-  constructor(public payload: number) {}
+  constructor(public payload: number) {
+  }
 }
 
 export class RemoveFail implements Action {
   readonly type = CardActionsType.RemoveFail;
 
-  constructor(public payload: any) {}
+  constructor(public payload: any) {
+  }
 }
 
 export class OpenEditDialog implements Action {
   readonly type = CardActionsType.OpenEditDialog;
 
-  constructor(public payload: ICard) {}
+  constructor(public payload: ICard) {
+  }
 }
 
 export class DismissEditDialog implements Action {
@@ -93,7 +103,8 @@ export class DismissEditDialog implements Action {
 export class DetailsDialog implements Action {
   readonly type = CardActionsType.DetailsDialog;
 
-  constructor(public payload: ICard) {}
+  constructor(public payload: ICard) {
+  }
 }
 
 export type CardActions =

@@ -1,11 +1,11 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule, Store, combineReducers } from '@ngrx/store';
-import { LoginPageComponent } from './login-page.component';
-import { LoginFormComponent } from '../components/login-form.component';
+import {TestBed, ComponentFixture} from '@angular/core/testing';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {StoreModule, Store, combineReducers} from '@ngrx/store';
+import {LoginPageComponent} from './login-page.component';
+import {LoginFormComponent} from '../components/login-form.component';
 import * as Auth from '../actions/auth';
 import * as fromAuth from '../reducers';
 

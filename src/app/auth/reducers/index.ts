@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
+import {createSelector, createFeatureSelector} from '@ngrx/store';
 import * as fromRoot from '@app/reducers';
 import * as fromAuth from './auth';
 import * as fromLoginPage from './login-page';

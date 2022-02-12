@@ -12,7 +12,8 @@ export class SettingsEffects {
   constructor(
     private actions$: Actions<Action>,
     private localStorageService: LocalStorageService
-  ) {}
+  ) {
+  }
 
   persistThemeSettings(): Observable<Action> {
     return createEffect(() => this.actions$.pipe(
@@ -22,6 +23,6 @@ export class SettingsEffects {
           theme: action.payload
         })
       )
-    ), { dispatch: false });
+    ), {dispatch: false});
   }
 }

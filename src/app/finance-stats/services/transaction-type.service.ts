@@ -1,17 +1,18 @@
 import {Apollo, gql} from 'apollo-angular';
-import { Injectable } from '@angular/core'
+import {Injectable} from '@angular/core';
 
 
-import { map } from 'rxjs/operators'
-import { Observable } from 'rxjs'
-import { ITransactionType } from '../models/transaction-type'
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {ITransactionType} from '../models/transaction-type';
 
 @Injectable()
 export class TransactionTypeService {
 
-  constructor (private apollo: Apollo) {}
+  constructor(private apollo: Apollo) {
+  }
 
-  list (): Observable<ITransactionType[]> {
+  list(): Observable<ITransactionType[]> {
     return this.apollo.query({
       query: gql`{
         transactionTypes {
@@ -20,8 +21,8 @@ export class TransactionTypeService {
           description
         }
       }`,
-    }).pipe(map(({ data }) => {
-      return (data as any).transactionTypes as ITransactionType[]
-    }))
+    }).pipe(map(({data}) => {
+      return (data as any).transactionTypes as ITransactionType[];
+    }));
   }
 }

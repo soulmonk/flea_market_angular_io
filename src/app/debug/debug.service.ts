@@ -16,7 +16,8 @@ export class DebugService {
     return isDebug;
   }
 
-  constructor() {}
+  constructor() {
+  }
 
   reset() {
     this._countChanges = new Map();

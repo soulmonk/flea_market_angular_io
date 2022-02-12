@@ -1,10 +1,10 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import { ICard } from '../models/card'
+import {ICard} from '../models/card';
 import {
   CardActions,
   CardActionsType,
-} from '../actions/card.actions'
-import { createFeatureSelector, createSelector } from '@ngrx/store'
+} from '../actions/card.actions';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface State extends EntityState<ICard> {
 
@@ -45,14 +45,14 @@ export interface CardState {
 }
 
 export const getCardState = createFeatureSelector<CardState>(
-  'finance-stats')
+  'finance-stats');
 
 export const getCardEntitiesState = createSelector(getCardState,
-  state => state.cards)
+  state => state.cards);
 
 export const {
   selectIds: getCardIds,
   selectEntities: getCardEntities,
   selectAll: getAllCard,
-} = adapter.getSelectors(getCardEntitiesState)
+} = adapter.getSelectors(getCardEntitiesState);
 

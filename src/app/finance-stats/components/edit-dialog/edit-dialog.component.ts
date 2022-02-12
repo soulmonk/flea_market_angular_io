@@ -1,12 +1,12 @@
-import { Component, Inject } from '@angular/core'
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { select, Store } from '@ngrx/store'
-import { getAllCard } from '../../reducers/card.reducer'
-import { getAllTransactionType } from '../../reducers/transaction-type.reducer'
-import { ICard } from '../../models/card'
-import { ITransactionType } from '../../models/transaction-type'
-import { Observable } from 'rxjs'
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {select, Store} from '@ngrx/store';
+import {getAllCard} from '../../reducers/card.reducer';
+import {getAllTransactionType} from '../../reducers/transaction-type.reducer';
+import {ICard} from '../../models/card';
+import {ITransactionType} from '../../models/transaction-type';
+import {Observable} from 'rxjs';
 
 @Component({
   templateUrl: './edit-dialog.component.html',
@@ -30,32 +30,32 @@ export class EditDialogComponent {
     //   fixedAmount: new FormControl(0, []),
     // }),
 
-  })
+  });
 
-  isNew: boolean
+  isNew: boolean;
 
-  transactionTypes$: Observable<ITransactionType[]>
-  cards$: Observable<ICard[]>
+  transactionTypes$: Observable<ITransactionType[]>;
+  cards$: Observable<ICard[]>;
 
-  constructor (
+  constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private store: Store) {
-    this.isNew = !data.id
+    this.isNew = !data.id;
 
-    this.transactionTypes$ = this.store.pipe(select(getAllTransactionType))
-    this.cards$ = this.store.pipe(select(getAllCard))
+    this.transactionTypes$ = this.store.pipe(select(getAllTransactionType));
+    this.cards$ = this.store.pipe(select(getAllCard));
   }
 
-  onNoClick (): void {
-    this.dialogRef.close()
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
-  submit () {
+  submit() {
     if (this.form.valid) {
-      const formValues = this.form.value
+      const formValues = this.form.value;
       // todo close after success
-      this.dialogRef.close({ ...this.data, ...formValues })
+      this.dialogRef.close({...this.data, ...formValues});
     }
   }
 }

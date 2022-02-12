@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {DebugService} from './debug.service';
-import { environment } from '@env';
+import {environment} from '@env';
 
 @Component({
   selector: 'ndfsm-debug',
@@ -16,7 +16,9 @@ export class DebugComponent implements OnInit {
   isEnabled = DebugService.isDebug() && !environment.production;
   open = false;
 
-  constructor(private _debugService: DebugService, private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _debugService: DebugService, private _changeDetectorRef: ChangeDetectorRef) {
+  }
+
   //
   // @HostListener('document:keypress', ['$event'])
   // handleKeyboardEvent(event: KeyboardEvent) {
@@ -34,7 +36,7 @@ export class DebugComponent implements OnInit {
 
   ngOnInit() {
     setInterval(() => {
-      this.open = !!(<any>window).debugDialogOpen;
+      this.open = !!(<any> window).debugDialogOpen;
     }, 500);
 
     setInterval(() => {
@@ -65,7 +67,7 @@ export class DebugComponent implements OnInit {
 
   close() {
     this.open = false;
-    (<any>window).debugDialogOpen = false;
+    (<any> window).debugDialogOpen = false;
   }
 
 }

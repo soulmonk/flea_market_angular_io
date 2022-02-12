@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
 
-import { actionChangeTheme, selectorSettings } from '../settings.reducer';
+import {actionChangeTheme, selectorSettings} from '../settings.reducer';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -22,7 +22,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
     store.select(selectorSettings).pipe(takeUntil(this.unsubscribe$)).subscribe(({theme}) => (this.theme = theme));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { NoteListComponent } from './note-list.component';
+import {NoteListComponent} from './note-list.component';
 
 describe('NoteListComponent', () => {
   let component: NoteListComponent;
@@ -8,9 +8,9 @@ describe('NoteListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ NoteListComponent ]
+      declarations: [NoteListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

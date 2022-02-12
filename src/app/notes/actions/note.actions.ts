@@ -31,13 +31,15 @@ export class Load implements Action {
 export class LoadSuccess implements Action {
   readonly type = NoteActionsType.LoadSuccess;
 
-  constructor(public payload: INote[]) {}
+  constructor(public payload: INote[]) {
+  }
 }
 
 export class LoadFail implements Action {
   readonly type = NoteActionsType.LoadFail;
 
-  constructor(public payload: any) {}
+  constructor(public payload: any) {
+  }
 }
 
 // --- Load group --- END
@@ -47,25 +49,29 @@ export class LoadFail implements Action {
 export class Edit implements Action {
   readonly type = NoteActionsType.Edit;
 
-  constructor(public payload: INote) {}
+  constructor(public payload: INote) {
+  }
 }
 
 export class CreateSuccess implements Action {
   readonly type = NoteActionsType.CreateSuccess;
 
-  constructor(public payload: INote) {}
+  constructor(public payload: INote) {
+  }
 }
 
 export class UpdateSuccess implements Action {
   readonly type = NoteActionsType.UpdateSuccess;
 
-  constructor(public payload: Update<INote>) {}
+  constructor(public payload: Update<INote>) {
+  }
 }
 
 export class EditFail implements Action {
   readonly type = NoteActionsType.EditFail;
 
-  constructor(public payload: any) {}
+  constructor(public payload: any) {
+  }
 }
 
 // --- Edit group --- END
@@ -75,19 +81,22 @@ export class EditFail implements Action {
 export class Remove implements Action {
   readonly type = NoteActionsType.Remove;
 
-  constructor(public payload: number) {}
+  constructor(public payload: number) {
+  }
 }
 
 export class RemoveSuccess implements Action {
   readonly type = NoteActionsType.RemoveSuccess;
 
-  constructor(public payload: number) {}
+  constructor(public payload: number) {
+  }
 }
 
 export class RemoveFail implements Action {
   readonly type = NoteActionsType.RemoveFail;
 
-  constructor(public payload: any) {}
+  constructor(public payload: any) {
+  }
 }
 
 // --- Remove group --- END
@@ -95,7 +104,8 @@ export class RemoveFail implements Action {
 export class OpenEditDialog implements Action {
   readonly type = NoteActionsType.OpenEditDialog;
 
-  constructor(public payload: INote) {}
+  constructor(public payload: INote) {
+  }
 }
 
 export class DismissEditDialog implements Action {
@@ -105,7 +115,8 @@ export class DismissEditDialog implements Action {
 export class DetailsDialog implements Action {
   readonly type = NoteActionsType.DetailsDialog;
 
-  constructor(public payload: INote) {}
+  constructor(public payload: INote) {
+  }
 }
 
 export type NoteActions =

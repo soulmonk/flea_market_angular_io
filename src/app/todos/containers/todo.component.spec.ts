@@ -1,11 +1,11 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { CoreModule } from 'app/core/index';
-import { SharedModule } from 'app/shared/index';
+import {CoreModule} from 'app/core/index';
+import {SharedModule} from 'app/shared/index';
 
 // import { ExamplesModule } from '../examples.module';
 
-import { TodosComponent } from './todo.component';
+import {TodosComponent} from './todo.component';
 
 describe('TodosComponent', () => {
   let component: TodosComponent;

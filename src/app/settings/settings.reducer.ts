@@ -1,7 +1,7 @@
-import { Action } from '@app/core';
+import {Action} from '@app/core';
 
 export interface State {
-  theme: string
+  theme: string;
 }
 
 export const initialState: State = {
@@ -17,12 +17,12 @@ export const actionChangeTheme = (theme: string) => ({
   payload: theme
 });
 
-export const selectorSettings = state => state.settings || { theme: '' };
+export const selectorSettings = state => state.settings || {theme: ''};
 
 export function settingsReducer(state = initialState, action: Action) {
   switch (action.type) {
     case SETTINGS_CHANGE_THEME:
-      return { theme: action.payload };
+      return {theme: action.payload};
 
     default:
       return state;

@@ -11,7 +11,8 @@ export class NotesService {
 
   private baseUrl = environment.apiServers.ndfsmFleaMarket + '/api/notes';  // URL to web api
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   list() {
     return this.http.get(this.baseUrl).pipe(

@@ -1,5 +1,5 @@
-import { AuthActions, AuthActionTypes } from './../actions/auth';
-import { User } from '../models/user';
+import {AuthActions, AuthActionTypes} from './../actions/auth';
+import {User} from '../models/user';
 
 export interface State {
   loggedIn: boolean;
@@ -18,7 +18,7 @@ export function reducer(state = initialState, action: AuthActions): State {
         ...state,
         loggedIn: true,
         user: action.payload
-      }
+      };
     }
     case AuthActionTypes.LoginSuccess: {
       return {

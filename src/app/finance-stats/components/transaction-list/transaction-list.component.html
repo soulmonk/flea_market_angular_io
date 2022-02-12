@@ -12,7 +12,9 @@
     <div>Amount: {{transaction.amount}} {{transaction.currencyCode}}</div>
     <div>Category: {{transaction.type.name}}</div>
     <div>Note: {{transaction.note }}</div>
-    <div>Card: <span *ngIf="!transaction.card">cash</span><span *ngIf="transaction.card">{{transaction.card.name}}</span></div>
-    <div>Info: <span *ngIf="!transaction.info">none</span><span *ngIf="transaction.info">Blocked: {{transaction.info.blockedAmount}}, Fixed: {{transaction.info.fixedAmount}}</span></div>
+    <div>Card: <span *ngIf="!transaction.card">cash</span><span
+      *ngIf="transaction.card">{{transaction.card.name}}</span></div>
+    <div>Info: <span *ngIf="!transaction.info">none</span><span *ngIf="transaction.info">Blocked: {{transaction.info.blockedAmount}}, Fixed: {{transaction.info.fixedAmount}}</span>
+    </div>
   </mat-card-content>
 </mat-card>

@@ -1,6 +1,6 @@
-import { Routes } from '@angular/router';
-import { ToolsComponent } from '@app/tools';
-import { RandomStringComponent } from './random-string/random-string.component';
+import {Routes} from '@angular/router';
+import {ToolsComponent} from '@app/tools';
+import {RandomStringComponent} from './random-string/random-string.component';
 import {LinksComponent} from './links/links.component';
 
 export const toolsRoutes: Routes = [

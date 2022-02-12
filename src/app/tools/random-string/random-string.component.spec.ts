@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { RandomStringComponent } from './random-string.component';
+import {RandomStringComponent} from './random-string.component';
 
 describe('LinksComponent', () => {
   let component: RandomStringComponent;
@@ -8,9 +8,9 @@ describe('LinksComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RandomStringComponent ]
+      declarations: [RandomStringComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

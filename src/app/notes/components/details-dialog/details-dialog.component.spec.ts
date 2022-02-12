@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { DetailsDialogComponent } from './details-dialog.component';
+import {DetailsDialogComponent} from './details-dialog.component';
 
 describe('DetailsDialogComponent', () => {
   let component: DetailsDialogComponent;
@@ -8,9 +8,9 @@ describe('DetailsDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailsDialogComponent ]
+      declarations: [DetailsDialogComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

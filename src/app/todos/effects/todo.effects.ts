@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core'
-import { Actions, createEffect, ofType } from '@ngrx/effects'
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 
 import {
   Add,
@@ -14,16 +14,16 @@ import {
   Update,
   UpdateFail,
   UpdateSuccess,
-} from '@app/todos/actions/todo'
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators'
-import { TodoService } from '@app/todos/services/todo.service'
-import { ITodo } from '@app/todos/models/todo'
-import { Observable, of } from 'rxjs'
-import { Action } from '@ngrx/store'
+} from '@app/todos/actions/todo';
+import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
+import {TodoService} from '@app/todos/services/todo.service';
+import {ITodo} from '@app/todos/models/todo';
+import {Observable, of} from 'rxjs';
+import {Action} from '@ngrx/store';
 
 @Injectable()
 export class TodoEffects {
-  
+
   loadTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Load),
     switchMap(() =>
@@ -32,8 +32,8 @@ export class TodoEffects {
         catchError(error => of(new LoadFail(error))),
       ),
     ),
-  ))
-  
+  ));
+
   addTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Add),
     map((action: Add) => action.payload),
@@ -43,21 +43,21 @@ export class TodoEffects {
         catchError(error => of(new AddFail(error))),
       ),
     ),
-  ))
+  ));
 
-  
+
   updateTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Update),
     map((action: Update) => action.payload),
-    mergeMap(({ id, data }) =>
+    mergeMap(({id, data}) =>
       this.todoService.update(id, data).pipe(
         map((todo: ITodo) => new UpdateSuccess(todo)),
         catchError(error => of(new UpdateFail(error))),
       ),
     ),
-  ))
+  ));
 
-  
+
   removeTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Remove),
     map((action: Remove) => action.id),
@@ -67,10 +67,11 @@ export class TodoEffects {
         catchError(error => of(new RemoveFail(error))),
       ),
     ),
-  ))
+  ));
 
-  constructor (
+  constructor(
     private actions$: Actions<Action>,
-    private todoService: TodoService) {}
+    private todoService: TodoService) {
+  }
 
 }
