@@ -21,9 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('class') componentCssClass
   // TODO EXTRACT
   navigation = [
-    { link: 'notes', label: 'Notes' },
     { link: 'tools', label: 'Tools' },
-    { link: 'todos', label: 'Todos' },
   ]
   // navigationDev = [
   //   { link: 'games', label: 'Games' },
