@@ -1,8 +1,9 @@
-$ndfsm-light-primary: mat-palette($mat-grey, 200, 500, 300);
-$ndfsm-light-accent: mat-palette($mat-brown, 200);
-$ndfsm-light-warn: mat-palette($mat-deep-orange, 200);
+@use '~@angular/material' as mat;
+$ndfsm-light-primary: mat.define-palette(mat.$grey-palette, 200, 500, 300);
+$ndfsm-light-accent: mat.define-palette(mat.$brown-palette, 200);
+$ndfsm-light-warn: mat.define-palette(mat.$deep-orange-palette, 200);
 
-$ndfsm-light-theme: mat-light-theme(
+$ndfsm-light-theme: mat.define-light-theme(
   $ndfsm-light-primary,
   $ndfsm-light-accent,
   $ndfsm-light-warn
