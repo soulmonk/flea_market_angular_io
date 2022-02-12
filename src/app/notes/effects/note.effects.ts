@@ -24,7 +24,7 @@ import {Observable, of} from 'rxjs';
 @Injectable()
 export class NoteEffects {
 
-  
+
   loadNotes$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.Load),
     switchMap(() =>
@@ -35,7 +35,7 @@ export class NoteEffects {
     ),
   ));
 
-  
+
   openEditDialog$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.OpenEditDialog),
     mergeMap((action: OpenEditDialog) => {
@@ -54,7 +54,7 @@ export class NoteEffects {
     }),
   ));
 
-  
+
   editNote$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.Edit),
     map((action: Edit) => action.payload),
@@ -67,7 +67,7 @@ export class NoteEffects {
     }),
   ));
 
-  
+
   detailsDialog$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(NoteActionsType.DetailsDialog),
     tap((action: DetailsDialog) => {
@@ -80,5 +80,6 @@ export class NoteEffects {
   constructor(
     private actions$: Actions<Action>,
     private notesService: NotesService,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog) {
+  }
 }

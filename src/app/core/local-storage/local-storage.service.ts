@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 const APP_PREFIX = 'NDFSM-';
 
-@Injectable({ providedIn: 'root'})
+@Injectable({providedIn: 'root'})
 export class LocalStorageService {
 
   static loadInitialState() {
@@ -24,7 +24,8 @@ export class LocalStorageService {
     }, undefined);
   }
 
-  constructor() {}
+  constructor() {
+  }
 
   setItem(key: string, value: any) {
     localStorage.setItem(`${APP_PREFIX}${key}`, JSON.stringify(value));

@@ -9,7 +9,7 @@
       </a>
 
       <div *ngIf="loggedIn$ | async">
-        <mat-divider></mat-divider> 
+        <mat-divider></mat-divider>
         <h3 matSubheader>User</h3>
         <span *ngFor="let item of navigationUser">
         <a mat-list-item *ngIf="item.children === undefined || item.children.length === 0" (click)="sidenav.close()"
@@ -25,7 +25,7 @@
           </mat-nav-list>
         </span>
       </div>
-      
+
     </mat-nav-list>
   </mat-sidenav>
 

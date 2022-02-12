@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { randomString } from '@app/utils';
+import {Component, OnInit} from '@angular/core';
+import {randomString} from '@app/utils';
 
 @Component({
   templateUrl: './random-string.component.html',
@@ -10,9 +10,11 @@ export class RandomStringComponent implements OnInit {
   itemLength = 15;
   genItems: any[] = [];
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   reset() {
     this.genItems = [];

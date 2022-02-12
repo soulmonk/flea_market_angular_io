@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {environment} from '@env';
-import { LoggerService } from '@app/core/logger.service'
+import {LoggerService} from '@app/core/logger.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,8 @@ export class TodoService {
 
   private baseUrl = environment.apiServers.ndfsmFleaMarket + '/api/todo';
 
-  constructor(private httpClient: HttpClient, private logger: LoggerService) { }
+  constructor(private httpClient: HttpClient, private logger: LoggerService) {
+  }
 
   list() {
     return this.httpClient.get(this.baseUrl).pipe(
@@ -61,6 +62,6 @@ export class TodoService {
   }
 
   private log(...args) {
-    this.logger.log('[TODO-SERVICE]', ...args)
+    this.logger.log('[TODO-SERVICE]', ...args);
   }
 }

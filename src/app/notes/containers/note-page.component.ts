@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { INote } from '@app/notes/models/note';
-import { EditDialogComponent } from '@app/notes/components/edit-dialog/edit-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {INote} from '@app/notes/models/note';
+import {EditDialogComponent} from '@app/notes/components/edit-dialog/edit-dialog.component';
 import {select, Store} from '@ngrx/store';
 
 import * as fromNotes from '@app/notes/reducers';

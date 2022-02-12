@@ -18,7 +18,8 @@ export class NoteListComponent {
 
   @Input() canEdit = false;
 
-  constructor(public store: Store<any>) {}
+  constructor(public store: Store<any>) {
+  }
 
   edit(note: INote) {
     this.store.dispatch(new noteActions.OpenEditDialog(note));

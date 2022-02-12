@@ -1,30 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser'
-import { NgModule } from '@angular/core'
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component'
-import { HttpClientModule } from '@angular/common/http'
-import { RouterModule } from '@angular/router'
+import {AppComponent} from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 
-import { appRoutes } from './app.routes'
-import { SharedModule } from '@app/shared'
-import { CoreModule } from '@app/core'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { SettingsModule } from '@app/settings'
-import { AuthModule } from '@app/auth/auth.module'
-import { metaReducers, reducers } from '@app/reducers'
-import { StoreModule } from '@ngrx/store'
+import {appRoutes} from './app.routes';
+import {SharedModule} from '@app/shared';
+import {CoreModule} from '@app/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SettingsModule} from '@app/settings';
+import {AuthModule} from '@app/auth/auth.module';
+import {metaReducers, reducers} from '@app/reducers';
+import {StoreModule} from '@ngrx/store';
 import {
   DefaultRouterStateSerializer,
   NavigationActionTiming,
   RouterStateSerializer,
   StoreRouterConfig,
   StoreRouterConnectingModule,
-} from '@ngrx/router-store'
-import { environment } from '@env'
-import { EffectsModule } from '@ngrx/effects'
-import { CustomRouterStateSerializer } from '@app/shared/utils'
-import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { ServiceWorkerModule } from '@angular/service-worker'
+} from '@ngrx/router-store';
+import {environment} from '@env';
+import {EffectsModule} from '@ngrx/effects';
+import {CustomRouterStateSerializer} from '@app/shared/utils';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {ServiceWorkerModule} from '@angular/service-worker';
 
 export const routerStateConfig: StoreRouterConfig = {
   stateKey: 'router', // state-slice name for routing state
@@ -37,7 +37,7 @@ export const routerStateConfig: StoreRouterConfig = {
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy'}),
     StoreModule.forRoot(reducers, {metaReducers, runtimeChecks: {strictStateImmutability: true, strictActionImmutability: true}}),
 
     StoreRouterConnectingModule.forRoot(routerStateConfig),
@@ -66,4 +66,5 @@ export const routerStateConfig: StoreRouterConfig = {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core'
-import { Actions, createEffect, ofType } from '@ngrx/effects'
-import { Action } from '@ngrx/store'
-import { CardService } from '../services/card.service'
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {Action} from '@ngrx/store';
+import {CardService} from '../services/card.service';
 import {
   CardActionsType,
   LoadFail,
   LoadSuccess,
-} from '../actions/card.actions'
-import { ICard } from '../models/card'
-import { catchError, map, switchMap } from 'rxjs/operators'
-import { Observable, of } from 'rxjs'
+} from '../actions/card.actions';
+import {ICard} from '../models/card';
+import {catchError, map, switchMap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 
 @Injectable()
 export class CardEffects {
 
-  
+
   load$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(CardActionsType.Load),
     switchMap(() =>
@@ -23,9 +23,10 @@ export class CardEffects {
         catchError(err => of(new LoadFail(err))),
       ),
     ),
-  ))
+  ));
 
-  constructor (
+  constructor(
     private actions$: Actions,
-    private service: CardService) {}
+    private service: CardService) {
+  }
 }

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { ErrorInterceptor } from './error.interceptor';
+import {ErrorInterceptor} from './error.interceptor';
 
 describe('ErrorService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

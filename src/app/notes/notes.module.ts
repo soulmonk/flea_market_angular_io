@@ -9,8 +9,8 @@ import {StoreModule} from '@ngrx/store';
 import {reducers} from '@app/notes/reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {NoteEffects} from '@app/notes/effects/note.effects';
-import { NoteListComponent } from './components/note-list/note-list.component';
-import { DetailsDialogComponent } from './components/details-dialog/details-dialog.component';
+import {NoteListComponent} from './components/note-list/note-list.component';
+import {DetailsDialogComponent} from './components/details-dialog/details-dialog.component';
 
 @NgModule({
   imports: [

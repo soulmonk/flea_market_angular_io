@@ -1,6 +1,6 @@
-import { Routes } from '@angular/router';
-import { NotFoundPageComponent } from '@app/core';
-import { SettingsComponent } from '@app/settings';
+import {Routes} from '@angular/router';
+import {NotFoundPageComponent} from '@app/core';
+import {SettingsComponent} from '@app/settings';
 
 export const appRoutes: Routes = [
   {path: 'notes', loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule)},

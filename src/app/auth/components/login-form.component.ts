@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Authenticate } from '../models/user';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms';
+import {Authenticate} from '../models/user';
 
 @Component({
   selector: 'ndfsm-login-form',
@@ -86,9 +86,11 @@ export class LoginFormComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   submit() {
     if (this.form.valid) {

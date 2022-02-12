@@ -10,6 +10,7 @@ export class DetailsDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public note: INote) {}
+    @Inject(MAT_DIALOG_DATA) public note: INote) {
+  }
 
 }

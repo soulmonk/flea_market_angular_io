@@ -10,7 +10,7 @@ export interface IUpdatePayload {
 
 export interface IUpdateTodo {
   id: string;
-  data: IUpdatePayload
+  data: IUpdatePayload;
 }
 
 export class Todo implements ITodo {
@@ -19,5 +19,6 @@ export class Todo implements ITodo {
   _id;
   public done = false;
 
-  constructor(public name: string) {}
+  constructor(public name: string) {
+  }
 }

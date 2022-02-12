@@ -1,6 +1,6 @@
-import { Action } from '@ngrx/store'
-import { ITransactionType } from '../models/transaction-type'
-import { Update } from '@ngrx/entity'
+import {Action} from '@ngrx/store';
+import {ITransactionType} from '../models/transaction-type';
+import {Update} from '@ngrx/entity';
 
 export enum TransactionTypeActionsType {
   Load = '[FINANCE STATS - TRANSACTION TYPE] Load',
@@ -22,68 +22,78 @@ export enum TransactionTypeActionsType {
 }
 
 export class Load implements Action {
-  readonly type = TransactionTypeActionsType.Load
+  readonly type = TransactionTypeActionsType.Load;
 }
 
 export class LoadSuccess implements Action {
-  readonly type = TransactionTypeActionsType.LoadSuccess
+  readonly type = TransactionTypeActionsType.LoadSuccess;
 
-  constructor (public payload: ITransactionType[]) {}
+  constructor(public payload: ITransactionType[]) {
+  }
 }
 
 export class LoadFail implements Action {
-  readonly type = TransactionTypeActionsType.LoadFail
+  readonly type = TransactionTypeActionsType.LoadFail;
 
-  constructor (public error: string) {}
+  constructor(public error: string) {
+  }
 }
 
 export class Edit implements Action {
-  readonly type = TransactionTypeActionsType.Edit
+  readonly type = TransactionTypeActionsType.Edit;
 
-  constructor (public payload: ITransactionType) {}
+  constructor(public payload: ITransactionType) {
+  }
 }
 
 export class EditFail implements Action {
-  readonly type = TransactionTypeActionsType.EditFail
+  readonly type = TransactionTypeActionsType.EditFail;
 
   // todo error interface
-  constructor (public payload: any) {}
+  constructor(public payload: any) {
+  }
 }
 
 export class CreateSuccess implements Action {
   readonly type = TransactionTypeActionsType.CreateSuccess;
 
-  constructor(public payload: ITransactionType) {}
+  constructor(public payload: ITransactionType) {
+  }
 }
 
 export class UpdateSuccess implements Action {
   readonly type = TransactionTypeActionsType.UpdateSuccess;
 
-  constructor(public payload: Update<ITransactionType>) {}
+  constructor(public payload: Update<ITransactionType>) {
+  }
 }
 
 export class Remove implements Action {
   readonly type = TransactionTypeActionsType.Remove;
 
-  constructor(public payload: number) {}
+  constructor(public payload: number) {
+  }
 }
 
 export class RemoveSuccess implements Action {
   readonly type = TransactionTypeActionsType.RemoveSuccess;
 
-  constructor(public payload: number) {}
+  constructor(public payload: number) {
+  }
 }
 
 export class RemoveFail implements Action {
   readonly type = TransactionTypeActionsType.RemoveFail;
 
-  constructor(public payload: any) {}
+  constructor(public payload: any) {
+  }
 }
 
 export class OpenEditDialog implements Action {
   readonly type = TransactionTypeActionsType.OpenEditDialog;
 
-  constructor(public payload: ITransactionType) {}
+  constructor(public payload: ITransactionType) {
+  }
 }
 
 export class DismissEditDialog implements Action {
@@ -93,7 +103,8 @@ export class DismissEditDialog implements Action {
 export class DetailsDialog implements Action {
   readonly type = TransactionTypeActionsType.DetailsDialog;
 
-  constructor(public payload: ITransactionType) {}
+  constructor(public payload: ITransactionType) {
+  }
 }
 
 export type TransactionTypeActions =
