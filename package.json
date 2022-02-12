@@ -6,12 +6,12 @@
   "scripts": {
     "ng": "ng",
     "serve:prod_proxy": "ng serve --proxy-config proxy.conf.json",
-    "serve:prod": "ng serve --proxy-config proxy-local.conf.json --prod",
+    "serve:prod": "ng serve --proxy-config proxy-local.conf.json --configuration production",
     "serve": "ng serve",
     "serve:hmr:prod": "ng serve --proxy-config proxy.conf.json --hmr -e=hmr",
     "serve:hmr": "ng serve --proxy-config proxy-local.conf.json --hmr -e=hmr",
     "build": "ng build",
-    "build:prod": "ng build --prod --build-optimizer --vendor-chunk",
+    "build:prod": "ng build --configuration production --build-optimizer --vendor-chunk",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -22,7 +22,7 @@
   "author": "Vitalii Melnykov (fsoulmonk@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "@angular-devkit/schematics": "^11.2.18",
+    "@angular-devkit/schematics": "^12.2.16",
     "@angular/animations": "^13.2.2",
     "@angular/cdk": "^12.2.13",
     "@angular/common": "^13.2.2",
@@ -59,8 +59,8 @@
     "graphql": "^14.5.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.18",
-    "@angular/cli": "11.2.18",
+    "@angular-devkit/build-angular": "~12.2.16",
+    "@angular/cli": "12.2.16",
     "@angular/compiler-cli": "^13.2.2",
     "@angular/language-service": "^13.2.2",
     "@angularclass/hmr": "^2.1.3",
