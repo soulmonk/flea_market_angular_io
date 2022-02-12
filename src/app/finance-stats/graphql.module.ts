@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
-import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
-import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
-import {InMemoryCache} from 'apollo-cache-inmemory';
-import { environment } from '@env'
+import {InMemoryCache} from '@apollo/client/core';
+import {APOLLO_OPTIONS} from 'apollo-angular';
+import {HttpLink} from 'apollo-angular/http';
+import { environment } from '@env';
 
 const uri = environment.apiServers.financeStats + '/graphql';
 export function createApollo(httpLink: HttpLink) {
@@ -13,7 +13,7 @@ export function createApollo(httpLink: HttpLink) {
 }
 
 @NgModule({
-  exports: [ApolloModule, HttpLinkModule],
+  exports: [],
   providers: [
     {
       provide: APOLLO_OPTIONS,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Actions, Effect, ofType } from '@ngrx/effects'
+import { Actions, createEffect, ofType } from '@ngrx/effects'
 
 import {
   Add,
@@ -23,8 +23,8 @@ import { Action } from '@ngrx/store'
 
 @Injectable()
 export class TodoEffects {
-  @Effect()
-  loadTodo$: Observable<Action> = this.actions$.pipe(
+  
+  loadTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Load),
     switchMap(() =>
       this.todoService.list().pipe(
@@ -32,9 +32,9 @@ export class TodoEffects {
         catchError(error => of(new LoadFail(error))),
       ),
     ),
-  )
-  @Effect()
-  addTodo$: Observable<Action> = this.actions$.pipe(
+  ))
+  
+  addTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Add),
     map((action: Add) => action.payload),
     mergeMap(newTodo =>
@@ -43,10 +43,10 @@ export class TodoEffects {
         catchError(error => of(new AddFail(error))),
       ),
     ),
-  )
+  ))
 
-  @Effect()
-  updateTodo$: Observable<Action> = this.actions$.pipe(
+  
+  updateTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Update),
     map((action: Update) => action.payload),
     mergeMap(({ id, data }) =>
@@ -55,10 +55,10 @@ export class TodoEffects {
         catchError(error => of(new UpdateFail(error))),
       ),
     ),
-  )
+  ))
 
-  @Effect()
-  removeTodo$: Observable<Action> = this.actions$.pipe(
+  
+  removeTodo$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TodoActionTypes.Remove),
     map((action: Remove) => action.id),
     mergeMap(id =>
@@ -67,7 +67,7 @@ export class TodoEffects {
         catchError(error => of(new RemoveFail(error))),
       ),
     ),
-  )
+  ))
 
   constructor (
     private actions$: Actions<Action>,

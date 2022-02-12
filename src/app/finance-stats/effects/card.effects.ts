@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Actions, Effect, ofType } from '@ngrx/effects'
+import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { Action } from '@ngrx/store'
 import { CardService } from '../services/card.service'
 import {
@@ -14,8 +14,8 @@ import { Observable, of } from 'rxjs'
 @Injectable()
 export class CardEffects {
 
-  @Effect()
-  load$: Observable<Action> = this.actions$.pipe(
+  
+  load$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(CardActionsType.Load),
     switchMap(() =>
       this.service.list().pipe(
@@ -23,7 +23,7 @@ export class CardEffects {
         catchError(err => of(new LoadFail(err))),
       ),
     ),
-  )
+  ))
 
   constructor (
     private actions$: Actions,
