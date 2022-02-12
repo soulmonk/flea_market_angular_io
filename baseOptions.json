@@ -2,8 +2,8 @@
   "appName": "NDFSM app",
   "log": true,
   "apiServers": {
-    "auth": "http://localhost:3000/auth",
-    "ndfsmFleaMarket": "http://localhost:3000/ndfsm-flea-market",
-    "financeStats": "http://localhost:3000/finance-stats"
+    "auth": "https://auth.fallensoulmonk.org",
+    "ndfsmFleaMarket": "https://ndfsm-flea-market.fallensoulmonk.org",
+    "financeStats": "https://finance.fallensoulmonk.org"
   }
 }
