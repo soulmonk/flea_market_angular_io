@@ -4,8 +4,12 @@
     "outDir": "./dist/out-tsc",
     "baseUrl": "./",
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@env": ["src/environments/environment.ts"]
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@env": [
+        "src/environments/environment.ts"
+      ]
     },
     "sourceMap": true,
     "declaration": false,
@@ -25,6 +29,7 @@
       "es2018",
       "dom",
       "esnext.asynciterable"
-    ]
+    ],
+    "allowSyntheticDefaultImports": true
   }
 }
