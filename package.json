@@ -1,6 +1,6 @@
 {
   "name": "ndfsm_js",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "NDFSM frontend on Angular",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "@angular/platform-browser-dynamic": "^13.2.2",
     "@angular/router": "^13.2.2",
     "@angular/service-worker": "^13.2.2",
+    "@apollo/client": "^3.5.8",
     "@ngrx/effects": "^13.0.2",
     "@ngrx/entity": "^13.0.2",
     "@ngrx/router-store": "^13.0.2",
@@ -44,15 +45,14 @@
     "bootstrap": "^5.1.3",
     "core-js": "^3.21.0",
     "font-awesome": "^4.7.0",
+    "graphql": "^15.8.0",
     "jasmine": "^4.0.2",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "rxjs": "^7.5.4",
     "socket.io-client": "^4.4.1",
     "tslib": "^2.3.1",
-    "zone.js": "~0.11.4",
-    "graphql": "^15.8.0",
-    "@apollo/client": "^3.5.8"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.2.3",

@@ -49,8 +49,9 @@ export class AuthEffects {
     tap((login: LoginSuccess) => {
       this.authService.setToken(login.payload.token);
       localStorage.setItem('login', Date.now().toString());
-      // TODO redirect only from login page
-      // this.router.navigate(['/'])
+      if (login.fromLogin) {
+        this.router.navigate(['/']);
+      }
     }),
     map(() => new GetUserInfo()),
   ));
@@ -114,7 +115,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.RefreshToken),
     exhaustMap(() =>
       this.authService.refreshToken().pipe(
-        map((response) => new LoginSuccess(response)),
+        map((response) => new LoginSuccess(response, false)),
         catchError(error => of(new RefreshTokenFailure(error))),
       ),
     ),

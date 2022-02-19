@@ -23,6 +23,9 @@ COPY package.json .
 # TODO pear dependecyfor appolo angular
 RUN npm install --force
 
+## speed up?
+#RUN ngcc
+
 # Bundle app source
 COPY . .
 

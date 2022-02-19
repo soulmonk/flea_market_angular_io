@@ -47,7 +47,6 @@ export class TransactionService {
   }
 
   listFull(): Observable<ITransaction[]> {
-    console.log('transaction.service.ts::listFull::50 >>>', '');
     return this.apollo.query({
       query: gql`query listTransactions {
         transactions ${FULL_RESPONSE}

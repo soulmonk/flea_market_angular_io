@@ -58,4 +58,3 @@ export const {
   selectEntities: getTransactionEntities,
   selectAll: getAllTransaction,
 } = adapter.getSelectors(getTransactionEntitiesState);
-
