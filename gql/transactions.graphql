@@ -1,0 +1,69 @@
+query listTransactions {
+  transactions {
+    id
+    date
+    description
+    amount
+    type {
+      id
+      name
+      description
+    }
+    note
+    currencyCode
+    card {
+      id
+      name
+      validFrom
+      validTo
+      currencyCode
+      bank {
+        id
+        name
+        url
+      }
+      description
+    }
+    info {
+      id
+      blockedAmount
+      fixedAmount
+      currencyExchange
+    }
+  }
+}
+
+mutation createTransaction($transaction: TransactionCreate) {
+  addTransaction(transaction: $transaction) {
+    id
+    date
+    description
+    amount
+    type {
+      id
+      name
+      description
+    }
+    note
+    currencyCode
+    card {
+      id
+      name
+      validFrom
+      validTo
+      currencyCode
+      bank {
+        id
+        name
+        url
+      }
+      description
+    }
+    info {
+      id
+      blockedAmount
+      fixedAmount
+      currencyExchange
+    }
+  }
+}

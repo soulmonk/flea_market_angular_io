@@ -1,10 +1,12 @@
-import {Apollo, gql} from 'apollo-angular';
+import {Apollo, gql, QueryRef} from 'apollo-angular';
 import {Injectable} from '@angular/core';
 
 
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ITransaction} from '../models/transaction';
+import {ApolloQueryResult} from '@apollo/client';
+import {EmptyObject} from 'apollo-angular/types';
 import {IStats} from '@app/finance-stats/models/stats';
 import {ITransactionFilter} from '@app/finance-stats/models/transaction-filter';
 
@@ -66,6 +68,14 @@ export class TransactionService {
     }).pipe(map(({data}) =>
       (data as any).transactions as ITransaction[],
     ));
+  }
+
+  watchTransactions(): QueryRef<any, EmptyObject> {
+    return this.apollo.watchQuery({
+      query: gql`query listTransactions {
+        transactions ${FULL_RESPONSE}
+      }`,
+    });
   }
 
   stats(filter): Observable<IStats[]> {

@@ -5,6 +5,7 @@ import {HttpLink} from 'apollo-angular/http';
 import {environment} from '@env';
 import {setContext} from '@apollo/client/link/context';
 import {AuthService} from '@app/auth/services/auth.service';
+import {ListTransactionsGQL} from '../../generated/graphql';
 
 const uri = environment.apiServers.financeStats + '/graphql';
 
@@ -38,7 +39,7 @@ export function createApollo(httpLink: HttpLink, authService: AuthService) {
       useFactory: createApollo,
       deps: [HttpLink, AuthService],
     },
-    // ListTransactionsGQL,
+    ListTransactionsGQL,
   ],
 })
 export class GraphQLModule {
