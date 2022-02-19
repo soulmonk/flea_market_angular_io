@@ -9,7 +9,7 @@ import {OpenEditDialog} from '@app/finance-stats/actions/transactions.actions';
   templateUrl: './transaction-list.component.html',
 })
 export class TransactionListComponent {
-  trackByFn = trackByFn;
+  displayedColumns = ['date', 'description', 'amount', 'type', 'note', 'card', 'actions'];
 
   @Input() transactions: ITransaction[] = [];
 
