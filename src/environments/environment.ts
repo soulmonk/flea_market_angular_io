@@ -1,14 +1,13 @@
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `.angular-cli.json`.
-
 const packageJson = require('../../package.json');
 const baseOptions = require('../../baseOptions.json');
 
 export const environment = {
   appName: 'extended',
   ...baseOptions,
+  apiServers: {
+    auth: 'http://localhost:3030',
+    financeStats: 'http://localhost:3031'
+  },
   envName: 'DEV',
   hmr: false,
   production: false,

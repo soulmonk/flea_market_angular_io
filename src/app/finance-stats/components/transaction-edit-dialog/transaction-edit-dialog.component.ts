@@ -9,9 +9,9 @@ import {ITransactionType} from '../../models/transaction-type';
 import {Observable} from 'rxjs';
 
 @Component({
-  templateUrl: './edit-dialog.component.html',
+  templateUrl: './transaction-edit-dialog.component.html',
 })
-export class EditDialogComponent {
+export class TransactionEditDialogComponent {
 
   form: FormGroup = new FormGroup({
     description: new FormControl('', [Validators.required]),
@@ -19,11 +19,11 @@ export class EditDialogComponent {
     type: new FormControl('', [Validators.required]),
 
     note: new FormControl('', []),
-    currencyCode: new FormControl('', []), // todo user preferencies
+    currencyCode: new FormControl('', []), // todo user preferences
 
     card: new FormControl(0, []), // todo from list
 
-    date: new FormControl(null, []), // todo date validatoer
+    date: new FormControl(null, []), // todo date validator
 
     // info: new FormGroup({
     //   blockedAmount: new FormControl(0, [Validators.required]),
@@ -37,14 +37,22 @@ export class EditDialogComponent {
   transactionTypes$: Observable<ITransactionType[]>;
   cards$: Observable<ICard[]>;
 
+  currencyCodes = ['UAH', 'USD', 'EUR', 'DKK'];
+
   constructor(
-    public dialogRef: MatDialogRef<EditDialogComponent>,
+    public dialogRef: MatDialogRef<TransactionEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private store: Store) {
     this.isNew = !data.id;
 
     this.transactionTypes$ = this.store.pipe(select(getAllTransactionType));
     this.cards$ = this.store.pipe(select(getAllCard));
+
+    this.form.patchValue({
+      ...data,
+      type: data.type?.id,
+      card: data.card?.id,
+    });
   }
 
   onNoClick(): void {

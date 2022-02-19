@@ -15,15 +15,21 @@ import {TransactionEffects} from './effects/transaction.effects';
 import {TransactionTypeEffects} from './effects/transaction-type.effects';
 import {CardEffects} from './effects/card.effects';
 import {TransactionListComponent} from './components/transaction-list/transaction-list.component';
-import {EditDialogComponent} from './components/edit-dialog/edit-dialog.component';
+import {TransactionEditDialogComponent} from './components/transaction-edit-dialog/transaction-edit-dialog.component';
 import {TransactionFilterComponent} from './components/transaction-filter/transaction-filter.component';
+import {TransactionTypePageComponent} from '@app/finance-stats/containers/transaction-type-page/transaction-type-page.component';
+import {
+  TransactionTypeEditDialogComponent
+} from '@app/finance-stats/components/transaction-type-edit-dialog/transaction-type-edit-dialog.component';
 
 @NgModule({
   declarations: [
     TransactionPageComponent,
+    TransactionTypePageComponent,
     TransactionListComponent,
     DashboardComponent,
-    EditDialogComponent,
+    TransactionEditDialogComponent,
+    TransactionTypeEditDialogComponent,
     TransactionFilterComponent
   ],
   imports: [

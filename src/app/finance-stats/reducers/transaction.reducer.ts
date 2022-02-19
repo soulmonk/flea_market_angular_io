@@ -24,6 +24,11 @@ export function reducer(state = initialState, action: TransactionActions) {
       return {
         ...adapter.addMany(action.payload, state),
       };
+    case TransactionActionsType.Load:
+    case TransactionActionsType.FilterChange:
+      return {
+        ...adapter.removeAll(state),
+      };
     case TransactionActionsType.CreateSuccess:
       return {
         ...adapter.addOne(action.payload, state),
@@ -58,4 +63,3 @@ export const {
   selectEntities: getTransactionEntities,
   selectAll: getAllTransaction,
 } = adapter.getSelectors(getTransactionEntitiesState);
-

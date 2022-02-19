@@ -120,4 +120,4 @@ export type TransactionTypeActions =
   | RemoveFail
   | OpenEditDialog
   | DismissEditDialog
-  | DetailsDialog
+  | DetailsDialog;

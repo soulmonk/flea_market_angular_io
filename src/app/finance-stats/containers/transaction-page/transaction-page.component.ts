@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {ITransaction} from '../../models/transaction';
 import {getAllTransaction} from '../../reducers/transaction.reducer';
 import {Load, OpenEditDialog} from '../../actions/transactions.actions';
-import {getLoggedIn} from '@app/auth/reducers';
 import {Load as LoadTransactionType} from '../../actions/transaction-type.actions';
 import {Load as LoadCard} from '../../actions/card.actions';
 
@@ -14,11 +13,9 @@ import {Load as LoadCard} from '../../actions/card.actions';
 })
 export class TransactionPageComponent implements OnInit {
   transactions$: Observable<ITransaction[]>;
-  loggedIn$: Observable<boolean>;
 
   constructor(public store: Store<any>) {
     this.transactions$ = this.store.pipe(select(getAllTransaction));
-    this.loggedIn$ = this.store.pipe(select(getLoggedIn));
   }
 
   ngOnInit(): void {

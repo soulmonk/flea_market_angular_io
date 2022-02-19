@@ -26,7 +26,7 @@ export class Login implements Action {
 export class LoginSuccess implements Action {
   readonly type = AuthActionTypes.LoginSuccess;
 
-  constructor(public payload: UserTokenResponse) {
+  constructor(public payload: UserTokenResponse, public fromLogin: boolean = true) {
   }
 }
 
