@@ -1,3 +1,26 @@
 <div>
-  dateFrom: DateTime, dateTo: DateTime, limit: Int = 20, offset: Int
+  <form [formGroup]="filter" (ngSubmit)="apply()">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="dateFrom" placeholder="Start date">
+        <input matEndDate formControlName="dateTo" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-error *ngIf="filter.controls.dateFrom.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="filter.controls.dateTo.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+    <mat-form-field class="fill">
+      <input type="number" matInput tabindex="1" placeholder="Limit" formControlName="limit">
+    </mat-form-field>
+    <mat-form-field class="fill">
+      <input type="number" matInput tabindex="1" placeholder="Offset" formControlName="offset">
+    </mat-form-field>
+    <div class="mat-form-field fill">
+      <button mat-raised-button color="primary" type="submit" tabindex="10">Apply</button>
+      <button mat-raised-button type="button" (click)="reset()" tabindex="-1">Reset</button>
+    </div>
+  </form>
 </div>

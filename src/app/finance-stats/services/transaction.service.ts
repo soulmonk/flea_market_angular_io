@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ITransaction} from '../models/transaction';
 import {IStats} from '@app/finance-stats/models/stats';
+import {ITransactionFilter} from '@app/finance-stats/models/transaction-filter';
 
 const FULL_RESPONSE = `{
   id
@@ -47,11 +48,26 @@ export class TransactionService {
   constructor(private apollo: Apollo) {
   }
 
-  listFull(): Observable<ITransaction[]> {
+  listFull(filter: ITransactionFilter = null): Observable<ITransaction[]> {
+    // let action = 'listTransactions';
+    // let arguments = '';
+    let variables = {};
+    if (filter) {
+      // action += '($dateFrom: Date, $dateTo: Date, $limit: Int, $offset: Int)';
+      // arguments += '(dateFrom: $dateFrom, dateTo: $dateTo, limit: $limit, offset: $offset)';
+      variables = {
+        dateFrom: filter.dateFrom,
+        dateTo: filter.dateTo,
+        limit: filter.limit,
+        offset: filter.offset,
+      };
+    }
+    console.log('transaction.service.ts::listFull::65 >>>', variables);
     return this.apollo.query({
-      query: gql`query listTransactions {
-        transactions ${FULL_RESPONSE}
+      query: gql`query listTransactions($dateFrom: DateTime, $dateTo: DateTime, $limit: Int, $offset: Int) {
+        transactions(dateFrom: $dateFrom, dateTo: $dateTo, limit: $limit, offset: $offset) ${FULL_RESPONSE}
       }`,
+      variables
     }).pipe(map(({data}) =>
       (data as any).transactions as ITransaction[],
     ));
