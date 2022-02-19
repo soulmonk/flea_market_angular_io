@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {Authenticate} from '../models/user';
 
@@ -67,7 +67,7 @@ import {Authenticate} from '../models/user';
   `,
   ],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
   @Input()
   set pending(isPending: boolean) {
     if (isPending) {
@@ -86,11 +86,7 @@ export class LoginFormComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+  constructor() {}
 
   submit() {
     if (this.form.valid) {

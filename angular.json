@@ -7,7 +7,6 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -140,9 +139,21 @@
               "devServerTarget": "cuppa-web:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "ndfsm-frontend"
+  "defaultProject": "ndfsm-frontend",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

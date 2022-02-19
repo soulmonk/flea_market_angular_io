@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Store, select} from '@ngrx/store';
+import {Component} from '@angular/core';
+import {select, Store} from '@ngrx/store';
 import {Authenticate} from '../models/user';
 import * as fromAuth from '../reducers';
 import * as Auth from '../actions/auth';
@@ -14,15 +14,11 @@ import * as Auth from '../actions/auth';
   `,
   styles: [],
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   pending$ = this.store.pipe(select(fromAuth.getLoginPagePending));
   error$ = this.store.pipe(select(fromAuth.getLoginPageError));
 
-  constructor(private store: Store<fromAuth.State>) {
-  }
-
-  ngOnInit() {
-  }
+  constructor(private store: Store<fromAuth.State>) {}
 
   onSubmit($event: Authenticate) {
     this.store.dispatch(new Auth.Login($event));

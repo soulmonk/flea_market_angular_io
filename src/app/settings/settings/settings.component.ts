@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {Store} from '@ngrx/store';
 
 import {actionChangeTheme, selectorSettings} from '../settings.reducer';
@@ -9,7 +9,7 @@ import {takeUntil} from 'rxjs/operators';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit, OnDestroy {
+export class SettingsComponent implements OnDestroy {
   theme: string;
   themes = [
     {value: 'DEFAULT-THEME', label: 'Default'},
@@ -20,9 +20,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<any>) {
     store.select(selectorSettings).pipe(takeUntil(this.unsubscribe$)).subscribe(({theme}) => (this.theme = theme));
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy(): void {

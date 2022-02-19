@@ -1,16 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'ndfsm-spelling',
   templateUrl: './spelling.component.html',
   styleUrls: ['./spelling.component.scss']
 })
-export class SpellingComponent implements OnInit {
+export class SpellingComponent {
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
+  constructor() {}
 }

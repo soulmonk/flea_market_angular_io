@@ -1,20 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {randomString} from '@app/utils';
 
 @Component({
   templateUrl: './random-string.component.html',
   styleUrls: ['./random-string.component.scss']
 })
-export class RandomStringComponent implements OnInit {
+export class RandomStringComponent {
   itemCount = 5;
   itemLength = 15;
   genItems: any[] = [];
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+  constructor() {}
 
   reset() {
     this.genItems = [];
