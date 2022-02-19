@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ITransaction} from '../models/transaction';
+import {IStats} from '@app/finance-stats/models/stats';
 
 const FULL_RESPONSE = `{
           id
@@ -56,10 +57,18 @@ export class TransactionService {
     ));
   }
 
-  stats(): Observable<ITransaction> {
+  stats(): Observable<IStats[]> {
     return this.apollo.query({
-      query: gql``,
-    }).pipe(map(({data}) => (data as any).stats as ITransaction));
+      query: gql`query total {
+        total {
+          type {
+            id
+            name
+          }
+          amount
+        }
+      }`,
+    }).pipe(map(({data}) => (data as any).total as IStats[]));
   }
 
   create(record: ITransaction): Observable<ITransaction> {

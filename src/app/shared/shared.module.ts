@@ -20,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule} from '@angular-material-components/datetime-picker';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatDatepickerModule,
     NgxMatNativeDateModule,
     NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule
+    NgxMatTimepickerModule,
+    MatTableModule,
   ],
   declarations: [],
   exports: [
@@ -74,7 +76,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatDatepickerModule,
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
-    NgxMatTimepickerModule
+    NgxMatTimepickerModule,
+    MatTableModule,
   ],
 })
 export class SharedModule {

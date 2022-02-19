@@ -26,7 +26,6 @@ export class TransactionEffects {
   load$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TransactionActionsType.Load),
     switchMap(() => {
-        console.log('transaction.effects.ts::::29 >>>', '');
         return this.transactionService.listFull().pipe(
           map((transactions: ITransaction[]) => new LoadSuccess(transactions)),
           catchError(err => of(new LoadFail(err))),
