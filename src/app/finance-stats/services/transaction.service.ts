@@ -8,37 +8,37 @@ import {ITransaction} from '../models/transaction';
 import {IStats} from '@app/finance-stats/models/stats';
 
 const FULL_RESPONSE = `{
-          id
-          date
-          description
-          amount
-          type {
-            id
-            name
-            description
-          }
-          note
-          currencyCode
-          card {
-            id
-            name
-            validFrom
-            validTo
-            currencyCode
-            bank {
-              id
-              name
-              url
-            }
-            description
-          }
-          info {
-            id
-            blockedAmount
-            fixedAmount
-            currencyExchange
-          }
-        }
+  id
+  date
+  description
+  amount
+  type {
+    id
+    name
+    description
+  }
+  note
+  currencyCode
+  card {
+    id
+    name
+    validFrom
+    validTo
+    currencyCode
+    bank {
+      id
+      name
+      url
+    }
+    description
+  }
+  info {
+    id
+    blockedAmount
+    fixedAmount
+    currencyExchange
+  }
+}
 `;
 
 @Injectable()
@@ -98,18 +98,18 @@ export class TransactionService {
       }`,
       variables: {
         transaction: {
+          id: record.id,
           amount: record.amount,
           card: record.card,
           currencyCode: record.currencyCode,
           date: record.date,
           description: record.description,
-          id: record.id,
           note: record.note,
           type: record.type,
         },
       }
     }).pipe(map(({data}) =>
-      (data as any).updateTrunsuction as ITransaction,
+      (data as any).updateTransaction as ITransaction,
     ));
   }
 }

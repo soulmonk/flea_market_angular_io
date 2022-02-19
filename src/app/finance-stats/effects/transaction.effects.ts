@@ -17,7 +17,7 @@ import {ITransaction} from '../models/transaction';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
-import {EditDialogComponent} from '../components/edit-dialog/edit-dialog.component';
+import {TransactionEditDialogComponent} from '../components/transaction-edit-dialog/transaction-edit-dialog.component';
 
 
 @Injectable()
@@ -36,7 +36,7 @@ export class TransactionEffects {
   openEditDialog$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(TransactionActionsType.OpenEditDialog),
     mergeMap((action: OpenEditDialog) => {
-      const dialogRef = this.dialog.open(EditDialogComponent, {
+      const dialogRef = this.dialog.open(TransactionEditDialogComponent, {
         // width: '500px',
         data: action.payload,
       });

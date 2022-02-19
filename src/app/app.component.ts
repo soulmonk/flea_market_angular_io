@@ -35,6 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
       children: [
         {link: 'finance/dashboard', label: 'Dashboard'},
         {link: 'finance/transaction', label: 'Transactions'},
+        {link: 'finance/transaction-types', label: 'TransactionTypes'},
       ]
     },
   ];

@@ -15,8 +15,7 @@ export class TransactionListComponent {
 
   @Input() canEdit = false;
 
-  constructor(public store: Store<any>) {
-  }
+  constructor(public store: Store<any>) {}
 
   edit(tx: ITransaction) {
     this.store.dispatch(new OpenEditDialog(tx));

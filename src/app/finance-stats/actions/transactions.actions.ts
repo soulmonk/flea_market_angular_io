@@ -42,16 +42,14 @@ export class LoadFail implements Action {
 export class Edit implements Action {
   readonly type = TransactionActionsType.Edit;
 
-  constructor(public payload: ITransaction) {
-  }
+  constructor(public payload: ITransaction) {}
 }
 
 export class EditFail implements Action {
   readonly type = TransactionActionsType.EditFail;
 
   // todo error interface
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 export class CreateSuccess implements Action {
