@@ -37,6 +37,8 @@ export class EditDialogComponent {
   transactionTypes$: Observable<ITransactionType[]>;
   cards$: Observable<ICard[]>;
 
+  currencyCodes = ['UAH', 'USD', 'EUR', 'DKK'];
+
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -45,6 +47,12 @@ export class EditDialogComponent {
 
     this.transactionTypes$ = this.store.pipe(select(getAllTransactionType));
     this.cards$ = this.store.pipe(select(getAllCard));
+
+    this.form.patchValue({
+      ...data,
+      type: data.type?.id,
+      card: data.card?.id,
+    });
   }
 
   onNoClick(): void {

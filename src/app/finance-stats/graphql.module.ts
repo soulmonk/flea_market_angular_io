@@ -23,6 +23,7 @@ const uri = environment.apiServers.financeStats + '/graphql';
     //   useFactory: createApollo,
     //   deps: [HttpLink],
     // },
+    // ListTransactionsGQL,
   ],
 })
 export class GraphQLModule {

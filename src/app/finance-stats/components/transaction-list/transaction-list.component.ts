@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {ITransaction} from '../../models/transaction';
 import {trackByFn} from '@app/utils';
+import {OpenEditDialog} from '@app/finance-stats/actions/transactions.actions';
 
 @Component({
   selector: 'ndfsm-transaction-list',
@@ -17,4 +18,7 @@ export class TransactionListComponent {
   constructor(public store: Store<any>) {
   }
 
+  edit(tx: ITransaction) {
+    this.store.dispatch(new OpenEditDialog(tx));
+  }
 }

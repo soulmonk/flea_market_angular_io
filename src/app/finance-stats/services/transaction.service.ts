@@ -84,9 +84,21 @@ export class TransactionService {
 
   update(record: ITransaction): Observable<ITransaction> {
     return this.apollo.mutate({
-      mutation: gql`{
-
+      mutation: gql`mutation updateTransaction($transaction: TransactionUpdate){
+        updateTransaction(transaction: $transaction) ${FULL_RESPONSE}
       }`,
+      variables: {
+        transaction: {
+          amount: record.amount,
+          card: record.card,
+          currencyCode: record.currencyCode,
+          date: record.date,
+          description: record.description,
+          id: record.id,
+          note: record.note,
+          type: record.type,
+        },
+      }
     }).pipe(map(({data}) =>
       (data as any).updateTrunsuction as ITransaction,
     ));

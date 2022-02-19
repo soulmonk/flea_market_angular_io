@@ -5,8 +5,7 @@ export const environment = {
   appName: 'extended',
   ...baseOptions,
   apiServers: {
-    auth: 'https://auth.fallensoulmonk.org',
-    ndfsmFleaMarket: 'https://ndfsm-flea-market.fallensoulmonk.org',
+    auth: 'http://localhost:3030',
     financeStats: 'http://localhost:3031'
   },
   envName: 'DEV',

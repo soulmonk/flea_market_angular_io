@@ -17,4 +17,7 @@
     <div>Info: <span *ngIf="!transaction.info">none</span><span *ngIf="transaction.info">Blocked: {{transaction.info.blockedAmount}}, Fixed: {{transaction.info.fixedAmount}}</span>
     </div>
   </mat-card-content>
+  <mat-card-actions *ngIf="canEdit">
+    <button mat-raised-button color="primary" (click)="edit(transaction)">edit</button>
+  </mat-card-actions>
 </mat-card>

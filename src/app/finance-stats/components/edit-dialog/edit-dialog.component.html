@@ -8,25 +8,38 @@
       <input type="number" matInput tabindex="1" placeholder="Amount" formControlName="amount">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input type="number" matInput tabindex="1" placeholder="Type" formControlName="type">
-      <span>should be select</span>
-      <span *ngFor="let item of transactionTypes$ | async">{{item.id}}: {{item.name}}&nbsp;</span>
+      <mat-select placeholder="Type" formControlName="type">
+        <mat-option *ngFor="let item of transactionTypes$ | async" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Currency code" formControlName="currencyCode">
+        <mat-option *ngFor="let item of currencyCodes" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <textarea matInput tabindex="1" placeholder="Note" formControlName="note"></textarea>
     </mat-form-field>
 
-
     <mat-form-field class="full-width">
-      <input type="number" matInput tabindex="1" placeholder="Card" formControlName="card">
-      <span>should be select</span>
-      <span *ngFor="let item of cards$ | async">{{item.id}}: {{item.name}}</span>
+      <mat-select placeholder="Card" formControlName="card">
+        <mat-option *ngFor="let item of cards$ | async" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <input type="number" matInput tabindex="1" placeholder="Date" formControlName="date">
-      <span>should be datepicker</span>
+    <mat-form-field>
+      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="date">
+      <ngx-mat-datetime-picker #picker>
+      </ngx-mat-datetime-picker>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     </mat-form-field>
 
   </div>
