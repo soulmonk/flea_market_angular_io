@@ -49,12 +49,8 @@ export class TransactionService {
   }
 
   listFull(filter: ITransactionFilter = null): Observable<ITransaction[]> {
-    // let action = 'listTransactions';
-    // let arguments = '';
     let variables = {};
     if (filter) {
-      // action += '($dateFrom: Date, $dateTo: Date, $limit: Int, $offset: Int)';
-      // arguments += '(dateFrom: $dateFrom, dateTo: $dateTo, limit: $limit, offset: $offset)';
       variables = {
         dateFrom: filter.dateFrom,
         dateTo: filter.dateTo,
@@ -62,7 +58,6 @@ export class TransactionService {
         offset: filter.offset,
       };
     }
-    console.log('transaction.service.ts::listFull::65 >>>', variables);
     return this.apollo.query({
       query: gql`query listTransactions($dateFrom: DateTime, $dateTo: DateTime, $limit: Int, $offset: Int) {
         transactions(dateFrom: $dateFrom, dateTo: $dateTo, limit: $limit, offset: $offset) ${FULL_RESPONSE}
@@ -73,17 +68,22 @@ export class TransactionService {
     ));
   }
 
-  stats(): Observable<IStats[]> {
+  stats(filter): Observable<IStats[]> {
     return this.apollo.query({
-      query: gql`query total {
-        total {
+      query: gql`query total($dateFrom: DateTime, $dateTo: DateTime) {
+        total(dateFrom: $dateFrom, dateTo: $dateTo) {
           type {
             id
             name
           }
+          currencyCode
           amount
         }
       }`,
+      variables: {
+        dateFrom: filter.dateFrom,
+        dateTo: filter.dateTo,
+      }
     }).pipe(map(({data}) => (data as any).total as IStats[]));
   }
 

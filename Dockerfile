@@ -18,13 +18,12 @@ RUN apk update && apk add bash python3 g++ make
 WORKDIR /usr/src/app
 
 RUN npm i -g npm
+
 COPY package.json .
+COPY package-lock.json .
 
 # TODO pear dependecyfor appolo angular
 RUN npm install --force
-
-## speed up?
-#RUN ngcc
 
 # Bundle app source
 COPY . .

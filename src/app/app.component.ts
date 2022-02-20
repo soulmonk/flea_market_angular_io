@@ -3,7 +3,7 @@ import {Title} from '@angular/platform-browser';
 import {ActivationEnd, Router} from '@angular/router';
 import {select, Store} from '@ngrx/store';
 import {environment as env} from '@env';
-import {selectorSettings} from '@app/settings';
+import {loadTheme, selectorSettings} from '@app/settings';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import * as fromAuth from '@app/auth/reducers';
 import * as Auth from '@app/auth/actions/auth';
@@ -11,6 +11,7 @@ import {RefreshToken} from '@app/auth/actions/auth';
 import {Observable, Subject} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 import {User} from '@app/auth/models/user';
+import {SwUpdate} from '@angular/service-worker';
 
 @Component({
   selector: 'ndfsm-root',
@@ -55,6 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private titleService: Title) {
 
     this.store.dispatch(new RefreshToken(true));
+    this.store.dispatch(loadTheme());
 
     this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
     this.userName$ = this.store.pipe(select(fromAuth.getUser));
