@@ -1,39 +1,39 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Action} from '@ngrx/store';
-import {CardService} from '../services/card.service';
+import {BankService} from '../services/bank.service';
 import {
-  CardActionsType,
-  LoadFail,
-  LoadSuccess,
+  BankActionsType,
   CreateSuccess,
   DismissEditDialog,
-  Edit, EditFail,
+  Edit,
+  EditFail,
+  LoadFail,
+  LoadSuccess,
   OpenEditDialog,
-  UpdateSuccess
-} from '../actions/card.actions';
-import {ICard} from '../models/card';
+  UpdateSuccess,
+} from '../actions/bank.actions';
+import {IBank} from '../models/bank';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
+import {BankEditDialogComponent} from '../components/bank-edit-dialog/bank-edit-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
-import {CardEditDialogComponent} from '../components/card-edit-dialog/card-edit-dialog.component';
 
 @Injectable()
-export class CardEffects {
+export class BankEffects {
   load$: Observable<Action> = createEffect(() => this.actions$.pipe(
-    ofType(CardActionsType.Load),
-    switchMap(() =>
-      this.service.list().pipe(
-        map((cards: ICard[]) => new LoadSuccess(cards)),
+    ofType(BankActionsType.Load),
+    switchMap(() => this.service.list().pipe(
+        map((banks: IBank[]) => new LoadSuccess(banks)),
         catchError(err => of(new LoadFail(err))),
       ),
     ),
   ));
 
   openEditDialog$: Observable<Action> = createEffect(() => this.actions$.pipe(
-    ofType(CardActionsType.OpenEditDialog),
+    ofType(BankActionsType.OpenEditDialog),
     mergeMap((action: OpenEditDialog) => {
-      const dialogRef = this.dialog.open(CardEditDialogComponent, {
+      const dialogRef = this.dialog.open(BankEditDialogComponent, {
         // width: '500px',
         data: action.payload,
       });
@@ -42,19 +42,19 @@ export class CardEffects {
           if (!result) {
             return new DismissEditDialog();
           }
-          return new Edit(result as ICard);
+          return new Edit(result as IBank);
         }),
       );
     }),
   ));
 
   edit$: Observable<Action> = createEffect(() => this.actions$.pipe(
-    ofType(CardActionsType.Edit),
+    ofType(BankActionsType.Edit),
     map((action: Edit) => action.payload),
-    switchMap((record: ICard) => {
+    switchMap((record: IBank) => {
       const isNew = !record.id;
       return this.service.save(record).pipe(
-        map((result: ICard) => isNew
+        map((result: IBank) => isNew
           ? new CreateSuccess(result)
           : new UpdateSuccess({id: record.id, changes: result})),
         catchError(err => of(new EditFail(err))),
@@ -64,7 +64,7 @@ export class CardEffects {
 
   constructor(
     private actions$: Actions,
-    private service: CardService,
+    private service: BankService,
     public dialog: MatDialog) {
   }
 }

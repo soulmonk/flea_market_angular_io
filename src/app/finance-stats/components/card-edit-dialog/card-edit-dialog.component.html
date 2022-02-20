@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{isNew ? 'Create' : 'Edit'}}</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div mat-dialog-content>
+    <mat-form-field class="full-width">
+      <input type="text" matInput tabindex="1" placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Currency code" formControlName="currencyCode">
+        <mat-option *ngFor="let item of currencyCodes" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Valid from (will be removed)</mat-label>
+      <input matInput [matDatepicker]="pickerFrom" formControlName="validFrom">
+      <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valid to</mat-label>
+      <input matInput [matDatepicker]="pickerTo" formControlName="validTo">
+      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Bank" formControlName="bank">
+        <mat-option *ngFor="let item of banks$ | async" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button type="submit" tabindex="10">{{isNew ? 'Save' : 'Update'}}</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</form>

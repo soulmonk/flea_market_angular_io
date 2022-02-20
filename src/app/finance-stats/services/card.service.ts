@@ -31,4 +31,32 @@ export class CardService {
       return (data as any).cards as ICard[];
     }));
   }
+  save(record: ICard): Observable<ICard> {
+    if (record.id === undefined) {
+      return this.create(record);
+    }
+    throw new Error('Not implemented');
+  }
+
+  create(record: ICard): Observable<ICard> {
+    return this.apollo.mutate({
+      mutation: gql`mutation createCard($card: CardCreate) {
+        addCard(card: $card) {
+          id
+          name
+          bank {
+            name
+          }
+          currencyCode
+          validFrom
+          validTo
+        }
+      }`,
+      variables: {
+        card: record,
+      }
+    }).pipe(map(({data}) =>
+      (data as any).addCard as ICard,
+    ));
+  }
 }

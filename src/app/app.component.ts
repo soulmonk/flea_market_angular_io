@@ -37,6 +37,8 @@ export class AppComponent implements OnInit, OnDestroy {
         {link: 'finance/dashboard', label: 'Dashboard'},
         {link: 'finance/transaction', label: 'Transactions'},
         {link: 'finance/transaction-types', label: 'TransactionTypes'},
+        {link: 'finance/cards', label: 'Cards'},
+        {link: 'finance/banks', label: 'Banks'},
       ]
     },
   ];
