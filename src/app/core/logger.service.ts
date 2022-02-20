@@ -4,8 +4,7 @@ import {environment} from '@env';
 @Injectable({providedIn: 'root'})
 export class LoggerService {
 
-  constructor() {
-  }
+  constructor() {}
 
   log(...args) {
     if (environment.log) {

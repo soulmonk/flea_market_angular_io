@@ -11,10 +11,15 @@ export const initialState: State = {
 export const SETTINGS_KEY = 'SETTINGS';
 export const SETTINGS_CHANGE_THEME = 'SETTINGS_CHANGE_THEME';
 export const SETTINGS_LOAD_THEME = 'SETTINGS_LOAD_THEME';
+export const SETTINGS_LOAD_THEME_ERROR = 'SETTINGS_LOAD_THEME_ERROR';
 
 export const actionChangeTheme = (theme: string) => ({
   type: SETTINGS_CHANGE_THEME,
   payload: theme
+});
+
+export const loadTheme = () => ({
+  type: SETTINGS_LOAD_THEME,
 });
 
 export const selectorSettings = state => state.settings || {theme: ''};
