@@ -7,6 +7,7 @@ import {getAllTransactionType} from '../../reducers/transaction-type.reducer';
 import {ICard} from '../../models/card';
 import {ITransactionType} from '../../models/transaction-type';
 import {Observable} from 'rxjs';
+import {Load as LoadBank} from '@app/finance-stats/actions/bank.actions';
 
 @Component({
   templateUrl: './transaction-edit-dialog.component.html',
@@ -21,7 +22,7 @@ export class TransactionEditDialogComponent {
     note: new FormControl('', []),
     currencyCode: new FormControl('', []), // todo user preferences
 
-    card: new FormControl(0, []), // todo from list
+    card: new FormControl(null, []), // todo from list
 
     date: new FormControl(null, []), // todo date validator
 

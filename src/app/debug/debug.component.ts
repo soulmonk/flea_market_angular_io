@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {DebugService} from './debug.service';
 import {environment} from '@env';
+import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 
 @Component({
   selector: 'ndfsm-debug',
@@ -15,6 +16,10 @@ export class DebugComponent implements OnInit {
 
   isEnabled = DebugService.isDebug() && !environment.production;
   open = false;
+
+  form: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+  });
 
   constructor(private _debugService: DebugService, private _changeDetectorRef: ChangeDetectorRef) {
   }
@@ -34,6 +39,16 @@ export class DebugComponent implements OnInit {
   //   }
   // }
 
+  formErrors () {
+    Object.keys(this.form.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.form.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+        });
+      }
+    });
+  }
   ngOnInit() {
     setInterval(() => {
       this.open = !!(<any> window).debugDialogOpen;

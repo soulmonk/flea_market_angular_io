@@ -17,10 +17,14 @@ import {CardEffects} from './effects/card.effects';
 import {TransactionListComponent} from './components/transaction-list/transaction-list.component';
 import {TransactionEditDialogComponent} from './components/transaction-edit-dialog/transaction-edit-dialog.component';
 import {TransactionFilterComponent} from './components/transaction-filter/transaction-filter.component';
-import {TransactionTypePageComponent} from '@app/finance-stats/containers/transaction-type-page/transaction-type-page.component';
-import {
-  TransactionTypeEditDialogComponent
-} from '@app/finance-stats/components/transaction-type-edit-dialog/transaction-type-edit-dialog.component';
+import {TransactionTypePageComponent} from './containers/transaction-type-page/transaction-type-page.component';
+import {TransactionTypeEditDialogComponent} from './components/transaction-type-edit-dialog/transaction-type-edit-dialog.component';
+import {CardPageComponent} from './containers/card-page/card-page.component';
+import {BankPageComponent} from './containers/bank-page/bank-page.component';
+import {BankService} from './services/bank.service';
+import {BankEffects} from './effects/bank.effects';
+import {CardEditDialogComponent} from './components/card-edit-dialog/card-edit-dialog.component';
+import {BankEditDialogComponent} from './components/bank-edit-dialog/bank-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,19 +34,24 @@ import {
     DashboardComponent,
     TransactionEditDialogComponent,
     TransactionTypeEditDialogComponent,
-    TransactionFilterComponent
+    TransactionFilterComponent,
+    CardPageComponent,
+    CardEditDialogComponent,
+    BankPageComponent,
+    BankEditDialogComponent,
   ],
   imports: [
     SharedModule,
     FinanceStatsRoutingModule,
     GraphQLModule,
     StoreModule.forFeature('finance-stats', reducers),
-    EffectsModule.forFeature([TransactionEffects, CardEffects, TransactionTypeEffects])
+    EffectsModule.forFeature([TransactionEffects, CardEffects, TransactionTypeEffects, BankEffects])
   ],
   providers: [
     TransactionService,
     TransactionTypeService,
     CardService,
+    BankService,
   ],
 })
 export class FinanceStatsModule {
