@@ -1,4 +1,4 @@
-FROM node:16-alpine AS BUILD_SERVER
+FROM node:18-alpine AS BUILD_SERVER
 
 RUN apk update && apk add bash python3 g++ make
 
@@ -8,9 +8,10 @@ WORKDIR /usr/src/app
 # Bundle app source
 COPY ./server .
 
-RUN npm install --production
+RUN --mount=target=/usr/src/app/node_modules,type=cache \
+    npm ci --omit=dev
 
-FROM node:16-alpine AS BUILD_WEB
+FROM node:18-alpine AS BUILD_WEB
 
 RUN apk update && apk add bash python3 g++ make
 
@@ -22,19 +23,23 @@ RUN npm i -g npm
 COPY package.json .
 COPY package-lock.json .
 
-# TODO pear dependecyfor appolo angular
-RUN npm install --force
+RUN --mount=target=/usr/src/app/node_modules,type=cache \
+    npm ci
 
 # Bundle app source
 COPY . .
 
-RUN npm run build:prod
+RUN --mount=target=/usr/src/app/.angular,type=cache \
+    --mount=target=/usr/src/app/dist,type=cache \
+     npm run build:prod
 
-FROM node:16-alpine
+RUN ls /usr/src/app/dist
+
+FROM node:18-alpine
 WORKDIR /usr/src/app
 
 COPY --from=BUILD_SERVER /usr/src/app/ ./
-COPY --from=BUILD_WEB /usr/src/app/dist/ndfsm-frontend ./dist
+COPY ./dist/ndfsm-frontend ./dist
 
 EXPOSE 3500
 # npm to dirrect node command
