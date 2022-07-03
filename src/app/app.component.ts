@@ -49,6 +49,8 @@ export class AppComponent implements OnInit, OnDestroy {
   loggedIn$: Observable<boolean>;
   userName$: Observable<User>;
 
+  isOnline: boolean = true;
+
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -65,6 +67,22 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    if (typeof Worker !== 'undefined') {
+      // Create a new
+      const worker = new Worker(new URL('../.worker', import.meta.url));
+      worker.onmessage = ({ data }) => {
+        console.log(`page got message: ${data}`);
+      };
+      worker.postMessage('hello');
+    } else {
+      // Web workers are not supported in this environment.
+      // You should add a fallback so that your program still executes correctly.
+    }
+
+    window.addEventListener('online',  this.updateOnlineStatus.bind(this));
+    window.addEventListener('offline', this.updateOnlineStatus.bind(this));
+
+
     // TODO extract
     document.getElementById('global-spinner').setAttribute('style', 'display: none;');
 
@@ -86,6 +104,11 @@ export class AppComponent implements OnInit, OnDestroy {
         title ? `${title} - ${env.appName}` : env.appName,
       );
     });
+  }
+
+  private updateOnlineStatus(): void {
+    this.isOnline = window.navigator.onLine;
+    console.info(`isOnline=[${this.isOnline}]`);
   }
 
   ngOnDestroy(): void {

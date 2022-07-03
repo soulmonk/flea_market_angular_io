@@ -42,7 +42,8 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
@@ -125,7 +126,8 @@
               },
               "src/favicon.ico",
               "src/manifest.webmanifest"
-            ]
+            ],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           }
         },
         "e2e": {
