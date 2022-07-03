@@ -1,0 +1,2 @@
+https://github.com/apollographql/apollo-cache-persist#storage-providers
+https://apollo-angular.com/docs/caching/advanced-topics
