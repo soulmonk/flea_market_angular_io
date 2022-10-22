@@ -93,7 +93,15 @@ export class TransactionService {
         addTransaction(transaction: $transaction) ${FULL_RESPONSE}
       }`,
       variables: {
-        transaction: record,
+        transaction: {
+          amount: record.amount,
+          card: record.card,
+          currencyCode: record.currencyCode,
+          date: record.date,
+          description: record.description,
+          note: record.note,
+          type: record.type,
+        },
       }
     }).pipe(map(({data}) =>
       (data as any).addTransaction as ITransaction,

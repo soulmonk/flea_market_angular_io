@@ -7,10 +7,26 @@ import {getAllTransactionType} from '../../reducers/transaction-type.reducer';
 import {ICard} from '../../models/card';
 import {ITransactionType} from '../../models/transaction-type';
 import {Observable} from 'rxjs';
-import {Load as LoadBank} from '@app/finance-stats/actions/bank.actions';
+import {environment as env} from '@env';
+import {ITransaction} from '@app/finance-stats/models/transaction';
 
 @Component({
   templateUrl: './transaction-edit-dialog.component.html',
+  styles: [`
+    .row {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .col {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .col:last-child {
+      margin-right: 0;
+    }
+  `],
 })
 export class TransactionEditDialogComponent {
 
@@ -22,7 +38,7 @@ export class TransactionEditDialogComponent {
     note: new UntypedFormControl('', []),
     currencyCode: new UntypedFormControl('', []), // todo user preferences
 
-    card: new UntypedFormControl(null, []), // todo from list
+    card: new UntypedFormControl(null, []),
 
     date: new UntypedFormControl(null, []), // todo date validator
 
@@ -38,11 +54,11 @@ export class TransactionEditDialogComponent {
   transactionTypes$: Observable<ITransactionType[]>;
   cards$: Observable<ICard[]>;
 
-  currencyCodes = ['UAH', 'USD', 'EUR', 'DKK'];
+  currencyCodes = env.currencyCodes;
 
   constructor(
     public dialogRef: MatDialogRef<TransactionEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: ITransaction,
     private store: Store) {
     this.isNew = !data.id;
 

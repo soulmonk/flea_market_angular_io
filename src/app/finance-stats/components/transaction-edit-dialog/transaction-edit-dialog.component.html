@@ -2,11 +2,13 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div mat-dialog-content>
     <mat-form-field class="full-width">
-      <input type="text" matInput tabindex="1" placeholder="Description" formControlName="description">
-    </mat-form-field>
-    <mat-form-field class="full-width">
       <input type="number" matInput tabindex="1" placeholder="Amount" formControlName="amount">
     </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" matInput tabindex="1" placeholder="Description" formControlName="description">
+    </mat-form-field>
+   
     <mat-form-field class="full-width">
       <mat-select placeholder="Type" formControlName="type">
         <mat-option *ngFor="let item of transactionTypes$ | async" [value]="item.id">
@@ -16,7 +18,7 @@
     </mat-form-field>
     
     <mat-form-field class="full-width">
-      <mat-select placeholder="Currency code" formControlName="currencyCode">
+      <mat-select placeholder="Currency code" formControlName="currencyCode" >
         <mat-option *ngFor="let item of currencyCodes" [value]="item">
           {{item}}
         </mat-option>

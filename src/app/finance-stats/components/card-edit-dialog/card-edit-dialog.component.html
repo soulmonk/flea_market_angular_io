@@ -15,14 +15,20 @@
       <mat-label>Valid from (will be removed)</mat-label>
       <input matInput [matDatepicker]="pickerFrom" formControlName="validFrom">
       <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
-      <mat-datepicker #pickerFrom></mat-datepicker>
+      <mat-datepicker #pickerFrom startView="multi-year"
+                      (monthSelected)="setMonthAndYear($event, pickerFrom, 'validFrom')"
+                      panelClass="example-month-picker"></mat-datepicker>
     </mat-form-field>
+
 
     <mat-form-field appearance="fill">
       <mat-label>Valid to</mat-label>
       <input matInput [matDatepicker]="pickerTo" formControlName="validTo">
       <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-      <mat-datepicker #pickerTo></mat-datepicker>
+      <mat-datepicker #pickerTo startView="multi-year"
+                      (monthSelected)="setMonthAndYear($event, pickerTo, 'validTo')"
+                      panelClass="example-month-picker"
+      ></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -32,7 +38,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    
+
   </div>
   <div mat-dialog-actions>
     <button mat-button type="submit" tabindex="10">{{isNew ? 'Save' : 'Update'}}</button>
