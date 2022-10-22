@@ -1,17 +1,17 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
   templateUrl: './edit-dialog.component.html',
 })
 export class EditDialogComponent {
 
-  form: FormGroup = new FormGroup({
-    title: new FormControl('', [Validators.required]),
-    text: new FormControl('', [Validators.required]),
-    description: new FormControl(''),
-    keywords: new FormControl(''), // TODO create plate component
+  form: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl('', [Validators.required]),
+    text: new UntypedFormControl('', [Validators.required]),
+    description: new UntypedFormControl(''),
+    keywords: new UntypedFormControl(''), // TODO create plate component
   });
 
   isNew: boolean;

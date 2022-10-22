@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {getAllCard} from '../../reducers/card.reducer';
 import {getAllTransactionType} from '../../reducers/transaction-type.reducer';
@@ -13,9 +13,9 @@ import {Observable} from 'rxjs';
 })
 export class TransactionTypeEditDialogComponent {
 
-  form: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    description: new FormControl('', []),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    description: new UntypedFormControl('', []),
   });
 
   isNew: boolean;

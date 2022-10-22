@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {getAllBank} from '../../reducers/bank.reducer';
@@ -11,12 +11,12 @@ import {IBank} from '../../models/bank';
 })
 export class CardEditDialogComponent {
 
-  form: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    bank: new FormControl('', [Validators.required]),
-    currencyCode: new FormControl('', [Validators.required]),
-    validFrom: new FormControl('', [Validators.required]),
-    validTo: new FormControl('', [Validators.required]),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    bank: new UntypedFormControl('', [Validators.required]),
+    currencyCode: new UntypedFormControl('', [Validators.required]),
+    validFrom: new UntypedFormControl('', [Validators.required]),
+    validTo: new UntypedFormControl('', [Validators.required]),
   });
   banks$: Observable<IBank[]>;
 

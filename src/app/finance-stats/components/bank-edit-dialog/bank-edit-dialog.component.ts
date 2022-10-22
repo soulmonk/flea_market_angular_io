@@ -1,15 +1,15 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
   templateUrl: './bank-edit-dialog.component.html',
 })
 export class BankEditDialogComponent {
 
-  form: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    url: new FormControl('', []),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    url: new UntypedFormControl('', []),
   });
 
   isNew: boolean;
