@@ -20,34 +20,6 @@ import {SwUpdate} from '@angular/service-worker';
 })
 export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('class') componentCssClass;
-  // TODO EXTRACT
-  navigation = [
-    {link: 'tools', label: 'Tools'},
-  ];
-  // navigationDev = [
-  //   { link: 'games', label: 'Games' },
-  //   { link: 'scripts', label: 'Scripts' },
-  // ]
-
-  // todo move to module
-  navigationUser = [
-    {
-      link: 'finance', label: 'Finance',
-      children: [
-        {link: 'finance/dashboard', label: 'Dashboard'},
-        {link: 'finance/transaction', label: 'Transactions'},
-        {link: 'finance/transaction-types', label: 'TransactionTypes'},
-        {link: 'finance/cards', label: 'Cards'},
-        {link: 'finance/banks', label: 'Banks'},
-      ]
-    },
-  ];
-  navigationSideMenu = [
-    ...this.navigation,
-    {link: 'settings', label: 'Settings'},
-  ];
-  loggedIn$: Observable<boolean>;
-  userName$: Observable<User>;
 
   private unsubscribe$: Subject<void> = new Subject<void>();
 
@@ -59,9 +31,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(new RefreshToken(true));
     this.store.dispatch(loadTheme());
-
-    this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
-    this.userName$ = this.store.pipe(select(fromAuth.getUser));
   }
 
   ngOnInit() {
@@ -91,9 +60,5 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  onLogoutClick() {
-    this.store.dispatch(new Auth.Logout());
   }
 }
