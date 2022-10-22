@@ -1,41 +1,49 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12"><h1>Finance</h1></div>
-  </div>
-  <form [formGroup]="filter" (ngSubmit)="loadStats()">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate formControlName="dateFrom" placeholder="Start date">
-        <input matEndDate formControlName="dateTo" placeholder="End date">
-      </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
+<div class="grid-container">
+  <h1 class="mat-h1">Finance</h1>
 
-      <mat-error *ngIf="filter.controls.dateFrom.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-      <mat-error *ngIf="filter.controls.dateTo.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-    </mat-form-field>
-    <div class="mat-form-field fill">
-      <button mat-raised-button color="primary" type="submit" tabindex="10">Apply</button>
-    </div>
-  </form>
-  <div class="row">
-    <table mat-table [dataSource]="stats" class="mat-elevation-z8">
+  <div class="mat-elevation-z8">
+    <form [formGroup]="filter" (ngSubmit)="loadStats()">
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="dateFrom" placeholder="Start date">
+              <input matEndDate formControlName="dateTo" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="filter.controls.dateFrom.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="filter.controls.dateTo.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <div class="mat-form-field fill">
+            <button mat-raised-button color="primary" type="submit" tabindex="10">Apply</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="stats" class="full-width" aria-label="Elements">
       <!-- Name Column -->
       <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef> Type name </th>
+        <th mat-header-cell *matHeaderCellDef> Type name</th>
         <td mat-cell *matCellDef="let element"> {{element.type.name}} </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <th mat-header-cell *matHeaderCellDef> Amount</th>
         <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="currencyCode">
-        <th mat-header-cell *matHeaderCellDef> Currency Code </th>
+        <th mat-header-cell *matHeaderCellDef> Currency Code</th>
         <td mat-cell *matCellDef="let element"> {{element.currencyCode}} </td>
       </ng-container>
 

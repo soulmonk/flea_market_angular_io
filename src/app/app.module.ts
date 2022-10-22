@@ -25,13 +25,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {CustomRouterStateSerializer} from '@app/shared/utils';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import { NavComponent } from './nav/nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+import {NavComponent} from './nav/nav.component';
 
 export const routerStateConfig: StoreRouterConfig = {
   stateKey: 'router', // state-slice name for routing state
@@ -64,12 +58,6 @@ export const routerStateConfig: StoreRouterConfig = {
     SettingsModule.forRoot(),
 
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-     LayoutModule,
-     MatToolbarModule,
-     MatButtonModule,
-     MatSidenavModule,
-     MatIconModule,
-     MatListModule,
   ],
   declarations: [
     AppComponent,
