@@ -14,7 +14,7 @@ import {AuthModule} from '@app/auth/auth.module';
 import {metaReducers, reducers} from '@app/reducers';
 import {StoreModule} from '@ngrx/store';
 import {
-  DefaultRouterStateSerializer,
+  FullRouterStateSerializer,
   NavigationActionTiming,
   RouterStateSerializer,
   StoreRouterConfig,
@@ -28,7 +28,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 
 export const routerStateConfig: StoreRouterConfig = {
   stateKey: 'router', // state-slice name for routing state
-  serializer: DefaultRouterStateSerializer,
+  serializer: FullRouterStateSerializer,
   navigationActionTiming: NavigationActionTiming.PostActivation
 };
 

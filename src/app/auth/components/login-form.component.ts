@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {UntypedFormGroup, UntypedFormControl} from '@angular/forms';
 import {Authenticate} from '../models/user';
 
 @Component({
@@ -81,9 +81,9 @@ export class LoginFormComponent {
 
   @Output() submitted = new EventEmitter<Authenticate>();
 
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    username: new UntypedFormControl(''),
+    password: new UntypedFormControl(''),
   });
 
   constructor() {}

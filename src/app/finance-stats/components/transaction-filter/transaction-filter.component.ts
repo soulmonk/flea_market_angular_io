@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {FilterChange, Load} from '@app/finance-stats/actions/transactions.actions';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {endOfDay, endOfMonth, startOfDay, startOfMonth} from 'date-fns';
 
 @Component({
@@ -14,11 +14,11 @@ import {endOfDay, endOfMonth, startOfDay, startOfMonth} from 'date-fns';
   templateUrl: './transaction-filter.component.html',
 })
 export class TransactionFilterComponent {
-  filter = new FormGroup({
-    dateFrom: new FormControl(startOfMonth(new Date())),
-    dateTo: new FormControl(endOfMonth(new Date())),
-    limit: new FormControl(20),
-    offset: new FormControl(),
+  filter = new UntypedFormGroup({
+    dateFrom: new UntypedFormControl(startOfMonth(new Date())),
+    dateTo: new UntypedFormControl(endOfMonth(new Date())),
+    limit: new UntypedFormControl(20),
+    offset: new UntypedFormControl(),
   });
 
   constructor(public store: Store<any>) {}

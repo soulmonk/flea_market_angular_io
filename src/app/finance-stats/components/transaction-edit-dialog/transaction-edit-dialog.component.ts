@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {getAllCard} from '../../reducers/card.reducer';
 import {getAllTransactionType} from '../../reducers/transaction-type.reducer';
@@ -14,17 +14,17 @@ import {Load as LoadBank} from '@app/finance-stats/actions/bank.actions';
 })
 export class TransactionEditDialogComponent {
 
-  form: FormGroup = new FormGroup({
-    description: new FormControl('', [Validators.required]),
-    amount: new FormControl(0, [Validators.required]),
-    type: new FormControl('', [Validators.required]),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    description: new UntypedFormControl('', [Validators.required]),
+    amount: new UntypedFormControl(0, [Validators.required]),
+    type: new UntypedFormControl('', [Validators.required]),
 
-    note: new FormControl('', []),
-    currencyCode: new FormControl('', []), // todo user preferences
+    note: new UntypedFormControl('', []),
+    currencyCode: new UntypedFormControl('', []), // todo user preferences
 
-    card: new FormControl(null, []), // todo from list
+    card: new UntypedFormControl(null, []), // todo from list
 
-    date: new FormControl(null, []), // todo date validator
+    date: new UntypedFormControl(null, []), // todo date validator
 
     // info: new FormGroup({
     //   blockedAmount: new FormControl(0, [Validators.required]),
