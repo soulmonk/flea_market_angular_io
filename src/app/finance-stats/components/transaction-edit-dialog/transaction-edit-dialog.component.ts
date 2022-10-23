@@ -72,8 +72,9 @@ export class TransactionEditDialogComponent {
     });
   }
 
-  onNoClick(): void {
+  onNoClick(): boolean {
     this.dialogRef.close();
+    return false;
   }
 
   submit() {
