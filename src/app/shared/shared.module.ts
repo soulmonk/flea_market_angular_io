@@ -24,6 +24,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
   ],
   declarations: [],
   exports: [
@@ -83,7 +87,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
   ],
 })
 export class SharedModule {

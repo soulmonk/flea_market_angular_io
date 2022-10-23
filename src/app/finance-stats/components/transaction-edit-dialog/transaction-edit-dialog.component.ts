@@ -9,12 +9,14 @@ import {ITransactionType} from '../../models/transaction-type';
 import {Observable} from 'rxjs';
 import {environment as env} from '@env';
 import {ITransaction} from '@app/finance-stats/models/transaction';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
   templateUrl: './transaction-edit-dialog.component.html',
   styles: [`
     .row {
       display: flex;
+      flex-wrap: wrap;
       flex-direction: row;
     }
 
@@ -81,7 +83,11 @@ export class TransactionEditDialogComponent {
     if (this.form.valid) {
       const formValues = this.form.value;
       // todo close after success
-      this.dialogRef.close({...this.data, ...formValues});
+      this.dialogRef.close({...this.data, ...formValues, card: formValues.card?.id});
     }
+  }
+
+  onCardChanged($event: MatSelectChange) {
+    this.form.controls.currencyCode.setValue($event.value.currencyCode);
   }
 }

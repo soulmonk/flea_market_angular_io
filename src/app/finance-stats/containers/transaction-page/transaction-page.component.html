@@ -3,11 +3,7 @@
 
   <ndfsm-transaction-filter></ndfsm-transaction-filter>
 
-  <div class="row">
-    <div>
-      <button mat-raised-button color="primary" (click)="create()">Create</button>
-    </div>
-  </div>
+  <button mat-raised-button color="primary" class="create-button" (click)="create()">Create</button>
 
   <ndfsm-transaction-list [transactions]="transactions$ | async"></ndfsm-transaction-list>
 </div>

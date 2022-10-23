@@ -1,50 +1,68 @@
 <h1 mat-dialog-title>{{isNew ? 'Create' : 'Edit'}}</h1>
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div mat-dialog-content>
-    <mat-form-field class="full-width">
-      <input type="number" matInput tabindex="1" placeholder="Amount" formControlName="amount">
-    </mat-form-field>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input type="number" matInput tabindex="1" placeholder="Amount" formControlName="amount">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Currency code" formControlName="currencyCode">
+            <mat-option *ngFor="let item of currencyCodes" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Type" formControlName="type">
+            <mat-option *ngFor="let item of transactionTypes$ | async" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input type="text" matInput tabindex="1" placeholder="Description" formControlName="description">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <textarea matInput tabindex="1" placeholder="Note" formControlName="note"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
 
-    <mat-form-field class="full-width">
-      <input type="text" matInput tabindex="1" placeholder="Description" formControlName="description">
-    </mat-form-field>
-   
-    <mat-form-field class="full-width">
-      <mat-select placeholder="Type" formControlName="type">
-        <mat-option *ngFor="let item of transactionTypes$ | async" [value]="item.id">
-          {{item.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    
-    <mat-form-field class="full-width">
-      <mat-select placeholder="Currency code" formControlName="currencyCode" >
-        <mat-option *ngFor="let item of currencyCodes" [value]="item">
-          {{item}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <textarea matInput tabindex="1" placeholder="Note" formControlName="note"></textarea>
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <mat-select placeholder="Card" formControlName="card">
-        <mat-option *ngFor="let item of cards$ | async" [value]="item.id">
-          {{item.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker"  formControlName="date">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Card" formControlName="card" (selectionChange)="onCardChanged($event)">
+            <mat-option *ngFor="let item of cards$ | async" [value]="item">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
   <div mat-dialog-actions>
     <button mat-button type="submit" tabindex="10">{{isNew ? 'Save' : 'Update'}}</button>
