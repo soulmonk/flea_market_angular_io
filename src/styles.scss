@@ -1,12 +1,5 @@
 @use '@angular/material' as mat;
 @import 'styles-variables';
-
-@import '../node_modules/bootstrap/scss/bootstrap-reboot';
-@import '../node_modules/bootstrap/scss/bootstrap-grid';
-@import '../node_modules/bootstrap/scss/utilities';
-
-@import '../node_modules/font-awesome/scss/font-awesome';
-
 @import 'styles-reset';
 
 @import '../node_modules/@angular/material/theming';
@@ -40,4 +33,7 @@
 
 .full-width {
   width: 100%;
+}
+.grid-container {
+  margin: 20px;
 }

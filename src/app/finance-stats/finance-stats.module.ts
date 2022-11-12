@@ -45,7 +45,7 @@ import {BankEditDialogComponent} from './components/bank-edit-dialog/bank-edit-d
     FinanceStatsRoutingModule,
     GraphQLModule,
     StoreModule.forFeature('finance-stats', reducers),
-    EffectsModule.forFeature([TransactionEffects, CardEffects, TransactionTypeEffects, BankEffects])
+    EffectsModule.forFeature([TransactionEffects, CardEffects, TransactionTypeEffects, BankEffects]),
   ],
   providers: [
     TransactionService,

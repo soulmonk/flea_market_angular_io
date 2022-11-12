@@ -1,15 +1,9 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12"><h1>Transactions</h1></div>
-  </div>
+<div class="grid-container">
+  <h1 class="mat-h1">Transactions</h1>
 
   <ndfsm-transaction-filter></ndfsm-transaction-filter>
 
-  <div class="row">
-    <div class="col-md-12 col-sm-12">
-      <button mat-raised-button color="primary" (click)="create()">Create</button>
-    </div>
-  </div>
+  <button mat-raised-button color="primary" class="create-button" (click)="create()">Create</button>
 
   <ndfsm-transaction-list [transactions]="transactions$ | async"></ndfsm-transaction-list>
 </div>

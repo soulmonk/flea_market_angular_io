@@ -5,5 +5,6 @@
     "auth": "https://auth.fallensoulmonk.org",
     "ndfsmFleaMarket": "https://ndfsm-flea-market.fallensoulmonk.org",
     "financeStats": "https://finance.fallensoulmonk.org"
-  }
+  },
+  "currencyCodes": ["UAH", "USD", "EUR", "DKK"]
 }

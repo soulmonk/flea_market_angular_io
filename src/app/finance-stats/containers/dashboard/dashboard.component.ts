@@ -6,6 +6,7 @@ import {endOfMonth, startOfMonth} from 'date-fns';
 
 @Component({
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {

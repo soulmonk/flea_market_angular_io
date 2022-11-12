@@ -8,7 +8,7 @@ export interface ITransaction {
   currencyCode: string;
   date: Date;
   description: string;
-  id: number;
+  id?: number;
   info: ITransactionInfo;
   note: string;
   type: ITransactionType;

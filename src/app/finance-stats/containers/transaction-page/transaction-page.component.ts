@@ -9,6 +9,11 @@ import {Load as LoadCard} from '../../actions/card.actions';
 
 @Component({
   templateUrl: './transaction-page.component.html',
+  styles: [`
+    .create-button {
+      margin: 10px 0;
+    }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionPageComponent implements OnInit {

@@ -14,6 +14,8 @@ import {endOfDay, endOfMonth, startOfDay, startOfMonth} from 'date-fns';
   templateUrl: './transaction-filter.component.html',
 })
 export class TransactionFilterComponent {
+  visible: boolean = false;
+
   filter = new UntypedFormGroup({
     dateFrom: new UntypedFormControl(startOfMonth(new Date())),
     dateTo: new UntypedFormControl(endOfMonth(new Date())),
@@ -25,6 +27,7 @@ export class TransactionFilterComponent {
 
   reset() {
     this.store.dispatch(new Load());
+    return false;
   }
 
   apply() {
@@ -35,5 +38,9 @@ export class TransactionFilterComponent {
       limit: values.limit,
       offset: values.offset,
     }));
+  }
+
+  toggleFilters() {
+    this.visible = !this.visible;
   }
 }

@@ -25,6 +25,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {CustomRouterStateSerializer} from '@app/shared/utils';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {ServiceWorkerModule} from '@angular/service-worker';
+import {NavComponent} from './nav/nav.component';
 
 export const routerStateConfig: StoreRouterConfig = {
   stateKey: 'router', // state-slice name for routing state
@@ -59,7 +60,8 @@ export const routerStateConfig: StoreRouterConfig = {
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent
   ],
   providers: [
     {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
