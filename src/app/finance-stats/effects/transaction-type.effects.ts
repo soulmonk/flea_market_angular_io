@@ -20,7 +20,7 @@ import {Observable, of} from 'rxjs';
 import {
   TransactionTypeEditDialogComponent
 } from '../components/transaction-type-edit-dialog/transaction-type-edit-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 
 @Injectable()
 export class TransactionTypeEffects {

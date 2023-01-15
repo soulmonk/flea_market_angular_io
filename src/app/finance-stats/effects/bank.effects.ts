@@ -17,7 +17,7 @@ import {IBank} from '../models/bank';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {BankEditDialogComponent} from '../components/bank-edit-dialog/bank-edit-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 
 @Injectable()
 export class BankEffects {

@@ -16,7 +16,7 @@ import {
 import {ITransaction} from '../models/transaction';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {TransactionEditDialogComponent} from '../components/transaction-edit-dialog/transaction-edit-dialog.component';
 import {ITransactionFilter} from '@app/finance-stats/models/transaction-filter';
 
