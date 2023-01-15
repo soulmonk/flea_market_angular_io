@@ -4,7 +4,7 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
   selector: 'ndfsm-not-found-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title>404: Not Found</mat-card-title>
       <mat-card-content>
         <p>Hey! It looks like this page doesn't exist yet.</p>
@@ -16,10 +16,10 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
   `,
   styles: [
     `
-    :host {
-      text-align: center;
-    }
-  `,
+        :host {
+          text-align: center;
+        }
+      `,
   ],
 })
 export class NotFoundPageComponent {

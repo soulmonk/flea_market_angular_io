@@ -4,6 +4,8 @@
 
 @import '../node_modules/@angular/material/theming';
 
+// TODO not sure I need this, check how to do it in fresh setup
+@include mat.all-component-typographies();
 @include mat.core();
 
 @import 'default-theme.scss';

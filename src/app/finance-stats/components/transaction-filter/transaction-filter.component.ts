@@ -7,7 +7,7 @@ import {endOfDay, endOfMonth, startOfDay, startOfMonth} from 'date-fns';
 @Component({
   selector: 'ndfsm-transaction-filter',
   styles: [`
-    .mat-form-field {
+    .mat-mdc-form-field {
       margin: 10px;
     }
 `],

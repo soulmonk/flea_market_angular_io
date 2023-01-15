@@ -42,15 +42,15 @@
             <span>Active</span>
           </button>
         </mat-menu>
-        <mat-chip-list class="todos-filter-info">
-          <mat-chip>
+        <mat-chip-listbox class="todos-filter-info">
+          <mat-chip-option>
             Displaying {{todos.filter.toLowerCase()}}
             ({{items.length}})
             todo{{items.length > 1 ? 's' : ''}}
-          </mat-chip>
-        </mat-chip-list>
+          </mat-chip-option>
+        </mat-chip-listbox>
       </h2>
-      <mat-card *ngFor="let todo of items" class="todo">
+      <mat-card appearance="outlined" *ngFor="let todo of items" class="todo">
         <mat-checkbox class="todo-done" [checked]="todo.done" (change)="onToggleTodo(todo)"
                       [disabled]="(loggedIn$ | async) === false"></mat-checkbox>
         <span class="todo-label">{{todo.name}}</span>

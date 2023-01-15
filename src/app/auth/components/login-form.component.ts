@@ -5,7 +5,7 @@ import {Authenticate} from '../models/user';
 @Component({
   selector: 'ndfsm-login-form',
   template: `
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title>Login</mat-card-title>
       <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="submit()">
@@ -35,36 +35,36 @@ import {Authenticate} from '../models/user';
   `,
   styles: [
     `
-    :host {
-      display: flex;
-      justify-content: center;
-      margin: 72px 0;
-    }
-
-    .mat-form-field {
-      width: 100%;
-      min-width: 300px;
-    }
-
-    mat-card-title,
-    mat-card-content {
-      display: flex;
-      justify-content: center;
-    }
-
-    .loginError {
-      padding: 16px;
-      width: 300px;
-      color: white;
-      background-color: red;
-    }
-
-    .loginButtons {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-    }
-  `,
+        :host {
+          display: flex;
+          justify-content: center;
+          margin: 72px 0;
+        }
+    
+        .mat-mdc-form-field {
+          width: 100%;
+          min-width: 300px;
+        }
+    
+        mat-card-title,
+        mat-card-content {
+          display: flex;
+          justify-content: center;
+        }
+    
+        .loginError {
+          padding: 16px;
+          width: 300px;
+          color: white;
+          background-color: red;
+        }
+    
+        .loginButtons {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+        }
+      `,
   ],
 })
 export class LoginFormComponent {
