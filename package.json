@@ -1,6 +1,6 @@
 {
   "name": "ndfsm_js",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "NDFSM frontend on Angular",
   "main": "index.js",
   "scripts": {
