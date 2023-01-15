@@ -1,6 +1,6 @@
 import {TestBed, ComponentFixture} from '@angular/core/testing';
-import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
-import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {StoreModule, Store, combineReducers} from '@ngrx/store';

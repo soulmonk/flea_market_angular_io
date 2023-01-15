@@ -15,7 +15,7 @@ import {
 import {ICard} from '../models/card';
 import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {CardEditDialogComponent} from '../components/card-edit-dialog/card-edit-dialog.component';
 
 @Injectable()

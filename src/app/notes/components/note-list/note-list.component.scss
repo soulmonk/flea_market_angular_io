@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card {
     width: 300px;
     margin: 15px;
@@ -12,6 +12,7 @@
   }
 
   @media only screen and (max-width: 768px) {
+    /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
     mat-card {
       margin: 15px 0 !important;
     }

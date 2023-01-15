@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {INote} from '@app/notes/models/note';
 import {EditDialogComponent} from '@app/notes/components/edit-dialog/edit-dialog.component';
 import {select, Store} from '@ngrx/store';
