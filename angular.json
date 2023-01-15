@@ -15,13 +15,13 @@
       "prefix": "ndfsm",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/ndfsm-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src",
@@ -111,7 +111,7 @@
           "options": {
             "main": "src/test.ts",
             "karmaConfig": "karma.conf.js",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.spec.json",
             "scripts": [],
             "styles": [

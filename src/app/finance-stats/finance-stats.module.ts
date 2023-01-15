@@ -54,5 +54,5 @@ import {BankEditDialogComponent} from './components/bank-edit-dialog/bank-edit-d
     BankService,
   ],
 })
-export class FinanceStatsModule {
+export default class FinanceStatsModule {
 }

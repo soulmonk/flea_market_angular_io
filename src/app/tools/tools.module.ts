@@ -20,5 +20,5 @@ import {LinksComponent} from '@app/tools/links/links.component';
     LinksComponent
   ]
 })
-export class ToolsModule {
+export default class ToolsModule {
 }

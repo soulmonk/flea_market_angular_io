@@ -4,8 +4,12 @@ $ndfsm-black-primary: mat.define-palette(mat.$grey-palette, 900, 500, 900);
 $ndfsm-black-accent: mat.define-palette(mat.$green-palette, A200);
 $ndfsm-black-warn: mat.define-palette(mat.$red-palette, A200);
 
-$ndfsm-black-theme: mat.define-dark-theme(
-    $ndfsm-black-primary,
-    $ndfsm-black-accent,
-    $ndfsm-black-warn
-);
+$ndfsm-black-theme: mat.define-dark-theme((
+  color: (
+    primary: $ndfsm-black-primary,
+    accent: $ndfsm-black-accent,
+    warn: $ndfsm-black-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
