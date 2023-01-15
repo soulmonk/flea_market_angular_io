@@ -5,8 +5,8 @@ export const environment = {
   appName: 'extended',
   ...baseOptions,
   apiServers: {
-    auth: 'http://localhost:3030',
-    financeStats: 'http://localhost:3031'
+    auth: 'https://auth.fallensoulmonk.org',
+    financeStats: 'https://finance.fallensoulmonk.org'
   },
   envName: 'DEV',
   hmr: false,

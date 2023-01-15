@@ -3,3 +3,12 @@
 
 - redirect to the page where the login was required
 - manifest for PWA, exclude api servers
+
+
+todo
+
+The esbuild browser application builder ('browser-esbuild') is currently experimental.
+The 'budgets' option is currently unsupported by this experimental builder and will be ignored.
+The 'extractLicenses' option is currently unsupported by this experimental builder and will be ignored.
+The 'progress' option is currently unsupported by this experimental builder and will be ignored.
+The 'vendorChunk' option is currently unsupported by this experimental builder and will be ignored.

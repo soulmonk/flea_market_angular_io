@@ -1,6 +1,6 @@
 <div class="container">
   <div class="entry"></div>
-  <nav mat-tab-nav-bar>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
     <a mat-tab-link
        *ngFor="let e of tools"
        [routerLink]="e.link"
@@ -9,6 +9,7 @@
       {{e.label}}
     </a>
   </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   <div>
     <router-outlet></router-outlet>
   </div>
