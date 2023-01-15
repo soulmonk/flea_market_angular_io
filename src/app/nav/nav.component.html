@@ -1,0 +1,80 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of navigationSideMenu" 
+      [routerLink]="[item.link]" routerLinkActive="active">
+      {{item.label | titlecase}}
+      </a>
+      <div *ngIf="loggedIn$ | async">
+        <mat-divider></mat-divider>
+        <h3 matSubheader>User</h3>
+        <span *ngFor="let item of navigationUser">
+          <a mat-list-item *ngIf="item.children === undefined || item.children.length === 0"
+          [routerLink]="[item.link]" routerLinkActive="active">
+          {{item.label}}
+          </a>
+        <mat-nav-list *ngIf="item.children !== undefined && item.children.length > 0">
+          <h3 matSubheader>{{item.label}}</h3>
+          <a mat-list-item *ngFor="let subitem of item.children"
+          [routerLink]="[subitem.link]" routerLinkActive="active">
+          {{subitem.label}}
+          </a>
+        </mat-nav-list>
+        </span>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span routerLink="" class="branding spacer hidden-md-up text-center">NDFSM</span>
+      <span routerLink="" class="branding spacer hidden-sm-down"></span>
+
+
+      <span class="hidden-sm-down">
+        <button mat-button class="nav-button" *ngFor="let item of navigation"
+        [routerLink]="[item.link]" routerLinkActive="active">
+        {{item.label}}
+        </button>
+      </span>
+
+      <button mat-button class="sign-in-button"
+      *ngIf="(loggedIn$ | async) === false"
+      [routerLink]="['login']">
+      Sign in
+      </button>
+
+      <button *ngIf="loggedIn$ | async"
+      mat-icon-button
+      [matMenuTriggerFor]="toolbarUserMenu">
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <mat-menu #toolbarUserMenu="matMenu">
+        <span mat-menu-item>Hello {{(userName$ | async)?.username}}</span>
+        <button mat-menu-item (click)="onLogoutClick()">
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+
+      <button mat-icon-button routerLink="settings" class="hidden-sm-down">
+        <mat-icon>settings</mat-icon>
+      </button>
+
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

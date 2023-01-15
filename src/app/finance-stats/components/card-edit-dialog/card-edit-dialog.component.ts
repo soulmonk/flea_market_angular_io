@@ -5,9 +5,19 @@ import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {getAllBank} from '../../reducers/bank.reducer';
 import {IBank} from '../../models/bank';
+import {MatDatepicker} from '@angular/material/datepicker';
 
 @Component({
   templateUrl: './card-edit-dialog.component.html',
+  styles: [`
+  .example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+`],
 })
 export class CardEditDialogComponent {
 
@@ -43,5 +53,13 @@ export class CardEditDialogComponent {
       // todo close after success
       this.dialogRef.close({...this.data, ...formValues});
     }
+  }
+
+  setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<any>, property: string) {
+    this.form.controls[property].setValue(normalizedMonthAndYear)
+    // ctrlValue.month(normalizedMonthAndYear.month());
+    // ctrlValue.year(normalizedMonthAndYear.year());
+    // this.date.setValue(ctrlValue);
+    datepicker.close();
   }
 }

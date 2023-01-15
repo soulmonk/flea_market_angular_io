@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+import {LayoutModule} from '@angular/cdk/layout';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
@@ -18,17 +19,21 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
-// todo remove it
-import {NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule} from '@angular-material-components/datetime-picker';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTableModule} from '@angular/material/table';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    LayoutModule,
 
     MatButtonModule,
     MatToolbarModule,
@@ -49,16 +54,18 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMatNativeDateModule,
-    NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
   ],
   declarations: [],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    LayoutModule,
 
     MatButtonModule,
     MatMenuModule,
@@ -78,10 +85,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMatDatetimePickerModule,
-    NgxMatNativeDateModule,
-    NgxMatTimepickerModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
   ],
 })
 export class SharedModule {
